@@ -36,7 +36,7 @@ Race through a detailed SUSTech campus map with advanced tracks, obstacles, and 
    - Clean, responsive UI with accessibility options (e.g., colorblind mode, multilingual support).
 
 2. **Performance**  
-   - Consistent 60 FPS or higher.  
+   - Consistent 30 FPS or higher.  
    - Minimal loading times and optimized for low to high-end devices.
 
 3. **Reliability**  
