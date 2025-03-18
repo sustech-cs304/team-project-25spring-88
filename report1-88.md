@@ -47,11 +47,7 @@ Race through a detailed SUSTech campus map with advanced tracks, obstacles, and 
    - Modular, well-documented codebase for easy updates.  
    - Seamless update system for patches and new content.
 
-5. **Scalability**  
-   - Servers capable of handling high player concurrency.  
-   - Design to support future expansions (tracks, modes, vehicles).
-
-6. **Aesthetics**  
+5. **Aesthetics**  
    - High-quality graphics and animations.  
    - Immersive sound effects and background music.
 
