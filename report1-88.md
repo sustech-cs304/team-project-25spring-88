@@ -14,7 +14,7 @@ Race through a detailed SUSTech campus map with advanced tracks, obstacles, and 
    - **Regular Racing Mode**: Classic racing for speed enthusiasts.  
    - **Item Race**: Use power-ups and items to outsmart opponents.  
    - **Exploration Mode**: Freely explore the campus map and discover hidden secrets.  
-   - **Online Competition Mode**: Compete with players worldwide in real-time.  
+   - **Online Competition Mode**: Compete with your friends in real-time.  
    - **Electric Vehicles vs Security Guard (PvE Mode)**: A unique player-vs-environment challenge.
 
 4. **Dynamic Weather & Time System**  
