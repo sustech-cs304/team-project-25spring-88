@@ -68,3 +68,7 @@ Race through a detailed SUSTech campus map with advanced tracks, obstacles, and 
    - **Game Engine**: Unity  
    - **Backend Programming Language**: C#  
    - **Version Control**: Git for source code management, GitHub for repository hosting and collaboration.
+  
+## Map Overview
+![image](https://github.com/user-attachments/assets/d7e9987e-8401-4bcb-af66-4b66fc520bed)
+
