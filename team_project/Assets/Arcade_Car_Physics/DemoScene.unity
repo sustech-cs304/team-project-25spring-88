@@ -202,6 +202,10 @@ PrefabInstance:
       propertyPath: m_Interactable
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 386345850234754188, guid: b24f006dd77a94f649454da633b6e015, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 386345850234754195, guid: b24f006dd77a94f649454da633b6e015, type: 3}
       propertyPath: targets.Array.size
       value: 11
