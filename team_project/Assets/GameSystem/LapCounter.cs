@@ -11,8 +11,8 @@ public class LapCounter : MonoBehaviour
     private bool hasCelebrated = false;
 
     // 存档点相关
-    private int lastCheckpointIndex = 1;
-    private int totalCheckpoints = 6;
+    private int lastCheckpointIndex = 0;
+    private int totalCheckpoints = 3;
     private Vector3 lastCheckpointPosition;
     private Quaternion lastCheckpointRotation;
     private bool[] checkpointsPassed;
@@ -21,20 +21,27 @@ public class LapCounter : MonoBehaviour
     public TMP_Text lapText;
     public TMP_Text timeText;
     public TMP_Text finishText;
+    public TMP_Text speedText; // 新增：速度显示文本
     public Button quitButton;
 
     // 庆祝效果
-    public ParticleSystem Effect1; // 第一个粒子效果（烟花）
-    public ParticleSystem Effect2;   // 第二个粒子效果（彩带）
+    public ParticleSystem fireworkEffect;
+    public ParticleSystem ribbonEffect;
     public AudioSource celebrationAudio;
 
     // 赛车引用
     public GameObject playerCar;
 
+    // 存档点引用（用于控制光束）
+    public Checkpoint[] checkpointObjects;
+
+    private Rigidbody carRigidbody; // 用于计算速度
+
     void Start()
     {
         UpdateLapDisplay();
         UpdateTimeDisplay();
+        UpdateSpeedDisplay(); // 初始更新速度显示
         finishText.gameObject.SetActive(false);
         quitButton.gameObject.SetActive(false);
         quitButton.onClick.AddListener(QuitGame);
@@ -42,6 +49,20 @@ public class LapCounter : MonoBehaviour
         checkpointsPassed = new bool[totalCheckpoints + 1];
         lastCheckpointPosition = playerCar.transform.position;
         lastCheckpointRotation = playerCar.transform.rotation;
+
+        // 获取赛车的Rigidbody组件
+        if (playerCar != null)
+        {
+            carRigidbody = playerCar.GetComponent<Rigidbody>();
+            if (carRigidbody == null)
+            {
+                Debug.LogWarning("Player car does not have a Rigidbody component!");
+            }
+        }
+        else
+        {
+            Debug.LogWarning("Player car is not assigned in LapCounter!");
+        }
     }
 
     void Update()
@@ -56,6 +77,9 @@ public class LapCounter : MonoBehaviour
         {
             RespawnToLastCheckpoint();
         }
+
+        // 实时更新速度显示
+        UpdateSpeedDisplay();
     }
 
     public void OnStartLinePassed()
@@ -96,6 +120,8 @@ public class LapCounter : MonoBehaviour
                     checkpointsPassed[i] = false;
                 }
                 lastCheckpointIndex = 0;
+
+                ResetCheckpoints();
 
                 if (currentLap >= totalLaps)
                 {
@@ -145,18 +171,16 @@ public class LapCounter : MonoBehaviour
     {
         if (hasCelebrated) return;
 
-        // 触发第一个粒子效果（烟花）
-        if (Effect1 != null)
+        if (fireworkEffect != null)
         {
-            Effect1.Stop(true, ParticleSystemStopBehavior.StopEmittingAndClear);
-            Effect1.Play();
+            fireworkEffect.Stop(true, ParticleSystemStopBehavior.StopEmittingAndClear);
+            fireworkEffect.Play();
         }
 
-        // 触发第二个粒子效果（彩带）
-        if (Effect2 != null)
+        if (ribbonEffect != null)
         {
-            Effect2.Stop(true, ParticleSystemStopBehavior.StopEmittingAndClear);
-            Effect2.Play();
+            ribbonEffect.Stop(true, ParticleSystemStopBehavior.StopEmittingAndClear);
+            ribbonEffect.Play();
         }
 
         if (celebrationAudio != null)
@@ -205,6 +229,23 @@ public class LapCounter : MonoBehaviour
         }
     }
 
+    private void UpdateSpeedDisplay()
+    {
+        if (speedText != null && carRigidbody != null)
+        {
+            // 计算速度（单位：m/s）
+            float speed = carRigidbody.velocity.magnitude;
+            // 转换为km/h（1 m/s = 3.6 km/h）
+            float speedKmh = speed * 3.6f;
+            // 更新UI，保留1位小数
+            speedText.text = $"Speed: {speedKmh:F1} km/h";
+        }
+        else if (speedText != null)
+        {
+            speedText.text = "Speed: 0 km/h";
+        }
+    }
+
     public void ResetRace()
     {
         raceStarted = false;
@@ -220,7 +261,33 @@ public class LapCounter : MonoBehaviour
         lastCheckpointRotation = playerCar.transform.rotation;
         UpdateLapDisplay();
         UpdateTimeDisplay();
+        UpdateSpeedDisplay();
         finishText.gameObject.SetActive(false);
         quitButton.gameObject.SetActive(false);
+
+        ResetCheckpoints();
+    }
+
+    private void ResetCheckpoints()
+    {
+        if (checkpointObjects == null || checkpointObjects.Length == 0)
+        {
+            Debug.LogWarning("Checkpoint objects not assigned in LapCounter!");
+            return;
+        }
+
+        foreach (var checkpoint in checkpointObjects)
+        {
+            if (checkpoint == null) continue;
+
+            if (checkpoint.lightBeam != null)
+            {
+                checkpoint.lightBeam.enabled = true;
+            }
+            if (checkpoint.lightBeamParticles != null)
+            {
+                checkpoint.lightBeamParticles.Play();
+            }
+        }
     }
 }
