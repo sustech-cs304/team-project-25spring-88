@@ -1,0 +1,2517 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<osm version="0.6" generator="Overpass API 0.7.62.5 1bd436f1">
+<note>The data included in this document is from www.openstreetmap.org. The data is made available under ODbL.</note>
+<meta osm_base="2025-04-11T09:50:23Z"/>
+
+  <way id="364840103">
+    <nd ref="3688767682"/>
+    <nd ref="6024392064"/>
+    <nd ref="3688767683"/>
+    <nd ref="3688767684"/>
+    <nd ref="6024392063"/>
+    <nd ref="3688767685"/>
+    <nd ref="3688767686"/>
+    <nd ref="3688767682"/>
+    <tag k="addr:city" v="深圳"/>
+    <tag k="addr:housenumber" v="10001号"/>
+    <tag k="addr:street" v="学苑大道"/>
+    <tag k="building" v="commercial"/>
+    <tag k="building:levels" v="30"/>
+    <tag k="name" v="B1"/>
+  </way>
+  <way id="364840106">
+    <nd ref="3688767695"/>
+    <nd ref="3688767696"/>
+    <nd ref="3688767697"/>
+    <nd ref="3688767698"/>
+    <nd ref="3688767695"/>
+    <tag k="building" v="commercial"/>
+    <tag k="building:levels" v="20"/>
+    <tag k="name" v="A3"/>
+  </way>
+  <way id="533170974">
+    <nd ref="5173028397"/>
+    <nd ref="5173028398"/>
+    <nd ref="8511339799"/>
+    <nd ref="9055227475"/>
+    <nd ref="5173028399"/>
+    <nd ref="9055227474"/>
+    <nd ref="5173028400"/>
+    <nd ref="5173028401"/>
+    <nd ref="5173028402"/>
+    <nd ref="6265111317"/>
+    <nd ref="5173028403"/>
+    <nd ref="5173028404"/>
+    <nd ref="5173028405"/>
+    <nd ref="8552127807"/>
+    <nd ref="5173028406"/>
+    <nd ref="8511339798"/>
+    <nd ref="5173028407"/>
+    <nd ref="5173028408"/>
+    <nd ref="5173028397"/>
+    <tag k="amenity" v="library"/>
+    <tag k="building" v="yes"/>
+    <tag k="building:levels" v="6"/>
+    <tag k="internet_access" v="wlan"/>
+    <tag k="internet_access:fee" v="no"/>
+    <tag k="name" v="南方科技大学图书馆"/>
+    <tag k="name:en" v="Lynn Library"/>
+    <tag k="name:zh" v="南方科技大学图书馆"/>
+    <tag k="name:zh-Hans" v="南方科技大学图书馆"/>
+    <tag k="name:zh-Hant" v="南方科技大學圖書館"/>
+    <tag k="opening_hours" v="08:00-22:00"/>
+    <tag k="operator" v="SUSTech"/>
+  </way>
+  <way id="533170977">
+    <nd ref="5173028621"/>
+    <nd ref="5173028622"/>
+    <nd ref="5173028623"/>
+    <nd ref="5173028624"/>
+    <nd ref="5173028625"/>
+    <nd ref="5173028621"/>
+    <tag k="building" v="university"/>
+    <tag k="building:levels" v="4"/>
+    <tag k="name" v="检测中心"/>
+    <tag k="name:en" v="Core Research Center"/>
+    <tag k="name:zh" v="检测中心"/>
+    <tag k="name:zh-Hans" v="检测中心"/>
+    <tag k="name:zh-Hant" v="檢測中心"/>
+  </way>
+  <way id="533170978">
+    <nd ref="5173028626"/>
+    <nd ref="9070679227"/>
+    <nd ref="9070679225"/>
+    <nd ref="9070679224"/>
+    <nd ref="9070679226"/>
+    <nd ref="5173028627"/>
+    <nd ref="5173028628"/>
+    <nd ref="7057414612"/>
+    <nd ref="7057414613"/>
+    <nd ref="7057414614"/>
+    <nd ref="7057414615"/>
+    <nd ref="5173028629"/>
+    <nd ref="5173028626"/>
+    <tag k="building" v="university"/>
+    <tag k="name" v="台州楼（第四科研楼）"/>
+    <tag k="name:en" v="Taizhou Hall (Faculty Building 4)"/>
+    <tag k="name:zh" v="台州楼（第四科研楼）"/>
+    <tag k="name:zh-Hans" v="台州楼（第四科研楼）"/>
+    <tag k="name:zh-Hant" v="台州樓（第四科研樓）"/>
+  </way>
+  <way id="533170979">
+    <nd ref="5173028630"/>
+    <nd ref="9070679251"/>
+    <nd ref="9070679249"/>
+    <nd ref="9070679248"/>
+    <nd ref="9070679250"/>
+    <nd ref="5173028631"/>
+    <nd ref="5173028632"/>
+    <nd ref="7057414618"/>
+    <nd ref="7057414617"/>
+    <nd ref="7057414616"/>
+    <nd ref="5173028634"/>
+    <nd ref="5173028633"/>
+    <nd ref="5173028630"/>
+    <tag k="building" v="university"/>
+    <tag k="building:levels" v="6"/>
+    <tag k="name" v="第三科研楼"/>
+    <tag k="name:en" v="Faculty Building 3"/>
+    <tag k="name:zh" v="第三科研楼"/>
+    <tag k="name:zh-Hans" v="第三科研楼"/>
+    <tag k="name:zh-Hant" v="第三科研樓"/>
+  </way>
+  <way id="533170980">
+    <nd ref="5173028640"/>
+    <nd ref="5173028639"/>
+    <nd ref="5173028638"/>
+    <nd ref="5173028637"/>
+    <nd ref="5173028636"/>
+    <nd ref="9070679273"/>
+    <nd ref="9070679272"/>
+    <nd ref="5173028640"/>
+    <tag k="building" v="university"/>
+    <tag k="building:levels" v="6"/>
+    <tag k="name" v="第二科研楼"/>
+    <tag k="name:en" v="Faculty Building 2"/>
+    <tag k="name:zh" v="第二科研楼"/>
+    <tag k="name:zh-Hans" v="第二科研楼"/>
+    <tag k="name:zh-Hant" v="第二科研樓"/>
+  </way>
+  <way id="533170981">
+    <nd ref="9070679299"/>
+    <nd ref="9070679298"/>
+    <nd ref="5173028644"/>
+    <nd ref="5173028645"/>
+    <nd ref="5173028646"/>
+    <nd ref="9070679299"/>
+    <tag k="building" v="university"/>
+    <tag k="building:levels" v="6"/>
+    <tag k="name" v="第一科研楼"/>
+    <tag k="name:en" v="Faculty Building 1"/>
+    <tag k="name:zh" v="第一科研楼"/>
+    <tag k="name:zh-Hans" v="第一科研楼"/>
+    <tag k="name:zh-Hant" v="第一科研樓"/>
+  </way>
+  <way id="533170982">
+    <nd ref="5173028648"/>
+    <nd ref="5173028649"/>
+    <nd ref="5173028650"/>
+    <nd ref="5173028651"/>
+    <nd ref="5173028652"/>
+    <nd ref="5173028653"/>
+    <nd ref="5173028654"/>
+    <nd ref="9070679297"/>
+    <nd ref="5173028648"/>
+    <tag k="building" v="university"/>
+    <tag k="building:levels" v="5"/>
+    <tag k="name" v="第一教学楼"/>
+    <tag k="name:en" v="Teaching Building 1"/>
+    <tag k="name:zh" v="第一教学楼"/>
+    <tag k="name:zh-Hans" v="第一教学楼"/>
+    <tag k="name:zh-Hant" v="第一教學樓"/>
+  </way>
+  <way id="533171008">
+    <nd ref="5173029009"/>
+    <nd ref="5173029010"/>
+    <nd ref="5173029011"/>
+    <nd ref="5173029013"/>
+    <nd ref="5173029012"/>
+    <nd ref="5173029014"/>
+    <nd ref="5173029006"/>
+    <nd ref="5173029007"/>
+    <nd ref="5173029008"/>
+    <nd ref="5173029009"/>
+    <tag k="building" v="yes"/>
+  </way>
+  <way id="533171021">
+    <nd ref="5173029339"/>
+    <nd ref="5173029340"/>
+    <nd ref="5173029341"/>
+    <nd ref="5173029342"/>
+    <nd ref="6024421196"/>
+    <nd ref="5173029343"/>
+    <nd ref="8509221954"/>
+    <nd ref="5173029344"/>
+    <nd ref="5173029345"/>
+    <nd ref="5173029346"/>
+    <nd ref="5173029339"/>
+    <tag k="addr:city" v="shenzhen"/>
+    <tag k="addr:district" v="Nanshan"/>
+    <tag k="addr:province" v="Guangdong"/>
+    <tag k="building" v="dormitory"/>
+    <tag k="building:levels" v="6"/>
+    <tag k="name" v="湖畔宿舍3栋"/>
+    <tag k="name:en" v="Dorm Block 3"/>
+    <tag k="name:zh" v="湖畔宿舍3栋"/>
+    <tag k="name:zh-Hans" v="湖畔宿舍3栋"/>
+    <tag k="name:zh-Hant" v="湖畔宿舍3棟"/>
+  </way>
+  <way id="533171022">
+    <nd ref="5173029347"/>
+    <nd ref="8509221955"/>
+    <nd ref="5173029348"/>
+    <nd ref="5173029349"/>
+    <nd ref="5173029350"/>
+    <nd ref="6024421194"/>
+    <nd ref="5173029351"/>
+    <nd ref="5173029352"/>
+    <nd ref="5173029353"/>
+    <nd ref="8509221956"/>
+    <nd ref="5173029354"/>
+    <nd ref="5173029355"/>
+    <nd ref="5173029356"/>
+    <nd ref="5173029357"/>
+    <nd ref="5173029358"/>
+    <nd ref="5173029347"/>
+    <tag k="addr:city" v="shenzhen"/>
+    <tag k="addr:district" v="Nanshan"/>
+    <tag k="building" v="dormitory"/>
+    <tag k="building:levels" v="6"/>
+    <tag k="name" v="湖畔宿舍2栋"/>
+    <tag k="name:en" v="Dorm Block 2"/>
+    <tag k="name:zh" v="湖畔宿舍2栋"/>
+    <tag k="name:zh-Hans" v="湖畔宿舍2栋"/>
+    <tag k="name:zh-Hant" v="湖畔宿舍2棟"/>
+  </way>
+  <way id="533171023">
+    <nd ref="5173029359"/>
+    <nd ref="5173029360"/>
+    <nd ref="6024421192"/>
+    <nd ref="5173029361"/>
+    <nd ref="8509411438"/>
+    <nd ref="5173029362"/>
+    <nd ref="5173029363"/>
+    <nd ref="5173029359"/>
+    <tag k="addr:city" v="shenzhen"/>
+    <tag k="addr:district" v="Nanshan"/>
+    <tag k="addr:street" v="南科一路"/>
+    <tag k="building" v="dormitory"/>
+    <tag k="building:levels" v="6"/>
+    <tag k="name" v="湖畔宿舍1栋"/>
+    <tag k="name:en" v="Dorm Block 1"/>
+    <tag k="name:zh" v="湖畔宿舍1栋"/>
+    <tag k="name:zh-Hans" v="湖畔宿舍1栋"/>
+    <tag k="name:zh-Hant" v="湖畔宿舍1棟"/>
+  </way>
+  <way id="533171024">
+    <nd ref="5173029364"/>
+    <nd ref="5173029365"/>
+    <nd ref="6024421198"/>
+    <nd ref="5173029366"/>
+    <nd ref="5173029367"/>
+    <nd ref="5173029368"/>
+    <nd ref="5173029369"/>
+    <nd ref="5173029364"/>
+    <tag k="building" v="dormitory"/>
+    <tag k="building:levels" v="7"/>
+    <tag k="name" v="湖畔宿舍4栋"/>
+    <tag k="name:en" v="Dorm Block 4"/>
+    <tag k="name:zh" v="湖畔宿舍4栋"/>
+    <tag k="name:zh-Hans" v="湖畔宿舍4栋"/>
+    <tag k="name:zh-Hant" v="湖畔宿舍4棟"/>
+  </way>
+  <way id="533171025">
+    <nd ref="5173029370"/>
+    <nd ref="5173029371"/>
+    <nd ref="5173029372"/>
+    <nd ref="5173029373"/>
+    <nd ref="5173029370"/>
+    <tag k="building" v="dormitory"/>
+    <tag k="name" v="湖畔宿舍6栋"/>
+    <tag k="name:en" v="Dorm block 6"/>
+    <tag k="name:zh" v="湖畔宿舍6栋"/>
+    <tag k="name:zh-Hans" v="湖畔宿舍6栋"/>
+    <tag k="name:zh-Hant" v="湖畔宿舍6棟"/>
+  </way>
+  <way id="533171026">
+    <nd ref="5173029374"/>
+    <nd ref="5173029375"/>
+    <nd ref="5173029376"/>
+    <nd ref="5173029377"/>
+    <nd ref="5173029374"/>
+    <tag k="building" v="dormitory"/>
+    <tag k="name" v="湖畔宿舍5栋"/>
+    <tag k="name:en" v="Dorm block 5"/>
+    <tag k="name:zh" v="湖畔宿舍5栋"/>
+    <tag k="name:zh-Hans" v="湖畔宿舍5栋"/>
+    <tag k="name:zh-Hant" v="湖畔宿舍5棟"/>
+  </way>
+  <way id="533171027">
+    <nd ref="5173029378"/>
+    <nd ref="5173029379"/>
+    <nd ref="5173029380"/>
+    <nd ref="5173029381"/>
+    <nd ref="5173029378"/>
+    <tag k="building" v="school"/>
+    <tag k="building:levels" v="2"/>
+    <tag k="name" v="树德书院活动室"/>
+    <tag k="name:en" v="Shude Colleague"/>
+    <tag k="name:zh" v="树德书院活动室"/>
+    <tag k="name:zh-Hans" v="树德书院活动室"/>
+    <tag k="name:zh-Hant" v="樹德書院活動室"/>
+  </way>
+  <way id="533171028">
+    <nd ref="5173029382"/>
+    <nd ref="5173029383"/>
+    <nd ref="5173029384"/>
+    <nd ref="5173029385"/>
+    <nd ref="5173029386"/>
+    <nd ref="5173029387"/>
+    <nd ref="5173029382"/>
+    <tag k="building" v="school"/>
+    <tag k="building:levels" v="2"/>
+    <tag k="name" v="舞蹈室与健身房"/>
+    <tag k="name:en" v="dance &amp; fit"/>
+    <tag k="name:zh" v="舞蹈室与健身房"/>
+    <tag k="name:zh-Hans" v="舞蹈室与健身房"/>
+    <tag k="name:zh-Hant" v="舞蹈室與健身房"/>
+  </way>
+  <way id="533171029">
+    <nd ref="5173029388"/>
+    <nd ref="5173029389"/>
+    <nd ref="5173029390"/>
+    <nd ref="5173029391"/>
+    <nd ref="5173029388"/>
+    <tag k="building" v="school"/>
+    <tag k="building:levels" v="2"/>
+    <tag k="name" v="致诚书院活动室"/>
+    <tag k="name:en" v="Zhicheng Colleague"/>
+    <tag k="name:zh" v="致诚书院活动室"/>
+    <tag k="name:zh-Hans" v="致诚书院活动室"/>
+    <tag k="name:zh-Hant" v="致誠書院活動室"/>
+  </way>
+  <way id="533171030">
+    <nd ref="5173029392"/>
+    <nd ref="5173029393"/>
+    <nd ref="5173029394"/>
+    <nd ref="5173029395"/>
+    <nd ref="5173029392"/>
+    <tag k="building" v="school"/>
+    <tag k="building:levels" v="2"/>
+    <tag k="name" v="致仁书院活动室"/>
+    <tag k="name:en" v="Zhiren Colleague"/>
+    <tag k="name:zh" v="致仁书院活动室"/>
+    <tag k="name:zh-Hans" v="致仁书院活动室"/>
+    <tag k="name:zh-Hant" v="致仁書院活動室"/>
+  </way>
+  <way id="533171031">
+    <nd ref="5173029396"/>
+    <nd ref="5173029397"/>
+    <nd ref="5173029398"/>
+    <nd ref="5173029399"/>
+    <nd ref="5173029401"/>
+    <nd ref="5173029402"/>
+    <nd ref="5173029403"/>
+    <nd ref="5173029400"/>
+    <nd ref="5173029396"/>
+    <tag k="building" v="school"/>
+  </way>
+  <way id="533171032">
+    <nd ref="5173029404"/>
+    <nd ref="5173029405"/>
+    <nd ref="5173029406"/>
+    <nd ref="5173029407"/>
+    <nd ref="5173029408"/>
+    <nd ref="5173029409"/>
+    <nd ref="5173029410"/>
+    <nd ref="5173029411"/>
+    <nd ref="5173029404"/>
+    <tag k="building" v="school"/>
+  </way>
+  <way id="533171033">
+    <nd ref="5173029412"/>
+    <nd ref="5173029413"/>
+    <nd ref="10243691516"/>
+    <nd ref="5173029416"/>
+    <nd ref="5173029419"/>
+    <nd ref="5173029418"/>
+    <nd ref="5173029417"/>
+    <nd ref="5173029414"/>
+    <nd ref="5173029415"/>
+    <nd ref="5173029412"/>
+    <tag k="building" v="school"/>
+  </way>
+  <way id="533171034">
+    <nd ref="5173029420"/>
+    <nd ref="5173029421"/>
+    <nd ref="5173029422"/>
+    <nd ref="5173029423"/>
+    <nd ref="5173029424"/>
+    <nd ref="5173029425"/>
+    <nd ref="5173029426"/>
+    <nd ref="5173029427"/>
+    <nd ref="5173029420"/>
+    <tag k="building" v="school"/>
+  </way>
+  <way id="533171035">
+    <nd ref="5173029428"/>
+    <nd ref="5173029429"/>
+    <nd ref="5173029430"/>
+    <nd ref="5173029431"/>
+    <nd ref="5173029432"/>
+    <nd ref="5173029433"/>
+    <nd ref="5173029434"/>
+    <nd ref="5173029435"/>
+    <nd ref="5173029428"/>
+    <tag k="building" v="school"/>
+  </way>
+  <way id="533171036">
+    <nd ref="5173029436"/>
+    <nd ref="5173029437"/>
+    <nd ref="5173029438"/>
+    <nd ref="5173029439"/>
+    <nd ref="5173029440"/>
+    <nd ref="5173029441"/>
+    <nd ref="5173029442"/>
+    <nd ref="5173029443"/>
+    <nd ref="5173029436"/>
+    <tag k="building" v="school"/>
+  </way>
+  <way id="533171037">
+    <nd ref="5173029444"/>
+    <nd ref="5173029445"/>
+    <nd ref="5173029446"/>
+    <nd ref="5173029447"/>
+    <nd ref="5173029448"/>
+    <nd ref="5173029449"/>
+    <nd ref="5173029450"/>
+    <nd ref="5173029451"/>
+    <nd ref="5173029444"/>
+    <tag k="building" v="school"/>
+  </way>
+  <way id="533171038">
+    <nd ref="5173029452"/>
+    <nd ref="5173029453"/>
+    <nd ref="5173029454"/>
+    <nd ref="5173029455"/>
+    <nd ref="5173029456"/>
+    <nd ref="5173029457"/>
+    <nd ref="5173029458"/>
+    <nd ref="5173029459"/>
+    <nd ref="5173029452"/>
+    <tag k="building" v="school"/>
+  </way>
+  <way id="535403488">
+    <nd ref="5189735893"/>
+    <nd ref="5189736133"/>
+    <nd ref="3688767693"/>
+    <nd ref="3688767694"/>
+    <nd ref="5189735893"/>
+    <tag k="building" v="commercial"/>
+    <tag k="building:levels" v="18"/>
+    <tag k="name" v="A2"/>
+  </way>
+  <way id="536044880">
+    <nd ref="5193738543"/>
+    <nd ref="5193738544"/>
+    <nd ref="5193738545"/>
+    <nd ref="5193738546"/>
+    <nd ref="5193738547"/>
+    <nd ref="5193738548"/>
+    <nd ref="5193738549"/>
+    <nd ref="5193738550"/>
+    <nd ref="5193738543"/>
+    <tag k="building" v="university"/>
+    <tag k="name" v="生物医学工程大楼（A2）"/>
+    <tag k="name:zh" v="生物医学工程大楼（A2）"/>
+    <tag k="name:zh-Hans" v="生物医学工程大楼（A2）"/>
+    <tag k="name:zh-Hant" v="生物醫學工程大樓（A2）"/>
+  </way>
+  <way id="536044908">
+    <nd ref="5193738745"/>
+    <nd ref="5193738751"/>
+    <nd ref="5193738754"/>
+    <nd ref="5193738746"/>
+    <nd ref="5193738747"/>
+    <nd ref="5193738748"/>
+    <nd ref="5193738749"/>
+    <nd ref="5193738750"/>
+    <nd ref="5193738745"/>
+    <tag k="building" v="university"/>
+    <tag k="name" v="学术交流中心（B3）"/>
+    <tag k="name:zh" v="学术交流中心（B3）"/>
+    <tag k="name:zh-Hans" v="学术交流中心（B3）"/>
+    <tag k="name:zh-Hant" v="學術交流中心（B3）"/>
+  </way>
+  <way id="536044909">
+    <nd ref="5193738751"/>
+    <nd ref="5193738752"/>
+    <nd ref="5193738753"/>
+    <nd ref="5193738754"/>
+    <nd ref="5193738751"/>
+    <tag k="building" v="university"/>
+    <tag k="name" v="学术交流中心（B3）"/>
+    <tag k="name:zh" v="学术交流中心（B3）"/>
+    <tag k="name:zh-Hans" v="学术交流中心（B3）"/>
+    <tag k="name:zh-Hant" v="學術交流中心（B3）"/>
+  </way>
+  <way id="536044910">
+    <nd ref="5193738755"/>
+    <nd ref="5193738756"/>
+    <nd ref="5193738757"/>
+    <nd ref="5193738758"/>
+    <nd ref="5193738759"/>
+    <nd ref="5193738760"/>
+    <nd ref="5193738761"/>
+    <nd ref="5193738762"/>
+    <nd ref="5193738763"/>
+    <nd ref="5193738767"/>
+    <nd ref="5193738764"/>
+    <nd ref="5193738765"/>
+    <nd ref="5193738766"/>
+    <nd ref="5193738755"/>
+    <tag k="building" v="university"/>
+    <tag k="name" v="材料学院（B2）"/>
+    <tag k="name:zh" v="材料学院（B2）"/>
+    <tag k="name:zh-Hans" v="材料学院（B2）"/>
+    <tag k="name:zh-Hant" v="材料學院（B2）"/>
+  </way>
+  <way id="536044911">
+    <nd ref="5193738761"/>
+    <nd ref="5193738767"/>
+    <nd ref="5193738763"/>
+    <nd ref="5193738762"/>
+    <nd ref="5193738761"/>
+    <tag k="building" v="university"/>
+  </way>
+  <way id="536044912">
+    <nd ref="5193738768"/>
+    <nd ref="5193738769"/>
+    <nd ref="5193738770"/>
+    <nd ref="5193738771"/>
+    <nd ref="5193738772"/>
+    <nd ref="5193738773"/>
+    <nd ref="5193738774"/>
+    <nd ref="12194899936"/>
+    <nd ref="5193738775"/>
+    <nd ref="12194899902"/>
+    <nd ref="5193738776"/>
+    <nd ref="5193738783"/>
+    <nd ref="12194899901"/>
+    <nd ref="12194891800"/>
+    <nd ref="5193738782"/>
+    <nd ref="12194891798"/>
+    <nd ref="12194899941"/>
+    <nd ref="12194891799"/>
+    <nd ref="5193738784"/>
+    <nd ref="5193738781"/>
+    <nd ref="5193738777"/>
+    <nd ref="12194899935"/>
+    <nd ref="5193738778"/>
+    <nd ref="5193738779"/>
+    <nd ref="12194899904"/>
+    <nd ref="12194899903"/>
+    <nd ref="5193738780"/>
+    <nd ref="5193738768"/>
+    <tag k="building" v="university"/>
+    <tag k="name" v="化学与环境工程学院（B1）"/>
+    <tag k="name:zh" v="化学与环境工程学院（B1）"/>
+    <tag k="name:zh-Hans" v="化学与环境工程学院（B1）"/>
+    <tag k="name:zh-Hant" v="化學與環境工程學院（B1）"/>
+  </way>
+  <way id="638398880">
+    <nd ref="6016888347"/>
+    <nd ref="6016888348"/>
+    <nd ref="6016888349"/>
+    <nd ref="6016888350"/>
+    <nd ref="6016888347"/>
+    <tag k="building" v="yes"/>
+    <tag k="layer" v="1"/>
+    <tag k="leisure" v="stadium"/>
+    <tag k="name" v="润扬体育馆"/>
+    <tag k="name:en" v="Runyang Stadium"/>
+    <tag k="name:zh" v="润扬体育馆"/>
+    <tag k="name:zh-Hans" v="润扬体育馆"/>
+    <tag k="name:zh-Hant" v="潤揚體育館"/>
+    <tag k="sport" v="badminton;basketball"/>
+  </way>
+  <way id="638544891">
+    <nd ref="6017944174"/>
+    <nd ref="6017944175"/>
+    <nd ref="8604575430"/>
+    <nd ref="6017944176"/>
+    <nd ref="8604575429"/>
+    <nd ref="8604575431"/>
+    <nd ref="6017944177"/>
+    <nd ref="8604575432"/>
+    <nd ref="6017944174"/>
+    <tag k="building" v="university"/>
+    <tag k="building:levels" v="6"/>
+    <tag k="name" v="创园4栋"/>
+    <tag k="name:en" v="Chuang Yuan 4"/>
+    <tag k="name:zh" v="创园4栋"/>
+    <tag k="name:zh-Hans" v="创园4栋"/>
+    <tag k="name:zh-Hant" v="創園4棟"/>
+  </way>
+  <way id="638544893">
+    <nd ref="6017944182"/>
+    <nd ref="6017944183"/>
+    <nd ref="6017944184"/>
+    <nd ref="6017944185"/>
+    <nd ref="6017944186"/>
+    <nd ref="6017944187"/>
+    <nd ref="6017944188"/>
+    <nd ref="6017944189"/>
+    <nd ref="6017944190"/>
+    <nd ref="6017944182"/>
+    <tag k="building" v="university"/>
+    <tag k="building:levels" v="6"/>
+    <tag k="name" v="慧园7栋"/>
+    <tag k="name:en" v="Hui Yuan 7"/>
+    <tag k="name:zh" v="慧园7栋"/>
+    <tag k="name:zh-Hans" v="慧园7栋"/>
+    <tag k="name:zh-Hant" v="慧園7棟"/>
+  </way>
+  <way id="639319952">
+    <nd ref="6024392042"/>
+    <nd ref="6024392043"/>
+    <nd ref="6024392044"/>
+    <nd ref="6024392045"/>
+    <nd ref="6024392042"/>
+    <tag k="building" v="commercial"/>
+    <tag k="building:levels" v="24"/>
+    <tag k="name" v="A4"/>
+    <tag k="office" v="yes"/>
+  </way>
+  <way id="639319958">
+    <nd ref="6024392065"/>
+    <nd ref="6024392066"/>
+    <nd ref="7601262929"/>
+    <nd ref="7601262928"/>
+    <nd ref="7601262927"/>
+    <nd ref="7601262926"/>
+    <nd ref="6024392069"/>
+    <nd ref="6024392070"/>
+    <nd ref="7601262925"/>
+    <nd ref="6024392071"/>
+    <nd ref="6024392072"/>
+    <nd ref="6024392073"/>
+    <nd ref="6024392074"/>
+    <nd ref="6024392065"/>
+    <tag k="building" v="yes"/>
+    <tag k="building:levels" v="20"/>
+    <tag k="name" v="B2"/>
+    <tag k="office" v="yes"/>
+  </way>
+  <way id="646148318">
+    <nd ref="6072021038"/>
+    <nd ref="6265111402"/>
+    <nd ref="7601262997"/>
+    <nd ref="12594973845"/>
+    <nd ref="12594973846"/>
+    <nd ref="12594973847"/>
+    <nd ref="12594973848"/>
+    <nd ref="12594973849"/>
+    <nd ref="6265111400"/>
+    <nd ref="6072021039"/>
+    <nd ref="6265111399"/>
+    <nd ref="7601262996"/>
+    <nd ref="7601262995"/>
+    <nd ref="6072021040"/>
+    <nd ref="12594973850"/>
+    <nd ref="12594973851"/>
+    <nd ref="12594973856"/>
+    <nd ref="12594973857"/>
+    <nd ref="12594973858"/>
+    <nd ref="12594973859"/>
+    <nd ref="12594973860"/>
+    <nd ref="12594973852"/>
+    <nd ref="12594973853"/>
+    <nd ref="12594973861"/>
+    <nd ref="12594973854"/>
+    <nd ref="12594973855"/>
+    <nd ref="6072021041"/>
+    <nd ref="6072021038"/>
+    <tag k="building" v="apartments"/>
+    <tag k="building:levels" v="30"/>
+  </way>
+  <way id="646148319">
+    <nd ref="6072021042"/>
+    <nd ref="6072021043"/>
+    <nd ref="12594973881"/>
+    <nd ref="12594973882"/>
+    <nd ref="6072021045"/>
+    <nd ref="6072021046"/>
+    <nd ref="6072021047"/>
+    <nd ref="6072021048"/>
+    <nd ref="6072021049"/>
+    <nd ref="6072021050"/>
+    <nd ref="12594973877"/>
+    <nd ref="12594973878"/>
+    <nd ref="12594973879"/>
+    <nd ref="12594973880"/>
+    <nd ref="6072021051"/>
+    <nd ref="6072021042"/>
+    <tag k="building" v="apartments"/>
+    <tag k="building:levels" v="30"/>
+  </way>
+  <way id="669046560">
+    <nd ref="6265111398"/>
+    <nd ref="6265111397"/>
+    <nd ref="6265111396"/>
+    <nd ref="6265111395"/>
+    <nd ref="6265111394"/>
+    <nd ref="6265111393"/>
+    <nd ref="6265111392"/>
+    <nd ref="6265111391"/>
+    <nd ref="6265111398"/>
+    <tag k="building" v="yes"/>
+    <tag k="building:levels" v="20"/>
+  </way>
+  <way id="695571949">
+    <nd ref="6531598553"/>
+    <nd ref="8604483306"/>
+    <nd ref="8604483308"/>
+    <nd ref="8604483307"/>
+    <nd ref="8604483305"/>
+    <nd ref="6531598552"/>
+    <nd ref="6531598551"/>
+    <nd ref="6531598546"/>
+    <nd ref="6531598547"/>
+    <nd ref="6531598545"/>
+    <nd ref="6531598544"/>
+    <nd ref="6531598550"/>
+    <nd ref="6531598553"/>
+    <tag k="building" v="dormitory"/>
+    <tag k="building:levels" v="7"/>
+    <tag k="name" v="宿舍17栋"/>
+    <tag k="name:en" v="Dorm Block 17"/>
+    <tag k="name:zh" v="宿舍17栋"/>
+    <tag k="name:zh-Hans" v="宿舍17栋"/>
+    <tag k="name:zh-Hant" v="宿舍17棟"/>
+  </way>
+  <way id="695571950">
+    <nd ref="8604483304"/>
+    <nd ref="6531598556"/>
+    <nd ref="6531598549"/>
+    <nd ref="6531598548"/>
+    <nd ref="6531598555"/>
+    <nd ref="6531598554"/>
+    <nd ref="8604483304"/>
+    <tag k="building" v="dormitory"/>
+    <tag k="building:levels" v="7"/>
+    <tag k="name" v="宿舍16栋"/>
+    <tag k="name:en" v="Dorm Block 16"/>
+    <tag k="name:zh" v="宿舍16栋"/>
+    <tag k="name:zh-Hans" v="宿舍16栋"/>
+    <tag k="name:zh-Hant" v="宿舍16棟"/>
+  </way>
+  <way id="695571951">
+    <nd ref="6531598561"/>
+    <nd ref="6531598560"/>
+    <nd ref="8856043160"/>
+    <nd ref="6531598559"/>
+    <nd ref="8604483309"/>
+    <nd ref="8604483310"/>
+    <nd ref="6531598558"/>
+    <nd ref="8604483300"/>
+    <nd ref="6531598561"/>
+    <tag k="building" v="dormitory"/>
+    <tag k="building:levels" v="7"/>
+    <tag k="name" v="宿舍15栋"/>
+    <tag k="name:en" v="Dorm Block 15"/>
+    <tag k="name:zh" v="宿舍15栋"/>
+    <tag k="name:zh-Hans" v="宿舍15栋"/>
+    <tag k="name:zh-Hant" v="宿舍15棟"/>
+  </way>
+  <way id="695571952">
+    <nd ref="6531598565"/>
+    <nd ref="6531598564"/>
+    <nd ref="6531598563"/>
+    <nd ref="6531598562"/>
+    <nd ref="6531598565"/>
+    <tag k="building" v="dormitory"/>
+    <tag k="building:levels" v="7"/>
+    <tag k="name" v="宿舍14栋"/>
+    <tag k="name:en" v="Dorm Block 14"/>
+    <tag k="name:zh" v="宿舍14栋"/>
+    <tag k="name:zh-Hans" v="宿舍14栋"/>
+    <tag k="name:zh-Hant" v="宿舍14棟"/>
+  </way>
+  <way id="695571953">
+    <nd ref="6531598569"/>
+    <nd ref="6531598568"/>
+    <nd ref="8604483312"/>
+    <nd ref="6531598567"/>
+    <nd ref="8604483311"/>
+    <nd ref="6531598566"/>
+    <nd ref="6531598569"/>
+    <tag k="building" v="dormitory"/>
+    <tag k="building:levels" v="7"/>
+    <tag k="name" v="宿舍13栋"/>
+    <tag k="name:en" v="Dorm Block 13"/>
+    <tag k="name:zh" v="宿舍13栋"/>
+    <tag k="name:zh-Hans" v="宿舍13栋"/>
+    <tag k="name:zh-Hant" v="宿舍13棟"/>
+  </way>
+  <way id="695571954">
+    <nd ref="6531598573"/>
+    <nd ref="6531598572"/>
+    <nd ref="8604483297"/>
+    <nd ref="6531598570"/>
+    <nd ref="6531598573"/>
+    <tag k="building" v="dormitory"/>
+    <tag k="building:levels" v="12"/>
+    <tag k="name" v="宿舍12栋"/>
+    <tag k="name:en" v="Dorm Block 12"/>
+    <tag k="name:zh" v="宿舍12栋"/>
+    <tag k="name:zh-Hans" v="宿舍12栋"/>
+    <tag k="name:zh-Hant" v="宿舍12棟"/>
+  </way>
+  <way id="695571955">
+    <nd ref="6531598577"/>
+    <nd ref="6531598576"/>
+    <nd ref="6531598575"/>
+    <nd ref="6531598574"/>
+    <nd ref="6531598577"/>
+    <tag k="building" v="dormitory"/>
+    <tag k="building:levels" v="12"/>
+    <tag k="name" v="宿舍11栋"/>
+    <tag k="name:en" v="Dorm Block 11"/>
+    <tag k="name:zh" v="宿舍11栋"/>
+    <tag k="name:zh-Hans" v="宿舍11栋"/>
+    <tag k="name:zh-Hant" v="宿舍11棟"/>
+  </way>
+  <way id="695571956">
+    <nd ref="6531598581"/>
+    <nd ref="6531598580"/>
+    <nd ref="6531598579"/>
+    <nd ref="6531598578"/>
+    <nd ref="6531598581"/>
+    <tag k="building" v="dormitory"/>
+    <tag k="building:levels" v="24"/>
+    <tag k="name" v="宿舍10栋"/>
+    <tag k="name:en" v="Dorm Block 10"/>
+    <tag k="name:zh" v="宿舍10栋"/>
+    <tag k="name:zh-Hans" v="宿舍10栋"/>
+    <tag k="name:zh-Hant" v="宿舍10棟"/>
+  </way>
+  <way id="695571957">
+    <nd ref="6531606985"/>
+    <nd ref="6531598584"/>
+    <nd ref="6531598583"/>
+    <nd ref="6531598582"/>
+    <nd ref="6531606985"/>
+    <tag k="building" v="dormitory"/>
+    <tag k="building:levels" v="17"/>
+    <tag k="name" v="宿舍9栋"/>
+    <tag k="name:en" v="Dorm Block 9"/>
+    <tag k="name:zh" v="宿舍9栋"/>
+    <tag k="name:zh-Hans" v="宿舍9栋"/>
+    <tag k="name:zh-Hant" v="宿舍9棟"/>
+  </way>
+  <way id="695571958">
+    <nd ref="6531606988"/>
+    <nd ref="8535708317"/>
+    <nd ref="8535697916"/>
+    <nd ref="8535697915"/>
+    <nd ref="8535697914"/>
+    <nd ref="6531606992"/>
+    <nd ref="8535708318"/>
+    <nd ref="6531606987"/>
+    <nd ref="6531606986"/>
+    <nd ref="8535708319"/>
+    <nd ref="6531606988"/>
+    <tag k="building" v="dormitory"/>
+    <tag k="building:levels" v="17"/>
+    <tag k="name" v="宿舍8栋"/>
+    <tag k="name:en" v="Dorm Block 8"/>
+    <tag k="name:zh" v="宿舍8栋"/>
+    <tag k="name:zh-Hans" v="宿舍8栋"/>
+    <tag k="name:zh-Hant" v="宿舍8棟"/>
+  </way>
+  <way id="695571961">
+    <nd ref="6531607012"/>
+    <nd ref="8488930775"/>
+    <nd ref="8488930774"/>
+    <nd ref="8604452292"/>
+    <nd ref="8604452295"/>
+    <nd ref="6531607011"/>
+    <nd ref="8519620296"/>
+    <nd ref="6531607010"/>
+    <nd ref="6531607009"/>
+    <nd ref="8519620292"/>
+    <nd ref="6531607008"/>
+    <nd ref="6531607007"/>
+    <nd ref="8519620291"/>
+    <nd ref="6531607006"/>
+    <nd ref="6531607005"/>
+    <nd ref="6531607004"/>
+    <nd ref="8509612433"/>
+    <nd ref="6531607003"/>
+    <nd ref="6531607002"/>
+    <nd ref="6531607012"/>
+    <tag k="building" v="university"/>
+    <tag k="building:levels" v="10"/>
+    <tag k="name" v="工学院大楼南座"/>
+    <tag k="name:en" v="College of Engineering South Tower"/>
+    <tag k="name:zh" v="工学院大楼南座"/>
+    <tag k="name:zh-Hans" v="工学院大楼南座"/>
+    <tag k="name:zh-Hant" v="工學院大樓南座"/>
+  </way>
+  <way id="695571962">
+    <nd ref="6531607020"/>
+    <nd ref="6531607019"/>
+    <nd ref="6531607018"/>
+    <nd ref="8509612436"/>
+    <nd ref="6531607017"/>
+    <nd ref="6531607016"/>
+    <nd ref="6531607015"/>
+    <nd ref="6531607014"/>
+    <nd ref="8604452293"/>
+    <nd ref="8604452294"/>
+    <nd ref="6531607013"/>
+    <nd ref="8604452291"/>
+    <nd ref="8519620293"/>
+    <nd ref="6531607020"/>
+    <tag k="building" v="university"/>
+    <tag k="building:levels" v="10"/>
+    <tag k="name" v="工学院大楼北座"/>
+    <tag k="name:en" v="College of Engineering North Tower"/>
+    <tag k="name:zh" v="工学院大楼北座"/>
+    <tag k="name:zh-Hans" v="工学院大楼北座"/>
+    <tag k="name:zh-Hant" v="工學院大樓北座"/>
+  </way>
+  <way id="703098288">
+    <nd ref="6602883906"/>
+    <nd ref="6602883905"/>
+    <nd ref="6602883904"/>
+    <nd ref="6602883903"/>
+    <nd ref="6683550377"/>
+    <nd ref="6683550378"/>
+    <nd ref="6602883887"/>
+    <nd ref="6602883901"/>
+    <nd ref="6602883889"/>
+    <nd ref="6602883900"/>
+    <nd ref="6602883899"/>
+    <nd ref="6602883892"/>
+    <nd ref="6602883898"/>
+    <nd ref="6602883894"/>
+    <nd ref="6602883897"/>
+    <nd ref="6683550376"/>
+    <nd ref="6602883896"/>
+    <nd ref="6602883906"/>
+    <tag k="building" v="university"/>
+    <tag k="building:levels" v="6"/>
+    <tag k="name" v="人文学院"/>
+    <tag k="name:zh" v="人文学院"/>
+    <tag k="name:zh-Hans" v="人文学院"/>
+    <tag k="name:zh-Hant" v="人文學院"/>
+  </way>
+  <way id="703098290">
+    <nd ref="6602883913"/>
+    <nd ref="6602883926"/>
+    <nd ref="6602883911"/>
+    <nd ref="7057414607"/>
+    <nd ref="6602883910"/>
+    <nd ref="6602883909"/>
+    <nd ref="6602883908"/>
+    <nd ref="6602883913"/>
+    <tag k="building" v="university"/>
+    <tag k="building:levels" v="5"/>
+    <tag k="name" v="学术交流中心"/>
+    <tag k="name:zh" v="学术交流中心"/>
+    <tag k="name:zh-Hans" v="学术交流中心"/>
+    <tag k="name:zh-Hant" v="學術交流中心"/>
+  </way>
+  <way id="703098306">
+    <nd ref="6602899604"/>
+    <nd ref="8790943683"/>
+    <nd ref="8790943680"/>
+    <nd ref="6602899603"/>
+    <nd ref="8527013160"/>
+    <nd ref="6602899594"/>
+    <nd ref="6602899593"/>
+    <nd ref="6602899590"/>
+    <nd ref="6602899602"/>
+    <nd ref="11892061308"/>
+    <nd ref="6602899589"/>
+    <nd ref="6602899601"/>
+    <nd ref="6602899600"/>
+    <nd ref="6602899604"/>
+    <tag k="building" v="university"/>
+    <tag k="building:levels" v="5"/>
+    <tag k="name" v="第三教学楼"/>
+    <tag k="name:zh" v="第三教学楼"/>
+    <tag k="name:zh-Hans" v="第三教学楼"/>
+    <tag k="name:zh-Hant" v="第三教學樓"/>
+  </way>
+  <way id="703098307">
+    <nd ref="6602899613"/>
+    <nd ref="6602899612"/>
+    <nd ref="6602899611"/>
+    <nd ref="6602899610"/>
+    <nd ref="6602899609"/>
+    <nd ref="6602899608"/>
+    <nd ref="6602899607"/>
+    <nd ref="6602899606"/>
+    <nd ref="8790943682"/>
+    <nd ref="8790943681"/>
+    <nd ref="6602899613"/>
+    <tag k="building" v="university"/>
+    <tag k="building:levels" v="8"/>
+    <tag k="name" v="商学院"/>
+    <tag k="name:en" v="College of Business"/>
+    <tag k="name:zh" v="商学院"/>
+    <tag k="name:zh-Hans" v="商学院"/>
+    <tag k="name:zh-Hant" v="商學院"/>
+  </way>
+  <way id="727355596">
+    <nd ref="6816303078"/>
+    <nd ref="6816303079"/>
+    <nd ref="6816303080"/>
+    <nd ref="6816303081"/>
+    <nd ref="6816303078"/>
+    <tag k="building" v="apartments"/>
+    <tag k="building:levels" v="10"/>
+    <tag k="name" v="专家楼2"/>
+    <tag k="name:en" v="Guest House 2"/>
+    <tag k="name:zh" v="专家楼2"/>
+    <tag k="name:zh-Hans" v="专家楼2"/>
+    <tag k="name:zh-Hant" v="專家樓2"/>
+  </way>
+  <way id="727355597">
+    <nd ref="6816303082"/>
+    <nd ref="8535802324"/>
+    <nd ref="6816303084"/>
+    <nd ref="6816439985"/>
+    <nd ref="6816303082"/>
+    <tag k="building" v="apartments"/>
+    <tag k="building:levels" v="10"/>
+    <tag k="name" v="专家楼1"/>
+    <tag k="name:en" v="Guest House 1"/>
+    <tag k="name:zh" v="专家楼1"/>
+    <tag k="name:zh-Hans" v="专家楼1"/>
+    <tag k="name:zh-Hant" v="專家樓1"/>
+  </way>
+  <way id="727355598">
+    <nd ref="6816439986"/>
+    <nd ref="6816439987"/>
+    <nd ref="6816439988"/>
+    <nd ref="6816439989"/>
+    <nd ref="6816439986"/>
+    <tag k="building" v="apartments"/>
+    <tag k="building:levels" v="10"/>
+    <tag k="name" v="教师公寓6"/>
+    <tag k="name:en" v="Faculty Apartment 6"/>
+    <tag k="name:zh" v="教师公寓6"/>
+    <tag k="name:zh-Hans" v="教师公寓6"/>
+    <tag k="name:zh-Hant" v="教師公寓6"/>
+  </way>
+  <way id="727355599">
+    <nd ref="6816439990"/>
+    <nd ref="6816439991"/>
+    <nd ref="6816439992"/>
+    <nd ref="6816439993"/>
+    <nd ref="6816439990"/>
+    <tag k="building" v="apartments"/>
+    <tag k="building:levels" v="10"/>
+    <tag k="name" v="教师公寓5"/>
+    <tag k="name:en" v="Faculty Apartment 5"/>
+    <tag k="name:zh" v="教师公寓5"/>
+    <tag k="name:zh-Hans" v="教师公寓5"/>
+    <tag k="name:zh-Hant" v="教師公寓5"/>
+  </way>
+  <way id="727355600">
+    <nd ref="6816439994"/>
+    <nd ref="6816439995"/>
+    <nd ref="6816439996"/>
+    <nd ref="6816439997"/>
+    <nd ref="6816439994"/>
+    <tag k="building" v="apartments"/>
+    <tag k="building:levels" v="10"/>
+    <tag k="name" v="教师公寓4"/>
+    <tag k="name:en" v="Faculty Apartment 4"/>
+    <tag k="name:zh" v="教师公寓4"/>
+    <tag k="name:zh-Hans" v="教师公寓4"/>
+    <tag k="name:zh-Hant" v="教師公寓4"/>
+  </way>
+  <way id="727355601">
+    <nd ref="6816439998"/>
+    <nd ref="6816439999"/>
+    <nd ref="6816440000"/>
+    <nd ref="6816440001"/>
+    <nd ref="6816439998"/>
+    <tag k="building" v="apartments"/>
+    <tag k="building:levels" v="10"/>
+    <tag k="name" v="教师公寓3"/>
+    <tag k="name:en" v="Faculty Apartment 3"/>
+    <tag k="name:zh" v="教师公寓3"/>
+    <tag k="name:zh-Hans" v="教师公寓3"/>
+    <tag k="name:zh-Hant" v="教師公寓3"/>
+  </way>
+  <way id="727355602">
+    <nd ref="6816440002"/>
+    <nd ref="6816440003"/>
+    <nd ref="6816440004"/>
+    <nd ref="6816440005"/>
+    <nd ref="6816440002"/>
+    <tag k="building" v="apartments"/>
+    <tag k="building:levels" v="10"/>
+    <tag k="name" v="教师公寓2"/>
+    <tag k="name:en" v="Faculty Apartment 2"/>
+    <tag k="name:zh" v="教师公寓2"/>
+    <tag k="name:zh-Hans" v="教师公寓2"/>
+    <tag k="name:zh-Hant" v="教師公寓2"/>
+  </way>
+  <way id="727355603">
+    <nd ref="6816440006"/>
+    <nd ref="6816440007"/>
+    <nd ref="6816440008"/>
+    <nd ref="6816440009"/>
+    <nd ref="6816440006"/>
+    <tag k="building" v="apartments"/>
+    <tag k="building:levels" v="10"/>
+    <tag k="name" v="教师公寓1"/>
+    <tag k="name:en" v="Faculty Apartment 1"/>
+    <tag k="name:zh" v="教师公寓1"/>
+    <tag k="name:zh-Hans" v="教师公寓1"/>
+    <tag k="name:zh-Hant" v="教師公寓1"/>
+  </way>
+  <way id="727356943">
+    <nd ref="6816428499"/>
+    <nd ref="6816428500"/>
+    <nd ref="6816428501"/>
+    <nd ref="6816428502"/>
+    <nd ref="6816428499"/>
+    <tag k="building" v="yes"/>
+    <tag k="building:levels" v="10"/>
+    <tag k="name" v="Faculty Club"/>
+    <tag k="name:en" v="Faculty Club"/>
+  </way>
+  <way id="736809369">
+    <nd ref="6898352563"/>
+    <nd ref="6898352564"/>
+    <nd ref="6898352565"/>
+    <nd ref="8552162823"/>
+    <nd ref="6898352566"/>
+    <nd ref="8552162824"/>
+    <nd ref="6898352567"/>
+    <nd ref="6898352568"/>
+    <nd ref="8552162821"/>
+    <nd ref="6898352569"/>
+    <nd ref="6898352570"/>
+    <nd ref="6898352571"/>
+    <nd ref="8552162822"/>
+    <nd ref="6898352563"/>
+    <tag k="building" v="university"/>
+    <tag k="building:levels" v="5"/>
+    <tag k="name" v="南科大会堂"/>
+    <tag k="name:en" v="SUSTech Hall"/>
+    <tag k="name:zh" v="南科大会堂"/>
+    <tag k="name:zh-Hans" v="南科大会堂"/>
+    <tag k="name:zh-Hant" v="南科大會堂"/>
+  </way>
+  <way id="755112934">
+    <nd ref="7053887916"/>
+    <nd ref="7053887917"/>
+    <nd ref="7053887918"/>
+    <nd ref="7053887919"/>
+    <nd ref="7053887916"/>
+    <tag k="building" v="yes"/>
+    <tag k="building:levels" v="9"/>
+    <tag k="name" v="创园2栋"/>
+    <tag k="name:en" v="Chuang Yuan 2"/>
+    <tag k="name:zh" v="创园2栋"/>
+    <tag k="name:zh-Hans" v="创园2栋"/>
+    <tag k="name:zh-Hant" v="創園2棟"/>
+  </way>
+  <way id="755562229">
+    <nd ref="7057414605"/>
+    <nd ref="7057414604"/>
+    <nd ref="7057414603"/>
+    <nd ref="7057414601"/>
+    <nd ref="7057414605"/>
+    <tag k="access" v="permit"/>
+    <tag k="building" v="yes"/>
+    <tag k="historic" v="ruins"/>
+    <tag k="historic:civilization" v="modern"/>
+    <tag k="name" v="避世楼"/>
+    <tag k="name:en" v="Bishi Building"/>
+    <tag k="name:zh" v="避世楼"/>
+    <tag k="name:zh-Hans" v="避世楼"/>
+    <tag k="ruins" v="building"/>
+  </way>
+  <way id="755562230">
+    <nd ref="7057414611"/>
+    <nd ref="7057414610"/>
+    <nd ref="7057414609"/>
+    <nd ref="7057414608"/>
+    <nd ref="7057414611"/>
+    <tag k="building" v="dormitory"/>
+    <tag k="building:levels" v="7"/>
+    <tag k="name" v="宿舍7栋"/>
+    <tag k="name:en" v="Dorm Block 7"/>
+    <tag k="name:zh" v="宿舍7栋"/>
+    <tag k="name:zh-Hans" v="宿舍7栋"/>
+    <tag k="name:zh-Hant" v="宿舍7棟"/>
+  </way>
+  <way id="876065295">
+    <nd ref="6531606995"/>
+    <nd ref="8153829294"/>
+    <nd ref="8153829295"/>
+    <nd ref="6531606996"/>
+    <nd ref="6531606995"/>
+    <tag k="amenity" v="library"/>
+    <tag k="building" v="yes"/>
+    <tag k="name" v="涵泳图书馆"/>
+    <tag k="name:en" v="Learning Nexus"/>
+    <tag k="name:zh" v="涵泳图书馆"/>
+    <tag k="name:zh-Hans" v="涵泳图书馆"/>
+    <tag k="name:zh-Hant" v="涵泳圖書館"/>
+  </way>
+  <way id="919008908">
+    <nd ref="8534771785"/>
+    <nd ref="8534771784"/>
+    <nd ref="8534771783"/>
+    <nd ref="8534771782"/>
+    <nd ref="8534771781"/>
+    <nd ref="8534771780"/>
+    <nd ref="8534771779"/>
+    <nd ref="8534771778"/>
+    <nd ref="8534771785"/>
+    <tag k="building" v="kindergarten"/>
+    <tag k="building:levels" v="6"/>
+    <tag k="name" v="南科大学幼儿园"/>
+    <tag k="name:en" v="SUSTech Kindergarten"/>
+    <tag k="name:zh" v="南科大学幼儿园"/>
+  </way>
+  <way id="919021692">
+    <nd ref="8534934583"/>
+    <nd ref="8534934582"/>
+    <nd ref="8534934577"/>
+    <nd ref="8534934576"/>
+    <nd ref="8534934583"/>
+    <tag k="amenity" v="place_of_worship"/>
+    <tag k="building" v="religious"/>
+    <tag k="name" v="陆纛宫"/>
+    <tag k="name:en" v="Liudao Palace"/>
+    <tag k="name:zh" v="陆纛宫"/>
+    <tag k="name:zh-Hans" v="陆纛宫"/>
+    <tag k="religion" v="chinese_folk"/>
+    <tag k="wheelchair" v="no"/>
+  </way>
+  <way id="919022453">
+    <nd ref="8534943329"/>
+    <nd ref="8534943328"/>
+    <nd ref="8534943327"/>
+    <nd ref="8534943326"/>
+    <nd ref="8534943329"/>
+    <tag k="building" v="yes"/>
+    <tag k="building:levels" v="9"/>
+  </way>
+  <way id="919044335">
+    <nd ref="8535716258"/>
+    <nd ref="8535716257"/>
+    <nd ref="8535716256"/>
+    <nd ref="8535716255"/>
+    <nd ref="8535716254"/>
+    <nd ref="8535716253"/>
+    <nd ref="8535716252"/>
+    <nd ref="8535716251"/>
+    <nd ref="8535716258"/>
+    <tag k="building" v="university"/>
+  </way>
+  <way id="919051717">
+    <nd ref="8535791129"/>
+    <nd ref="8535791128"/>
+    <nd ref="8535791127"/>
+    <nd ref="8535791126"/>
+    <nd ref="8535791125"/>
+    <nd ref="8535791124"/>
+    <nd ref="8535791129"/>
+    <tag k="building" v="yes"/>
+    <tag k="building:levels" v="2"/>
+  </way>
+  <way id="927400198">
+    <nd ref="8604452289"/>
+    <nd ref="8604452287"/>
+    <nd ref="8604452286"/>
+    <nd ref="8604452285"/>
+    <nd ref="8604452284"/>
+    <nd ref="8604452283"/>
+    <nd ref="8604452282"/>
+    <nd ref="8604452281"/>
+    <nd ref="8604452280"/>
+    <nd ref="8604452288"/>
+    <nd ref="8604452279"/>
+    <nd ref="8604452278"/>
+    <nd ref="8604452277"/>
+    <nd ref="8604452276"/>
+    <nd ref="8604452275"/>
+    <nd ref="8604452274"/>
+    <nd ref="8604452273"/>
+    <nd ref="8604452272"/>
+    <nd ref="8604452289"/>
+    <tag k="building" v="yes"/>
+  </way>
+  <way id="927400201">
+    <nd ref="8604452295"/>
+    <nd ref="8604452294"/>
+    <nd ref="8604452293"/>
+    <nd ref="8604452292"/>
+    <nd ref="8604452295"/>
+    <tag k="bridge" v="yes"/>
+    <tag k="building" v="university"/>
+    <tag k="level" v="1"/>
+  </way>
+  <way id="927438471">
+    <nd ref="6816439992"/>
+    <nd ref="6816439989"/>
+    <nd ref="6816439986"/>
+    <nd ref="6816439991"/>
+    <nd ref="6816439992"/>
+    <tag k="building" v="yes"/>
+    <tag k="building:levels" v="2"/>
+  </way>
+  <way id="927438472">
+    <nd ref="6816303078"/>
+    <nd ref="6816439989"/>
+    <nd ref="6816439988"/>
+    <nd ref="6816303079"/>
+    <nd ref="6816303078"/>
+    <tag k="building" v="yes"/>
+    <tag k="building:levels" v="2"/>
+  </way>
+  <way id="927438473">
+    <nd ref="6816303082"/>
+    <nd ref="6816303078"/>
+    <nd ref="6816303081"/>
+    <nd ref="6816439985"/>
+    <nd ref="6816303082"/>
+    <tag k="building" v="yes"/>
+    <tag k="building:levels" v="2"/>
+  </way>
+  <way id="927438474">
+    <nd ref="6816440009"/>
+    <nd ref="8604669053"/>
+    <nd ref="8604669052"/>
+    <nd ref="6816440001"/>
+    <nd ref="6816439998"/>
+    <nd ref="8604669051"/>
+    <nd ref="8604669050"/>
+    <nd ref="6816440008"/>
+    <nd ref="6816440009"/>
+    <tag k="building" v="yes"/>
+    <tag k="building:levels" v="2"/>
+  </way>
+  <way id="927438475">
+    <nd ref="6816439999"/>
+    <nd ref="6816439991"/>
+    <nd ref="6816439990"/>
+    <nd ref="8604669048"/>
+    <nd ref="8604669049"/>
+    <nd ref="6816440000"/>
+    <nd ref="6816439999"/>
+    <tag k="building" v="yes"/>
+    <tag k="building:levels" v="2"/>
+  </way>
+  <way id="927438476">
+    <nd ref="6816440005"/>
+    <nd ref="6816439994"/>
+    <nd ref="6816439995"/>
+    <nd ref="6816440002"/>
+    <nd ref="6816440005"/>
+    <tag k="building" v="yes"/>
+    <tag k="building:levels" v="2"/>
+  </way>
+  <way id="949595081">
+    <nd ref="8790943680"/>
+    <nd ref="8790943681"/>
+    <nd ref="8790943682"/>
+    <nd ref="8790943683"/>
+    <nd ref="8790943680"/>
+    <tag k="building" v="university"/>
+    <tag k="building:levels" v="4"/>
+    <tag k="building:min_level" v="1"/>
+  </way>
+  <way id="980004154">
+    <nd ref="9065881111"/>
+    <nd ref="9065881104"/>
+    <nd ref="9065881110"/>
+    <nd ref="9065881109"/>
+    <nd ref="9065881108"/>
+    <nd ref="9065881107"/>
+    <nd ref="9065881106"/>
+    <nd ref="9065881105"/>
+    <nd ref="9065881111"/>
+    <tag k="building" v="university"/>
+    <tag k="name" v="守正楼"/>
+    <tag k="name:en" v="Administration Building"/>
+    <tag k="name:zh" v="守正楼"/>
+    <tag k="name:zh-Hans" v="守正楼"/>
+    <tag k="name:zh-Hant" v="守正樓"/>
+  </way>
+  <way id="980004155">
+    <nd ref="9065881115"/>
+    <nd ref="9065881114"/>
+    <nd ref="9065881113"/>
+    <nd ref="9065881112"/>
+    <nd ref="9065881115"/>
+    <tag k="building" v="university"/>
+    <tag k="name" v="明律楼"/>
+    <tag k="name:en" v="Minglv Building"/>
+    <tag k="name:zh" v="明律楼"/>
+    <tag k="name:zh-Hans" v="明律楼"/>
+    <tag k="name:zh-Hant" v="明律樓"/>
+  </way>
+  <way id="980004156">
+    <nd ref="9065881119"/>
+    <nd ref="9065881118"/>
+    <nd ref="9065881117"/>
+    <nd ref="9065881116"/>
+    <nd ref="9065881119"/>
+    <tag k="building" v="university"/>
+    <tag k="name" v="明德楼"/>
+    <tag k="name:en" v="Mingde Building"/>
+    <tag k="name:zh" v="明德楼"/>
+    <tag k="name:zh-Hans" v="明德楼"/>
+    <tag k="name:zh-Hant" v="明德樓"/>
+  </way>
+  <way id="1302170674">
+    <nd ref="12060447486"/>
+    <nd ref="12060447487"/>
+    <nd ref="12060447488"/>
+    <nd ref="12060447489"/>
+    <nd ref="12060447490"/>
+    <nd ref="12060447491"/>
+    <nd ref="12060447492"/>
+    <nd ref="12060447486"/>
+    <tag k="building" v="university"/>
+    <tag k="building:levels" v="10"/>
+    <tag k="name" v="Research Building 3"/>
+    <tag k="name:en" v="Research Building 3"/>
+    <tag k="name:zh" v="第三科研楼"/>
+  </way>
+  <way id="1360544287">
+    <nd ref="12594973876"/>
+    <nd ref="12594973875"/>
+    <nd ref="12594973874"/>
+    <nd ref="12594973873"/>
+    <nd ref="12594973872"/>
+    <nd ref="12594973871"/>
+    <nd ref="12594973870"/>
+    <nd ref="12594973869"/>
+    <nd ref="12594973868"/>
+    <nd ref="12594973867"/>
+    <nd ref="12594973866"/>
+    <nd ref="12594973865"/>
+    <nd ref="12594973864"/>
+    <nd ref="12594973863"/>
+    <nd ref="12594973862"/>
+    <nd ref="12594973876"/>
+    <tag k="building" v="apartments"/>
+    <tag k="building:levels" v="30"/>
+  </way>
+  <way id="1360556608">
+    <nd ref="12595086520"/>
+    <nd ref="12595086519"/>
+    <nd ref="9053038610"/>
+    <nd ref="12595086518"/>
+    <nd ref="12595086517"/>
+    <nd ref="12595086516"/>
+    <nd ref="12595086515"/>
+    <nd ref="12595086514"/>
+    <nd ref="12595086513"/>
+    <nd ref="12595086512"/>
+    <nd ref="12595086511"/>
+    <nd ref="12595086510"/>
+    <nd ref="12595086509"/>
+    <nd ref="12595086508"/>
+    <nd ref="12595086507"/>
+    <nd ref="12595086506"/>
+    <nd ref="12595086505"/>
+    <nd ref="12595086504"/>
+    <nd ref="12595086503"/>
+    <nd ref="12595086502"/>
+    <nd ref="9053038605"/>
+    <nd ref="12595086520"/>
+    <tag k="building" v="university"/>
+    <tag k="building:levels" v="4"/>
+    <tag k="name" v="南方科技大学行政楼"/>
+    <tag k="name:en" v="SUSTech Administration Building"/>
+    <tag k="name:zh" v="南方科技大学行政楼"/>
+    <tag k="name:zh-Hans" v="南方科技大学行政楼"/>
+    <tag k="name:zh-Hant" v="南方科技大學行政樓"/>
+  </way>
+  <relation id="7685614">
+    <member type="way" ref="536044889" role="outer"/>
+    <member type="way" ref="536044890" role="inner"/>
+    <tag k="building" v="university"/>
+    <tag k="name" v="生命与海洋科学学院（A5）"/>
+    <tag k="name:zh" v="生命与海洋科学学院（A5）"/>
+    <tag k="name:zh-Hans" v="生命与海洋科学学院（A5）"/>
+    <tag k="name:zh-Hant" v="生命與海洋科學學院（A5）"/>
+    <tag k="type" v="multipolygon"/>
+  </relation>
+  <relation id="12480428">
+    <member type="way" ref="980598954" role="outer"/>
+    <member type="way" ref="980598946" role="inner"/>
+    <member type="way" ref="980598947" role="inner"/>
+    <member type="way" ref="980598948" role="inner"/>
+    <member type="way" ref="980598953" role="inner"/>
+    <member type="way" ref="980598951" role="inner"/>
+    <member type="way" ref="980598952" role="inner"/>
+    <member type="way" ref="980598950" role="inner"/>
+    <tag k="building" v="university"/>
+    <tag k="building:levels" v="1"/>
+    <tag k="layer" v="1"/>
+    <tag k="name" v="南科大中心"/>
+    <tag k="name:en" v="SUSTech Center"/>
+    <tag k="name:zh" v="南科大中心"/>
+    <tag k="name:zh-Hans" v="南科大中心"/>
+    <tag k="name:zh-Hant" v="南科大中心"/>
+    <tag k="type" v="multipolygon"/>
+  </relation>
+  <relation id="12870273">
+    <member type="way" ref="956649059" role="inner"/>
+    <member type="way" ref="533170989" role="outer"/>
+    <tag k="building" v="university"/>
+    <tag k="building:levels" v="2"/>
+    <tag k="type" v="multipolygon"/>
+  </relation>
+  <relation id="18716462">
+    <member type="way" ref="1360556610" role="outer"/>
+    <member type="way" ref="1360556609" role="inner"/>
+    <tag k="building" v="university"/>
+    <tag k="building:levels" v="5"/>
+    <tag k="name" v="理学院"/>
+    <tag k="name:en" v="College of Science"/>
+    <tag k="name:zh" v="理学院"/>
+    <tag k="name:zh-Hans" v="理学院"/>
+    <tag k="name:zh-Hant" v="理科樓"/>
+    <tag k="type" v="multipolygon"/>
+  </relation>
+  <relation id="18716485">
+    <member type="way" ref="533170976" role="outer"/>
+    <member type="way" ref="1360560720" role="inner"/>
+    <tag k="building" v="university"/>
+    <tag k="name" v="第二教学楼"/>
+    <tag k="name:en" v="Teaching Building 2"/>
+    <tag k="name:zh" v="第二教学楼"/>
+    <tag k="name:zh-Hans" v="第二教学楼"/>
+    <tag k="name:zh-Hant" v="第二教學樓"/>
+    <tag k="type" v="multipolygon"/>
+  </relation>
+  <node id="5173028397" lat="22.5977788" lon="113.9929466"/>
+  <node id="5173028398" lat="22.5977762" lon="113.9931505"/>
+  <node id="5173028399" lat="22.5977684" lon="113.9933045"/>
+  <node id="5173028407" lat="22.5981831" lon="113.9932349"/>
+  <node id="5173028408" lat="22.5982349" lon="113.9930508"/>
+  <node id="5173028415" lat="22.5973656" lon="113.9916286"/>
+  <node id="5173028416" lat="22.5973309" lon="113.9920487"/>
+  <node id="5173028417" lat="22.5977144" lon="113.9921385"/>
+  <node id="5173028420" lat="22.5977502" lon="113.9916686"/>
+  <node id="5173028621" lat="22.5978948" lon="113.9917216"/>
+  <node id="5173028622" lat="22.5978744" lon="113.9921890"/>
+  <node id="5173028623" lat="22.5982580" lon="113.9923163"/>
+  <node id="5173028624" lat="22.5982855" lon="113.9919969"/>
+  <node id="5173028625" lat="22.5983647" lon="113.9917593"/>
+  <node id="5173028626" lat="22.5974098" lon="113.9904224"/>
+  <node id="5173028627" lat="22.5973578" lon="113.9912208"/>
+  <node id="5173028628" lat="22.5977042" lon="113.9912432"/>
+  <node id="5173028629" lat="22.5977542" lon="113.9904446"/>
+  <node id="5173028630" lat="22.5979826" lon="113.9904671"/>
+  <node id="5173028631" lat="22.5979304" lon="113.9912664"/>
+  <node id="5173028632" lat="22.5982668" lon="113.9912927"/>
+  <node id="5173028633" lat="22.5983235" lon="113.9904938"/>
+  <node id="5173028634" lat="22.5982937" lon="113.9909405"/>
+  <node id="5173028636" lat="22.5985544" lon="113.9909583"/>
+  <node id="5173028637" lat="22.5983891" lon="113.9913866"/>
+  <node id="5173028638" lat="22.5987106" lon="113.9915349"/>
+  <node id="5173028639" lat="22.5988410" lon="113.9911717"/>
+  <node id="5173028640" lat="22.5989027" lon="113.9910080"/>
+  <node id="5173028644" lat="22.5993546" lon="113.9920831"/>
+  <node id="5173028645" lat="22.5996014" lon="113.9917021"/>
+  <node id="5173028646" lat="22.5994550" lon="113.9915950"/>
+  <node id="5173028648" lat="22.5983909" lon="113.9924054"/>
+  <node id="5173028649" lat="22.5986179" lon="113.9925178"/>
+  <node id="5173028650" lat="22.5987785" lon="113.9921461"/>
+  <node id="5173028651" lat="22.5989965" lon="113.9922051"/>
+  <node id="5173028652" lat="22.5989134" lon="113.9926463"/>
+  <node id="5173028653" lat="22.5991361" lon="113.9927634"/>
+  <node id="5173028654" lat="22.5992631" lon="113.9922016"/>
+  <node id="5193738543" lat="22.5956252" lon="113.9890961"/>
+  <node id="5193738544" lat="22.5958533" lon="113.9896432"/>
+  <node id="5193738545" lat="22.5965560" lon="113.9896160"/>
+  <node id="5193738546" lat="22.5965286" lon="113.9887910"/>
+  <node id="5193738547" lat="22.5962653" lon="113.9888015"/>
+  <node id="5193738548" lat="22.5962816" lon="113.9894992"/>
+  <node id="5193738549" lat="22.5959873" lon="113.9895106"/>
+  <node id="5193738550" lat="22.5957778" lon="113.9890208"/>
+  <node id="5193738593" lat="22.5981089" lon="113.9891126"/>
+  <node id="5193738594" lat="22.5980708" lon="113.9896683"/>
+  <node id="5193738595" lat="22.5989221" lon="113.9897368"/>
+  <node id="5193738596" lat="22.5989602" lon="113.9891811"/>
+  <node id="5193738597" lat="22.5982541" lon="113.9893046"/>
+  <node id="5193738598" lat="22.5982400" lon="113.9894976"/>
+  <node id="5193738599" lat="22.5987569" lon="113.9895422"/>
+  <node id="5193738600" lat="22.5987711" lon="113.9893492"/>
+  <node id="5193738768" lat="22.5997028" lon="113.9905666"/>
+  <node id="5193738769" lat="22.5997911" lon="113.9907600"/>
+  <node id="5193738770" lat="22.6000474" lon="113.9911474"/>
+  <node id="5193738777" lat="22.5999076" lon="113.9907280"/>
+  <node id="5193738778" lat="22.6000672" lon="113.9906335"/>
+  <node id="5193738780" lat="22.6000198" lon="113.9903935"/>
+  <node id="5193738781" lat="22.5999565" lon="113.9907941"/>
+  <node id="5193738784" lat="22.5999954" lon="113.9907634"/>
+  <node id="6683163598" lat="22.6000435" lon="113.9923311"/>
+  <node id="6683163629" lat="22.5997382" lon="113.9932426"/>
+  <node id="6898352563" lat="22.5960506" lon="113.9915215"/>
+  <node id="6898352564" lat="22.5957855" lon="113.9913382"/>
+  <node id="6898352565" lat="22.5956427" lon="113.9915060"/>
+  <node id="6898352566" lat="22.5954099" lon="113.9916795"/>
+  <node id="6898352567" lat="22.5950764" lon="113.9917922"/>
+  <node id="6898352568" lat="22.5951743" lon="113.9923841"/>
+  <node id="6898352569" lat="22.5954882" lon="113.9921720"/>
+  <node id="6898352570" lat="22.5956969" lon="113.9919857"/>
+  <node id="6898352571" lat="22.5958328" lon="113.9918317"/>
+  <node id="7057414612" lat="22.5977170" lon="113.9910103"/>
+  <node id="7057414613" lat="22.5976810" lon="113.9910080"/>
+  <node id="7057414614" lat="22.5976877" lon="113.9908850"/>
+  <node id="7057414615" lat="22.5977299" lon="113.9908877"/>
+  <node id="7057414616" lat="22.5982498" lon="113.9909371"/>
+  <node id="7057414617" lat="22.5982417" lon="113.9910590"/>
+  <node id="7057414618" lat="22.5982822" lon="113.9910622"/>
+  <node id="8511339798" lat="22.5981731" lon="113.9932890"/>
+  <node id="8511339799" lat="22.5977701" lon="113.9932711"/>
+  <node id="8552162821" lat="22.5953332" lon="113.9922792"/>
+  <node id="8552162822" lat="22.5959399" lon="113.9916904"/>
+  <node id="8552162823" lat="22.5955326" lon="113.9915939"/>
+  <node id="8552162824" lat="22.5952503" lon="113.9917468"/>
+  <node id="8552263727" lat="22.5996395" lon="113.9930597"/>
+  <node id="8552263728" lat="22.5998004" lon="113.9930637"/>
+  <node id="8552263729" lat="22.5997955" lon="113.9925970"/>
+  <node id="9053038605" lat="22.5975437" lon="113.9932323"/>
+  <node id="9053038610" lat="22.5970187" lon="113.9930792"/>
+  <node id="9055227475" lat="22.5977691" lon="113.9932903"/>
+  <node id="9070679224" lat="22.5974375" lon="113.9909951"/>
+  <node id="9070679225" lat="22.5974444" lon="113.9908693"/>
+  <node id="9070679226" lat="22.5973704" lon="113.9909908"/>
+  <node id="9070679227" lat="22.5973855" lon="113.9908655"/>
+  <node id="9070679248" lat="22.5979969" lon="113.9910291"/>
+  <node id="9070679249" lat="22.5980052" lon="113.9909047"/>
+  <node id="9070679250" lat="22.5979465" lon="113.9910251"/>
+  <node id="9070679251" lat="22.5979536" lon="113.9909006"/>
+  <node id="9070679272" lat="22.5989925" lon="113.9907978"/>
+  <node id="9070679273" lat="22.5986855" lon="113.9906540"/>
+  <node id="9070679297" lat="22.5986204" lon="113.9918776"/>
+  <node id="9070679298" lat="22.5988776" lon="113.9917064"/>
+  <node id="9070679299" lat="22.5991955" lon="113.9911849"/>
+  <node id="9070771516" lat="22.5999635" lon="113.9923033"/>
+  <node id="9070798419" lat="22.5998722" lon="113.9925735"/>
+  <node id="9070798420" lat="22.5996816" lon="113.9925440"/>
+  <node id="9070798421" lat="22.5996286" lon="113.9925206"/>
+  <node id="9070798422" lat="22.5996286" lon="113.9924823"/>
+  <node id="9070798423" lat="22.5997620" lon="113.9924783"/>
+  <node id="9070798434" lat="22.6000811" lon="113.9932112"/>
+  <node id="9070798435" lat="22.6000406" lon="113.9932099"/>
+  <node id="9070798436" lat="22.6000432" lon="113.9932778"/>
+  <node id="9070798437" lat="22.5999886" lon="113.9932783"/>
+  <node id="9070798440" lat="22.5999651" lon="113.9931656"/>
+  <node id="9070798441" lat="22.6000798" lon="113.9931656"/>
+  <node id="9070798443" lat="22.6000022" lon="113.9930798"/>
+  <node id="9070798444" lat="22.6000852" lon="113.9930771"/>
+  <node id="9070798445" lat="22.6000879" lon="113.9929799"/>
+  <node id="9070798449" lat="22.5997125" lon="113.9932555"/>
+  <node id="9070798453" lat="22.6000840" lon="113.9927888"/>
+  <node id="9070798454" lat="22.5998500" lon="113.9926037"/>
+  <node id="9070798463" lat="22.5993968" lon="113.9929256"/>
+  <node id="9070798464" lat="22.5993745" lon="113.9928465"/>
+  <node id="9070798465" lat="22.5993807" lon="113.9927445"/>
+  <node id="9070798466" lat="22.5996197" lon="113.9922604"/>
+  <node id="12194891798" lat="22.6000905" lon="113.9908517"/>
+  <node id="12194891799" lat="22.6000659" lon="113.9908682"/>
+  <node id="12194899903" lat="22.6000570" lon="113.9904604"/>
+  <node id="12194899904" lat="22.6000816" lon="113.9904495"/>
+  <node id="12194899935" lat="22.5999928" lon="113.9906776"/>
+  <node id="12194899941" lat="22.6000791" lon="113.9908593"/>
+  <node id="12595084585" lat="22.5974897" lon="113.9917612"/>
+  <node id="12595084586" lat="22.5974727" lon="113.9919988"/>
+  <node id="12595084587" lat="22.5975808" lon="113.9920079"/>
+  <node id="12595084588" lat="22.5975978" lon="113.9917703"/>
+  <node id="12595086504" lat="22.5973746" lon="113.9933114"/>
+  <node id="12595086509" lat="22.5974074" lon="113.9932085"/>
+  <node id="12595086510" lat="22.5974557" lon="113.9931545"/>
+  <node id="12595086511" lat="22.5972062" lon="113.9929830"/>
+  <node id="12595086512" lat="22.5971314" lon="113.9931106"/>
+  <node id="12595086513" lat="22.5971944" lon="113.9931579"/>
+  <node id="12595086514" lat="22.5972415" lon="113.9930989"/>
+  <node id="12595086515" lat="22.5972731" lon="113.9931274"/>
+  <node id="12595086516" lat="22.5971777" lon="113.9932511"/>
+  <node id="12595086517" lat="22.5971597" lon="113.9932531"/>
+  <node id="12595086518" lat="22.5969969" lon="113.9931116"/>
+  <node id="12595086519" lat="22.5972725" lon="113.9927084"/>
+  <node id="12595086520" lat="22.5975937" lon="113.9929641"/>
+  <node id="12595086526" lat="22.5965415" lon="113.9931814"/>
+  <node id="3688767682" lat="22.5969504" lon="113.9979813"/>
+  <node id="3688767683" lat="22.5965660" lon="113.9983016"/>
+  <node id="3688767684" lat="22.5966717" lon="113.9984999"/>
+  <node id="3688767685" lat="22.5971332" lon="113.9982375"/>
+  <node id="3688767686" lat="22.5970576" lon="113.9980516"/>
+  <node id="3688767693" lat="22.5948452" lon="113.9984812"/>
+  <node id="3688767694" lat="22.5951078" lon="113.9982689"/>
+  <node id="3688767695" lat="22.5952676" lon="113.9984710"/>
+  <node id="3688767696" lat="22.5949166" lon="113.9986627"/>
+  <node id="3688767697" lat="22.5951770" lon="113.9990369"/>
+  <node id="3688767698" lat="22.5954947" lon="113.9987724"/>
+  <node id="5173028400" lat="22.5977450" lon="113.9934669"/>
+  <node id="5173028401" lat="22.5977119" lon="113.9936546"/>
+  <node id="5173028402" lat="22.5976807" lon="113.9937938"/>
+  <node id="5173028403" lat="22.5981461" lon="113.9937917"/>
+  <node id="5173028404" lat="22.5981403" lon="113.9936061"/>
+  <node id="5173028405" lat="22.5981481" lon="113.9934838"/>
+  <node id="5173028406" lat="22.5981656" lon="113.9933298"/>
+  <node id="5189735893" lat="22.5949691" lon="113.9979077"/>
+  <node id="5189736133" lat="22.5946695" lon="113.9980196"/>
+  <node id="6024392042" lat="22.5957382" lon="113.9998542"/>
+  <node id="6024392043" lat="22.5962087" lon="113.9993768"/>
+  <node id="6024392044" lat="22.5958818" lon="113.9991139"/>
+  <node id="6024392045" lat="22.5953519" lon="113.9993875"/>
+  <node id="6024392063" lat="22.5969415" lon="113.9984717"/>
+  <node id="6024392064" lat="22.5967804" lon="113.9980400"/>
+  <node id="6024392065" lat="22.5971561" lon="113.9983748"/>
+  <node id="6024392066" lat="22.5973008" lon="113.9985623"/>
+  <node id="6024392069" lat="22.5975074" lon="113.9990812"/>
+  <node id="6024392070" lat="22.5974604" lon="113.9991229"/>
+  <node id="6024392071" lat="22.5973365" lon="113.9993312"/>
+  <node id="6024392072" lat="22.5972853" lon="113.9993159"/>
+  <node id="6024392073" lat="22.5969283" lon="113.9987396"/>
+  <node id="6024392074" lat="22.5969308" lon="113.9986806"/>
+  <node id="6072021038" lat="22.5950200" lon="113.9949980"/>
+  <node id="6072021039" lat="22.5952441" lon="113.9954001"/>
+  <node id="6072021040" lat="22.5953410" lon="113.9953795"/>
+  <node id="6072021041" lat="22.5950933" lon="113.9949504"/>
+  <node id="6072021042" lat="22.5952477" lon="113.9956820"/>
+  <node id="6072021043" lat="22.5953657" lon="113.9958708"/>
+  <node id="6072021045" lat="22.5954527" lon="113.9957806"/>
+  <node id="6072021046" lat="22.5955130" lon="113.9958772"/>
+  <node id="6072021047" lat="22.5955336" lon="113.9958621"/>
+  <node id="6072021048" lat="22.5955896" lon="113.9958211"/>
+  <node id="6072021049" lat="22.5953624" lon="113.9954575"/>
+  <node id="6072021050" lat="22.5952716" lon="113.9955240"/>
+  <node id="6072021051" lat="22.5953261" lon="113.9956245"/>
+  <node id="6265111317" lat="22.5977521" lon="113.9937935"/>
+  <node id="6265111391" lat="22.5952320" lon="113.9964302"/>
+  <node id="6265111392" lat="22.5952076" lon="113.9963276"/>
+  <node id="6265111393" lat="22.5951593" lon="113.9963411"/>
+  <node id="6265111394" lat="22.5951372" lon="113.9962483"/>
+  <node id="6265111395" lat="22.5949941" lon="113.9962883"/>
+  <node id="6265111396" lat="22.5950729" lon="113.9966199"/>
+  <node id="6265111397" lat="22.5953294" lon="113.9965483"/>
+  <node id="6265111398" lat="22.5952970" lon="113.9964121"/>
+  <node id="6265111399" lat="22.5952241" lon="113.9953639"/>
+  <node id="6265111400" lat="22.5951643" lon="113.9954519"/>
+  <node id="6265111402" lat="22.5950456" lon="113.9950443"/>
+  <node id="6602899589" lat="22.5994727" lon="113.9950309"/>
+  <node id="6602899590" lat="22.5987759" lon="113.9949583"/>
+  <node id="6602899593" lat="22.5989380" lon="113.9951039"/>
+  <node id="6602899594" lat="22.5990557" lon="113.9952046"/>
+  <node id="6602899600" lat="22.5988763" lon="113.9945247"/>
+  <node id="6602899601" lat="22.5989737" lon="113.9946108"/>
+  <node id="6602899602" lat="22.5988901" lon="113.9947900"/>
+  <node id="6602899603" lat="22.5991759" lon="113.9954812"/>
+  <node id="6602899604" lat="22.5985635" lon="113.9949396"/>
+  <node id="6602899606" lat="22.5984089" lon="113.9951398"/>
+  <node id="6602899607" lat="22.5979754" lon="113.9957379"/>
+  <node id="6602899608" lat="22.5985951" lon="113.9962650"/>
+  <node id="6602899609" lat="22.5987267" lon="113.9960835"/>
+  <node id="6602899610" lat="22.5982591" lon="113.9956858"/>
+  <node id="6602899611" lat="22.5984781" lon="113.9953838"/>
+  <node id="6602899612" lat="22.5989594" lon="113.9957931"/>
+  <node id="6602899613" lat="22.5990424" lon="113.9956786"/>
+  <node id="6683550377" lat="22.5999678" lon="113.9973772"/>
+  <node id="7057414601" lat="22.5994516" lon="113.9947114"/>
+  <node id="7057414603" lat="22.5994160" lon="113.9947109"/>
+  <node id="7057414604" lat="22.5994155" lon="113.9947508"/>
+  <node id="7057414605" lat="22.5994510" lon="113.9947514"/>
+  <node id="7601262925" lat="22.5975024" lon="113.9991800"/>
+  <node id="7601262926" lat="22.5975957" lon="113.9992191"/>
+  <node id="7601262927" lat="22.5977038" lon="113.9991846"/>
+  <node id="7601262928" lat="22.5977568" lon="113.9991020"/>
+  <node id="7601262929" lat="22.5973858" lon="113.9985440"/>
+  <node id="7601262995" lat="22.5952891" lon="113.9954132"/>
+  <node id="7601262996" lat="22.5952519" lon="113.9953459"/>
+  <node id="7601262997" lat="22.5949651" lon="113.9950965"/>
+  <node id="8527013160" lat="22.5992549" lon="113.9953649"/>
+  <node id="8534771778" lat="22.5949234" lon="113.9961956"/>
+  <node id="8534771779" lat="22.5947554" lon="113.9962514"/>
+  <node id="8534771780" lat="22.5948816" lon="113.9966973"/>
+  <node id="8534771781" lat="22.5949360" lon="113.9966793"/>
+  <node id="8534771782" lat="22.5949615" lon="113.9967695"/>
+  <node id="8534771783" lat="22.5948074" lon="113.9968207"/>
+  <node id="8534771784" lat="22.5946057" lon="113.9961084"/>
+  <node id="8534771785" lat="22.5948735" lon="113.9960194"/>
+  <node id="8534934576" lat="22.5960231" lon="113.9969426"/>
+  <node id="8534934577" lat="22.5959647" lon="113.9969355"/>
+  <node id="8534934582" lat="22.5959752" lon="113.9968339"/>
+  <node id="8534934583" lat="22.5960336" lon="113.9968410"/>
+  <node id="8534943326" lat="22.5959876" lon="113.9984391"/>
+  <node id="8534943327" lat="22.5955783" lon="113.9983722"/>
+  <node id="8534943328" lat="22.5956087" lon="113.9981537"/>
+  <node id="8534943329" lat="22.5960180" lon="113.9982206"/>
+  <node id="8552127807" lat="22.5981622" lon="113.9933597"/>
+  <node id="8552234693" lat="22.5999886" lon="113.9933239"/>
+  <node id="8790943680" lat="22.5986550" lon="113.9950188"/>
+  <node id="8790943681" lat="22.5985032" lon="113.9952200"/>
+  <node id="8790943682" lat="22.5984429" lon="113.9951687"/>
+  <node id="8790943683" lat="22.5985956" lon="113.9949663"/>
+  <node id="9055227474" lat="22.5977658" lon="113.9933219"/>
+  <node id="9070798438" lat="22.5999841" lon="113.9933962"/>
+  <node id="9070798439" lat="22.5998623" lon="113.9933950"/>
+  <node id="9070798447" lat="22.5997460" lon="113.9933199"/>
+  <node id="9070798450" lat="22.5997088" lon="113.9933440"/>
+  <node id="9070798451" lat="22.5997348" lon="113.9933923"/>
+  <node id="9070798452" lat="22.5998264" lon="113.9933990"/>
+  <node id="9070798462" lat="22.5996432" lon="113.9934325"/>
+  <node id="11892061308" lat="22.5993498" lon="113.9951948"/>
+  <node id="12594973845" lat="22.5950046" lon="113.9951681"/>
+  <node id="12594973846" lat="22.5950581" lon="113.9952647"/>
+  <node id="12594973847" lat="22.5950922" lon="113.9952426"/>
+  <node id="12594973848" lat="22.5951046" lon="113.9952650"/>
+  <node id="12594973849" lat="22.5950725" lon="113.9952859"/>
+  <node id="12594973850" lat="22.5953113" lon="113.9953259"/>
+  <node id="12594973851" lat="22.5953276" lon="113.9953154"/>
+  <node id="12594973852" lat="22.5951507" lon="113.9950738"/>
+  <node id="12594973853" lat="22.5951349" lon="113.9950454"/>
+  <node id="12594973854" lat="22.5951382" lon="113.9949942"/>
+  <node id="12594973855" lat="22.5951229" lon="113.9950041"/>
+  <node id="12594973856" lat="22.5953040" lon="113.9952727"/>
+  <node id="12594973857" lat="22.5952764" lon="113.9952906"/>
+  <node id="12594973858" lat="22.5952619" lon="113.9952644"/>
+  <node id="12594973859" lat="22.5952299" lon="113.9952852"/>
+  <node id="12594973860" lat="22.5951230" lon="113.9950918"/>
+  <node id="12594973861" lat="22.5951581" lon="113.9950303"/>
+  <node id="12594973862" lat="22.5956096" lon="113.9960853"/>
+  <node id="12594973863" lat="22.5956411" lon="113.9961358"/>
+  <node id="12594973864" lat="22.5956687" lon="113.9961156"/>
+  <node id="12594973865" lat="22.5956418" lon="113.9960725"/>
+  <node id="12594973866" lat="22.5956200" lon="113.9960885"/>
+  <node id="12594973867" lat="22.5955552" lon="113.9959848"/>
+  <node id="12594973868" lat="22.5956459" lon="113.9959183"/>
+  <node id="12594973869" lat="22.5958731" lon="113.9962819"/>
+  <node id="12594973870" lat="22.5958172" lon="113.9963229"/>
+  <node id="12594973871" lat="22.5957965" lon="113.9963380"/>
+  <node id="12594973872" lat="22.5957362" lon="113.9962414"/>
+  <node id="12594973873" lat="22.5957219" lon="113.9962519"/>
+  <node id="12594973874" lat="22.5957333" lon="113.9962700"/>
+  <node id="12594973875" lat="22.5956492" lon="113.9963316"/>
+  <node id="12594973876" lat="22.5955313" lon="113.9961428"/>
+  <node id="12594973877" lat="22.5953364" lon="113.9956277"/>
+  <node id="12594973878" lat="22.5953582" lon="113.9956117"/>
+  <node id="12594973879" lat="22.5953852" lon="113.9956548"/>
+  <node id="12594973880" lat="22.5953576" lon="113.9956750"/>
+  <node id="12594973881" lat="22.5954497" lon="113.9958092"/>
+  <node id="12594973882" lat="22.5954384" lon="113.9957911"/>
+  <node id="12595086502" lat="22.5975219" lon="113.9933557"/>
+  <node id="12595086503" lat="22.5974337" lon="113.9934174"/>
+  <node id="12595086505" lat="22.5972495" lon="113.9934087"/>
+  <node id="12595086506" lat="22.5973164" lon="113.9935126"/>
+  <node id="12595086507" lat="22.5972644" lon="113.9935555"/>
+  <node id="12595086508" lat="22.5971566" lon="113.9934013"/>
+  <node id="12595086521" lat="22.5964115" lon="113.9937648"/>
+  <node id="12595086522" lat="22.5963125" lon="113.9938949"/>
+  <node id="12595086523" lat="22.5964908" lon="113.9942597"/>
+  <node id="12595086524" lat="22.5972101" lon="113.9948833"/>
+  <node id="12595086525" lat="22.5974169" lon="113.9946137"/>
+  <node id="12595086527" lat="22.5961094" lon="113.9937608"/>
+  <node id="12595086528" lat="22.5962518" lon="113.9938734"/>
+  <node id="12595086529" lat="22.5964183" lon="113.9942899"/>
+  <node id="12595086530" lat="22.5963310" lon="113.9944059"/>
+  <node id="12595086531" lat="22.5972993" lon="113.9952454"/>
+  <node id="12595086532" lat="22.5979510" lon="113.9943918"/>
+  <node id="12595086533" lat="22.5977190" lon="113.9941993"/>
+  <node id="12595086534" lat="22.5975680" lon="113.9943978"/>
+  <node id="12595086535" lat="22.5965935" lon="113.9935663"/>
+  <node id="12595086536" lat="22.5967446" lon="113.9933625"/>
+  <node id="5173029339" lat="22.6032847" lon="113.9930642"/>
+  <node id="5173029346" lat="22.6031011" lon="113.9930260"/>
+  <node id="5173029359" lat="22.6018881" lon="113.9933005"/>
+  <node id="5173029363" lat="22.6021015" lon="113.9932987"/>
+  <node id="5193738745" lat="22.6021933" lon="113.9892263"/>
+  <node id="5193738746" lat="22.6022889" lon="113.9898476"/>
+  <node id="5193738747" lat="22.6019186" lon="113.9902827"/>
+  <node id="5193738748" lat="22.6016359" lon="113.9900004"/>
+  <node id="5193738749" lat="22.6019736" lon="113.9896037"/>
+  <node id="5193738750" lat="22.6019229" lon="113.9892754"/>
+  <node id="5193738751" lat="22.6022309" lon="113.9894711"/>
+  <node id="5193738752" lat="22.6026255" lon="113.9894039"/>
+  <node id="5193738753" lat="22.6026552" lon="113.9896087"/>
+  <node id="5193738754" lat="22.6022624" lon="113.9896756"/>
+  <node id="5193738755" lat="22.6007625" lon="113.9907725"/>
+  <node id="5193738756" lat="22.6008893" lon="113.9912511"/>
+  <node id="5193738757" lat="22.6012374" lon="113.9911429"/>
+  <node id="5193738758" lat="22.6017416" lon="113.9905052"/>
+  <node id="5193738759" lat="22.6014204" lon="113.9902071"/>
+  <node id="5193738760" lat="22.6010348" lon="113.9906948"/>
+  <node id="5193738761" lat="22.6011469" lon="113.9907988"/>
+  <node id="5193738762" lat="22.6014463" lon="113.9904202"/>
+  <node id="5193738763" lat="22.6015647" lon="113.9905300"/>
+  <node id="5193738764" lat="22.6011602" lon="113.9910415"/>
+  <node id="5193738765" lat="22.6009859" lon="113.9910957"/>
+  <node id="5193738766" lat="22.6008898" lon="113.9907329"/>
+  <node id="5193738767" lat="22.6012666" lon="113.9909070"/>
+  <node id="5193738771" lat="22.6002798" lon="113.9912853"/>
+  <node id="5193738772" lat="22.6005268" lon="113.9912832"/>
+  <node id="5193738773" lat="22.6005077" lon="113.9908370"/>
+  <node id="5193738774" lat="22.6002598" lon="113.9908391"/>
+  <node id="5193738775" lat="22.6002686" lon="113.9911352"/>
+  <node id="5193738776" lat="22.6001521" lon="113.9910644"/>
+  <node id="5193738779" lat="22.6001145" lon="113.9905245"/>
+  <node id="5193738782" lat="22.6001126" lon="113.9908803"/>
+  <node id="5193738783" lat="22.6001830" lon="113.9910367"/>
+  <node id="6531598580" lat="22.6047670" lon="113.9931472"/>
+  <node id="6531598581" lat="22.6049110" lon="113.9931200"/>
+  <node id="6531598582" lat="22.6043754" lon="113.9927392"/>
+  <node id="6531598583" lat="22.6044714" lon="113.9931873"/>
+  <node id="6531598584" lat="22.6046200" lon="113.9931552"/>
+  <node id="6531606985" lat="22.6045194" lon="113.9927045"/>
+  <node id="6531606986" lat="22.6047814" lon="113.9926292"/>
+  <node id="6531606987" lat="22.6046496" lon="113.9926676"/>
+  <node id="6531606988" lat="22.6046665" lon="113.9921353"/>
+  <node id="6531606992" lat="22.6045433" lon="113.9921559"/>
+  <node id="6531606995" lat="22.6045993" lon="113.9918893"/>
+  <node id="6531606996" lat="22.6042222" lon="113.9919651"/>
+  <node id="6531607002" lat="22.6028439" lon="113.9921604"/>
+  <node id="6531607003" lat="22.6027175" lon="113.9920267"/>
+  <node id="6531607004" lat="22.6032448" lon="113.9914568"/>
+  <node id="6531607005" lat="22.6031143" lon="113.9906679"/>
+  <node id="6531607006" lat="22.6027976" lon="113.9907173"/>
+  <node id="6531607007" lat="22.6020038" lon="113.9916011"/>
+  <node id="6531607008" lat="22.6018604" lon="113.9915074"/>
+  <node id="6531607009" lat="22.6026665" lon="113.9905572"/>
+  <node id="6531607010" lat="22.6027801" lon="113.9904966"/>
+  <node id="6531607011" lat="22.6032687" lon="113.9904113"/>
+  <node id="6531607012" lat="22.6034297" lon="113.9915031"/>
+  <node id="6531607013" lat="22.6035430" lon="113.9903638"/>
+  <node id="6531607014" lat="22.6036909" lon="113.9914376"/>
+  <node id="6531607015" lat="22.6038789" lon="113.9914114"/>
+  <node id="6531607016" lat="22.6037589" lon="113.9905611"/>
+  <node id="6531607017" lat="22.6043516" lon="113.9904800"/>
+  <node id="6531607018" lat="22.6044747" lon="113.9914372"/>
+  <node id="6531607019" lat="22.6046513" lon="113.9914167"/>
+  <node id="6531607020" lat="22.6044958" lon="113.9902675"/>
+  <node id="6683163597" lat="22.6002021" lon="113.9924930"/>
+  <node id="7057414608" lat="22.6039786" lon="113.9921521"/>
+  <node id="7057414609" lat="22.6040567" lon="113.9925840"/>
+  <node id="7057414610" lat="22.6041783" lon="113.9925582"/>
+  <node id="7057414611" lat="22.6041003" lon="113.9921263"/>
+  <node id="8153829294" lat="22.6046214" lon="113.9920182"/>
+  <node id="8153829295" lat="22.6042443" lon="113.9920940"/>
+  <node id="8488930774" lat="22.6033171" lon="113.9907372"/>
+  <node id="8488930775" lat="22.6034135" lon="113.9913873"/>
+  <node id="8509612433" lat="22.6027769" lon="113.9919624"/>
+  <node id="8509612436" lat="22.6043715" lon="113.9906305"/>
+  <node id="8519620291" lat="22.6026002" lon="113.9909372"/>
+  <node id="8519620292" lat="22.6024111" lon="113.9908582"/>
+  <node id="8519620293" lat="22.6044319" lon="113.9902261"/>
+  <node id="8519620296" lat="22.6030764" lon="113.9904443"/>
+  <node id="8535697914" lat="22.6043845" lon="113.9921873"/>
+  <node id="8535697915" lat="22.6043709" lon="113.9920773"/>
+  <node id="8535697916" lat="22.6045382" lon="113.9920428"/>
+  <node id="8535708317" lat="22.6045572" lon="113.9921511"/>
+  <node id="8535708318" lat="22.6045919" lon="113.9924160"/>
+  <node id="8535708319" lat="22.6047107" lon="113.9923891"/>
+  <node id="8535716251" lat="22.6045836" lon="113.9931678"/>
+  <node id="8535716258" lat="22.6046959" lon="113.9931439"/>
+  <node id="8604452272" lat="22.6042908" lon="113.9911779"/>
+  <node id="8604452273" lat="22.6043117" lon="113.9911874"/>
+  <node id="8604452274" lat="22.6043283" lon="113.9912040"/>
+  <node id="8604452275" lat="22.6043387" lon="113.9912258"/>
+  <node id="8604452276" lat="22.6043416" lon="113.9912501"/>
+  <node id="8604452277" lat="22.6043367" lon="113.9912741"/>
+  <node id="8604452278" lat="22.6043245" lon="113.9912947"/>
+  <node id="8604452279" lat="22.6043065" lon="113.9913096"/>
+  <node id="8604452280" lat="22.6042622" lon="113.9913158"/>
+  <node id="8604452281" lat="22.6042413" lon="113.9913064"/>
+  <node id="8604452282" lat="22.6042246" lon="113.9912897"/>
+  <node id="8604452283" lat="22.6042142" lon="113.9912679"/>
+  <node id="8604452284" lat="22.6042113" lon="113.9912436"/>
+  <node id="8604452285" lat="22.6042163" lon="113.9912197"/>
+  <node id="8604452286" lat="22.6042285" lon="113.9911990"/>
+  <node id="8604452287" lat="22.6042465" lon="113.9911841"/>
+  <node id="8604452288" lat="22.6042848" lon="113.9913169"/>
+  <node id="8604452289" lat="22.6042681" lon="113.9911768"/>
+  <node id="8604452291" lat="22.6037281" lon="113.9903351"/>
+  <node id="8604452292" lat="22.6032971" lon="113.9906025"/>
+  <node id="8604452293" lat="22.6035708" lon="113.9905656"/>
+  <node id="8604452294" lat="22.6035622" lon="113.9905033"/>
+  <node id="8604452295" lat="22.6032877" lon="113.9905389"/>
+  <node id="9065881104" lat="22.6036386" lon="113.9890927"/>
+  <node id="9065881105" lat="22.6033687" lon="113.9887212"/>
+  <node id="9065881106" lat="22.6031049" lon="113.9887615"/>
+  <node id="9065881107" lat="22.6031631" lon="113.9893945"/>
+  <node id="9065881108" lat="22.6035333" lon="113.9893368"/>
+  <node id="9065881109" lat="22.6035346" lon="113.9893824"/>
+  <node id="9065881110" lat="22.6036868" lon="113.9893462"/>
+  <node id="9065881111" lat="22.6036188" lon="113.9887078"/>
+  <node id="9065881112" lat="22.6040595" lon="113.9894146"/>
+  <node id="9065881113" lat="22.6038775" lon="113.9894722"/>
+  <node id="9065881114" lat="22.6038701" lon="113.9888728"/>
+  <node id="9065881115" lat="22.6040558" lon="113.9888674"/>
+  <node id="9065881116" lat="22.6044348" lon="113.9893363"/>
+  <node id="9065881117" lat="22.6042875" lon="113.9893399"/>
+  <node id="9065881118" lat="22.6042772" lon="113.9888599"/>
+  <node id="9065881119" lat="22.6044246" lon="113.9888562"/>
+  <node id="9070771515" lat="22.6001223" lon="113.9923114"/>
+  <node id="9070798417" lat="22.6002053" lon="113.9923663"/>
+  <node id="9070798418" lat="22.6001075" lon="113.9927512"/>
+  <node id="9070798424" lat="22.6001422" lon="113.9926594"/>
+  <node id="9070798425" lat="22.6001855" lon="113.9928304"/>
+  <node id="9070798426" lat="22.6001360" lon="113.9927834"/>
+  <node id="9070798427" lat="22.6001743" lon="113.9926788"/>
+  <node id="9070798428" lat="22.6002486" lon="113.9927539"/>
+  <node id="9070798442" lat="22.6001124" lon="113.9928129"/>
+  <node id="9070798446" lat="22.6001644" lon="113.9928679"/>
+  <node id="9070798455" lat="22.6003898" lon="113.9928880"/>
+  <node id="9070798456" lat="22.6002672" lon="113.9927781"/>
+  <node id="9070798457" lat="22.6002102" lon="113.9928545"/>
+  <node id="9070798458" lat="22.6003291" lon="113.9929631"/>
+  <node id="9070798459" lat="22.6007184" lon="113.9931105"/>
+  <node id="9070798460" lat="22.6007364" lon="113.9930543"/>
+  <node id="9070798467" lat="22.6001545" lon="113.9922577"/>
+  <node id="9070798468" lat="22.6002722" lon="113.9923422"/>
+  <node id="9070798469" lat="22.6008702" lon="113.9928988"/>
+  <node id="12060447486" lat="22.6062823" lon="113.9902395"/>
+  <node id="12060447487" lat="22.6062672" lon="113.9906572"/>
+  <node id="12060447490" lat="22.6056151" lon="113.9913072"/>
+  <node id="12060447491" lat="22.6056225" lon="113.9903561"/>
+  <node id="12060447492" lat="22.6057407" lon="113.9902357"/>
+  <node id="12194891800" lat="22.6001284" lon="113.9909079"/>
+  <node id="12194899901" lat="22.6001108" lon="113.9909317"/>
+  <node id="12194899902" lat="22.6002216" lon="113.9911067"/>
+  <node id="12194899936" lat="22.6002678" lon="113.9911065"/>
+  <node id="12060447488" lat="22.6068584" lon="113.9909772"/>
+  <node id="12060447489" lat="22.6068571" lon="113.9913359"/>
+  <node id="5173028685" lat="22.6014292" lon="113.9941680"/>
+  <node id="5173028686" lat="22.6012975" lon="113.9943952"/>
+  <node id="5173028687" lat="22.6014577" lon="113.9944966"/>
+  <node id="5173028688" lat="22.6015643" lon="113.9948836"/>
+  <node id="5173028689" lat="22.6017227" lon="113.9951067"/>
+  <node id="5173028690" lat="22.6023824" lon="113.9954308"/>
+  <node id="5173028691" lat="22.6025248" lon="113.9955116"/>
+  <node id="5173028692" lat="22.6026495" lon="113.9956588"/>
+  <node id="5173028693" lat="22.6027366" lon="113.9962016"/>
+  <node id="5173028694" lat="22.6028075" lon="113.9962044"/>
+  <node id="5173028695" lat="22.6027974" lon="113.9957157"/>
+  <node id="5173028698" lat="22.6027905" lon="113.9956059"/>
+  <node id="5173028699" lat="22.6025282" lon="113.9952288"/>
+  <node id="5173028700" lat="22.6022976" lon="113.9949350"/>
+  <node id="5173028701" lat="22.6021756" lon="113.9947330"/>
+  <node id="5173028702" lat="22.6020569" lon="113.9945604"/>
+  <node id="5173028703" lat="22.6013152" lon="113.9943647"/>
+  <node id="5173029006" lat="22.6049329" lon="113.9977191"/>
+  <node id="5173029007" lat="22.6049299" lon="113.9977511"/>
+  <node id="5173029008" lat="22.6039328" lon="113.9977697"/>
+  <node id="5173029009" lat="22.6039317" lon="113.9976869"/>
+  <node id="5173029010" lat="22.6040493" lon="113.9976517"/>
+  <node id="5173029011" lat="22.6042075" lon="113.9976219"/>
+  <node id="5173029012" lat="22.6043873" lon="113.9976193"/>
+  <node id="5173029013" lat="22.6042962" lon="113.9976167"/>
+  <node id="5173029014" lat="22.6045515" lon="113.9976443"/>
+  <node id="5173029340" lat="22.6032269" lon="113.9934669"/>
+  <node id="5173029341" lat="22.6031525" lon="113.9934520"/>
+  <node id="5173029342" lat="22.6030964" lon="113.9938074"/>
+  <node id="5173029343" lat="22.6028986" lon="113.9937635"/>
+  <node id="5173029344" lat="22.6029674" lon="113.9933395"/>
+  <node id="5173029345" lat="22.6030607" lon="113.9933575"/>
+  <node id="5173029347" lat="22.6026064" lon="113.9934578"/>
+  <node id="5173029348" lat="22.6026609" lon="113.9938608"/>
+  <node id="5173029349" lat="22.6025788" lon="113.9938641"/>
+  <node id="5173029350" lat="22.6025775" lon="113.9938460"/>
+  <node id="5173029351" lat="22.6025036" lon="113.9938495"/>
+  <node id="5173029352" lat="22.6025017" lon="113.9938711"/>
+  <node id="5173029353" lat="22.6024125" lon="113.9938705"/>
+  <node id="5173029354" lat="22.6024148" lon="113.9934732"/>
+  <node id="5173029355" lat="22.6024908" lon="113.9934738"/>
+  <node id="5173029356" lat="22.6024921" lon="113.9934905"/>
+  <node id="5173029357" lat="22.6025229" lon="113.9934898"/>
+  <node id="5173029358" lat="22.6025216" lon="113.9934675"/>
+  <node id="5173029360" lat="22.6019337" lon="113.9938731"/>
+  <node id="5173029361" lat="22.6021339" lon="113.9938614"/>
+  <node id="5173029362" lat="22.6020931" lon="113.9934810"/>
+  <node id="5173029364" lat="22.6033769" lon="113.9936196"/>
+  <node id="5173029365" lat="22.6034052" lon="113.9939204"/>
+  <node id="5173029366" lat="22.6034920" lon="113.9941312"/>
+  <node id="5173029367" lat="22.6036362" lon="113.9940950"/>
+  <node id="5173029368" lat="22.6035713" lon="113.9937356"/>
+  <node id="5173029369" lat="22.6035255" lon="113.9935720"/>
+  <node id="5173029370" lat="22.6036152" lon="113.9947414"/>
+  <node id="5173029371" lat="22.6036212" lon="113.9944037"/>
+  <node id="5173029372" lat="22.6034416" lon="113.9944000"/>
+  <node id="5173029373" lat="22.6034356" lon="113.9947376"/>
+  <node id="5173029374" lat="22.6037188" lon="113.9941196"/>
+  <node id="5173029375" lat="22.6037578" lon="113.9944835"/>
+  <node id="5173029376" lat="22.6039262" lon="113.9944719"/>
+  <node id="5173029377" lat="22.6038824" lon="113.9941017"/>
+  <node id="5173029378" lat="22.6033128" lon="113.9939300"/>
+  <node id="5173029379" lat="22.6034491" lon="113.9942591"/>
+  <node id="5173029380" lat="22.6033635" lon="113.9943086"/>
+  <node id="5173029381" lat="22.6032233" lon="113.9939764"/>
+  <node id="5173029382" lat="22.6031100" lon="113.9938937"/>
+  <node id="5173029383" lat="22.6030925" lon="113.9940170"/>
+  <node id="5173029384" lat="22.6028131" lon="113.9939622"/>
+  <node id="5173029385" lat="22.6027595" lon="113.9939854"/>
+  <node id="5173029386" lat="22.6027585" lon="113.9938662"/>
+  <node id="5173029387" lat="22.6028306" lon="113.9938304"/>
+  <node id="5173029388" lat="22.6023713" lon="113.9939331"/>
+  <node id="5173029389" lat="22.6023712" lon="113.9940549"/>
+  <node id="5173029390" lat="22.6026331" lon="113.9940553"/>
+  <node id="5173029391" lat="22.6026332" lon="113.9939335"/>
+  <node id="5173029392" lat="22.6019253" lon="113.9939411"/>
+  <node id="5173029393" lat="22.6019287" lon="113.9940255"/>
+  <node id="5173029394" lat="22.6022555" lon="113.9940568"/>
+  <node id="5173029395" lat="22.6022555" lon="113.9939302"/>
+  <node id="5173029396" lat="22.6031875" lon="113.9944564"/>
+  <node id="5173029397" lat="22.6031874" lon="113.9945982"/>
+  <node id="5173029398" lat="22.6030614" lon="113.9945981"/>
+  <node id="5173029399" lat="22.6030615" lon="113.9944583"/>
+  <node id="5173029400" lat="22.6031430" lon="113.9944564"/>
+  <node id="5173029401" lat="22.6031159" lon="113.9944584"/>
+  <node id="5173029402" lat="22.6031158" lon="113.9945509"/>
+  <node id="5173029403" lat="22.6031429" lon="113.9945509"/>
+  <node id="5173029404" lat="22.6029722" lon="113.9945937"/>
+  <node id="5173029405" lat="22.6029722" lon="113.9947355"/>
+  <node id="5173029406" lat="22.6028462" lon="113.9947354"/>
+  <node id="5173029407" lat="22.6028463" lon="113.9945957"/>
+  <node id="5173029408" lat="22.6029006" lon="113.9945957"/>
+  <node id="5173029409" lat="22.6029006" lon="113.9946883"/>
+  <node id="5173029410" lat="22.6029277" lon="113.9946883"/>
+  <node id="5173029411" lat="22.6029277" lon="113.9945937"/>
+  <node id="5173029412" lat="22.6031794" lon="113.9949401"/>
+  <node id="5173029413" lat="22.6031796" lon="113.9950556"/>
+  <node id="5173029414" lat="22.6030595" lon="113.9950557"/>
+  <node id="5173029415" lat="22.6030592" lon="113.9949404"/>
+  <node id="5173029416" lat="22.6031327" lon="113.9950558"/>
+  <node id="5173029417" lat="22.6031055" lon="113.9950556"/>
+  <node id="5173029418" lat="22.6031054" lon="113.9949684"/>
+  <node id="5173029419" lat="22.6031326" lon="113.9949683"/>
+  <node id="5173029420" lat="22.6030281" lon="113.9949388"/>
+  <node id="5173029421" lat="22.6030283" lon="113.9950543"/>
+  <node id="5173029422" lat="22.6029815" lon="113.9950544"/>
+  <node id="5173029423" lat="22.6029813" lon="113.9949670"/>
+  <node id="5173029424" lat="22.6029541" lon="113.9949671"/>
+  <node id="5173029425" lat="22.6029543" lon="113.9950543"/>
+  <node id="5173029426" lat="22.6029082" lon="113.9950544"/>
+  <node id="5173029427" lat="22.6029079" lon="113.9949391"/>
+  <node id="5173029428" lat="22.6028771" lon="113.9949414"/>
+  <node id="5173029429" lat="22.6028773" lon="113.9950569"/>
+  <node id="5173029430" lat="22.6028304" lon="113.9950570"/>
+  <node id="5173029431" lat="22.6028302" lon="113.9949696"/>
+  <node id="5173029432" lat="22.6028030" lon="113.9949697"/>
+  <node id="5173029433" lat="22.6028032" lon="113.9950569"/>
+  <node id="5173029434" lat="22.6027571" lon="113.9950570"/>
+  <node id="5173029435" lat="22.6027569" lon="113.9949417"/>
+  <node id="5173029436" lat="22.6028513" lon="113.9949141"/>
+  <node id="5173029437" lat="22.6027320" lon="113.9949143"/>
+  <node id="5173029438" lat="22.6027315" lon="113.9948635"/>
+  <node id="5173029439" lat="22.6028122" lon="113.9948626"/>
+  <node id="5173029440" lat="22.6028119" lon="113.9948331"/>
+  <node id="5173029441" lat="22.6027314" lon="113.9948341"/>
+  <node id="5173029442" lat="22.6027309" lon="113.9947842"/>
+  <node id="5173029443" lat="22.6028510" lon="113.9947840"/>
+  <node id="5173029444" lat="22.6028139" lon="113.9947392"/>
+  <node id="5173029445" lat="22.6026945" lon="113.9947394"/>
+  <node id="5173029446" lat="22.6026940" lon="113.9946886"/>
+  <node id="5173029447" lat="22.6027747" lon="113.9946876"/>
+  <node id="5173029448" lat="22.6027744" lon="113.9946582"/>
+  <node id="5173029449" lat="22.6026939" lon="113.9946591"/>
+  <node id="5173029450" lat="22.6026934" lon="113.9946092"/>
+  <node id="5173029451" lat="22.6028135" lon="113.9946090"/>
+  <node id="5173029452" lat="22.6031639" lon="113.9947487"/>
+  <node id="5173029453" lat="22.6030445" lon="113.9947489"/>
+  <node id="5173029454" lat="22.6030440" lon="113.9946981"/>
+  <node id="5173029455" lat="22.6031247" lon="113.9946971"/>
+  <node id="5173029456" lat="22.6031244" lon="113.9946677"/>
+  <node id="5173029457" lat="22.6030439" lon="113.9946686"/>
+  <node id="5173029458" lat="22.6030434" lon="113.9946187"/>
+  <node id="5173029459" lat="22.6031635" lon="113.9946185"/>
+  <node id="6016888347" lat="22.6049846" lon="113.9987652"/>
+  <node id="6016888348" lat="22.6049945" lon="113.9995940"/>
+  <node id="6016888349" lat="22.6043707" lon="113.9996025"/>
+  <node id="6016888350" lat="22.6043396" lon="113.9987764"/>
+  <node id="6017944174" lat="22.6066124" lon="113.9966841"/>
+  <node id="6017944175" lat="22.6064552" lon="113.9971189"/>
+  <node id="6017944176" lat="22.6063819" lon="113.9970265"/>
+  <node id="6017944177" lat="22.6064942" lon="113.9966989"/>
+  <node id="6017944182" lat="22.6066290" lon="113.9977832"/>
+  <node id="6017944183" lat="22.6065687" lon="113.9981863"/>
+  <node id="6017944184" lat="22.6064837" lon="113.9981671"/>
+  <node id="6017944185" lat="22.6065262" lon="113.9978562"/>
+  <node id="6017944186" lat="22.6061292" lon="113.9977947"/>
+  <node id="6017944187" lat="22.6062533" lon="113.9980904"/>
+  <node id="6017944188" lat="22.6061682" lon="113.9981019"/>
+  <node id="6017944189" lat="22.6060335" lon="113.9977602"/>
+  <node id="6017944190" lat="22.6060442" lon="113.9976834"/>
+  <node id="6024421192" lat="22.6020383" lon="113.9938670"/>
+  <node id="6024421194" lat="22.6025402" lon="113.9938478"/>
+  <node id="6024421196" lat="22.6030154" lon="113.9937894"/>
+  <node id="6024421198" lat="22.6034606" lon="113.9940550"/>
+  <node id="6531598544" lat="22.6056363" lon="113.9961446"/>
+  <node id="6531598545" lat="22.6056209" lon="113.9961998"/>
+  <node id="6531598546" lat="22.6057059" lon="113.9961697"/>
+  <node id="6531598547" lat="22.6056911" lon="113.9962228"/>
+  <node id="6531598548" lat="22.6053246" lon="113.9960304"/>
+  <node id="6531598549" lat="22.6053292" lon="113.9960552"/>
+  <node id="6531598550" lat="22.6056026" lon="113.9961336"/>
+  <node id="6531598551" lat="22.6057335" lon="113.9961787"/>
+  <node id="6531598552" lat="22.6058487" lon="113.9957656"/>
+  <node id="6531598553" lat="22.6057283" lon="113.9956826"/>
+  <node id="6531598554" lat="22.6051657" lon="113.9956838"/>
+  <node id="6531598555" lat="22.6052457" lon="113.9960502"/>
+  <node id="6531598556" lat="22.6053794" lon="113.9960444"/>
+  <node id="6531598558" lat="22.6048992" lon="113.9955746"/>
+  <node id="6531598559" lat="22.6050189" lon="113.9956542"/>
+  <node id="6531598560" lat="22.6051704" lon="113.9951870"/>
+  <node id="6531598561" lat="22.6050409" lon="113.9951377"/>
+  <node id="6531598562" lat="22.6047774" lon="113.9952385"/>
+  <node id="6531598563" lat="22.6046311" lon="113.9952731"/>
+  <node id="6531598564" lat="22.6045420" lon="113.9948597"/>
+  <node id="6531598565" lat="22.6046997" lon="113.9948225"/>
+  <node id="6531598566" lat="22.6044212" lon="113.9942759"/>
+  <node id="6531598567" lat="22.6043595" lon="113.9947348"/>
+  <node id="6531598568" lat="22.6044297" lon="113.9948182"/>
+  <node id="6531598569" lat="22.6045840" lon="113.9943370"/>
+  <node id="6531598570" lat="22.6052783" lon="113.9945357"/>
+  <node id="6531598572" lat="22.6055358" lon="113.9950574"/>
+  <node id="6531598573" lat="22.6054170" lon="113.9945053"/>
+  <node id="6531598574" lat="22.6048761" lon="113.9939636"/>
+  <node id="6531598575" lat="22.6049803" lon="113.9945209"/>
+  <node id="6531598576" lat="22.6051187" lon="113.9944905"/>
+  <node id="6531598577" lat="22.6050145" lon="113.9939332"/>
+  <node id="6531598578" lat="22.6049978" lon="113.9936746"/>
+  <node id="6531598579" lat="22.6048653" lon="113.9936993"/>
+  <node id="6602883887" lat="22.6003581" lon="113.9973114"/>
+  <node id="6602883889" lat="22.6004353" lon="113.9971123"/>
+  <node id="6602883892" lat="22.6005052" lon="113.9967250"/>
+  <node id="6602883894" lat="22.6004758" lon="113.9965060"/>
+  <node id="6602883896" lat="22.6002879" lon="113.9962032"/>
+  <node id="6602883897" lat="22.6002691" lon="113.9966290"/>
+  <node id="6602883898" lat="22.6004859" lon="113.9965952"/>
+  <node id="6602883899" lat="22.6002669" lon="113.9966676"/>
+  <node id="6602883900" lat="22.6002162" lon="113.9970672"/>
+  <node id="6602883901" lat="22.6004056" lon="113.9972124"/>
+  <node id="6602883903" lat="22.6001558" lon="113.9976349"/>
+  <node id="6602883904" lat="22.6005321" lon="113.9973212"/>
+  <node id="6602883905" lat="22.6006345" lon="113.9965663"/>
+  <node id="6602883906" lat="22.6003793" lon="113.9961455"/>
+  <node id="6602883908" lat="22.6012406" lon="113.9960919"/>
+  <node id="6602883909" lat="22.6016111" lon="113.9967064"/>
+  <node id="6602883910" lat="22.6011489" lon="113.9970180"/>
+  <node id="6602883911" lat="22.6007840" lon="113.9963908"/>
+  <node id="6602883913" lat="22.6011112" lon="113.9962034"/>
+  <node id="6602883926" lat="22.6010228" lon="113.9962444"/>
+  <node id="6683550376" lat="22.6001039" lon="113.9963185"/>
+  <node id="6683550378" lat="22.6002302" lon="113.9971256"/>
+  <node id="6816303078" lat="22.6017152" lon="113.9980099"/>
+  <node id="6816303079" lat="22.6017758" lon="113.9982285"/>
+  <node id="6816303080" lat="22.6015742" lon="113.9982942"/>
+  <node id="6816303081" lat="22.6015135" lon="113.9980756"/>
+  <node id="6816303082" lat="22.6016306" lon="113.9976574"/>
+  <node id="6816303084" lat="22.6013509" lon="113.9974819"/>
+  <node id="6816428499" lat="22.6026095" lon="113.9973940"/>
+  <node id="6816428500" lat="22.6026706" lon="113.9976191"/>
+  <node id="6816428501" lat="22.6024616" lon="113.9976857"/>
+  <node id="6816428502" lat="22.6024005" lon="113.9974607"/>
+  <node id="6816439985" lat="22.6014179" lon="113.9977260"/>
+  <node id="6816439986" lat="22.6021489" lon="113.9978193"/>
+  <node id="6816439987" lat="22.6022139" lon="113.9980604"/>
+  <node id="6816439988" lat="22.6019960" lon="113.9981293"/>
+  <node id="6816439989" lat="22.6019309" lon="113.9978883"/>
+  <node id="6816439990" lat="22.6019708" lon="113.9972220"/>
+  <node id="6816439991" lat="22.6020413" lon="113.9974702"/>
+  <node id="6816439992" lat="22.6018199" lon="113.9975441"/>
+  <node id="6816439993" lat="22.6017494" lon="113.9972958"/>
+  <node id="6816439994" lat="22.6026261" lon="113.9976446"/>
+  <node id="6816439995" lat="22.6027025" lon="113.9978899"/>
+  <node id="6816439996" lat="22.6024894" lon="113.9979677"/>
+  <node id="6816439997" lat="22.6024130" lon="113.9977224"/>
+  <node id="6816439998" lat="22.6024714" lon="113.9974302"/>
+  <node id="6816439999" lat="22.6022482" lon="113.9974253"/>
+  <node id="6816440000" lat="22.6022527" lon="113.9971847"/>
+  <node id="6816440001" lat="22.6024759" lon="113.9971896"/>
+  <node id="6816440002" lat="22.6029504" lon="113.9978743"/>
+  <node id="6816440003" lat="22.6031693" lon="113.9977984"/>
+  <node id="6816440004" lat="22.6030994" lon="113.9975621"/>
+  <node id="6816440005" lat="22.6028806" lon="113.9976380"/>
+  <node id="6816440006" lat="22.6029228" lon="113.9970177"/>
+  <node id="6816440007" lat="22.6029241" lon="113.9972873"/>
+  <node id="6816440008" lat="22.6027025" lon="113.9972885"/>
+  <node id="6816440009" lat="22.6027012" lon="113.9970190"/>
+  <node id="7053887916" lat="22.6064258" lon="113.9971851"/>
+  <node id="7053887917" lat="22.6062217" lon="113.9971016"/>
+  <node id="7053887918" lat="22.6060594" lon="113.9975669"/>
+  <node id="7053887919" lat="22.6062636" lon="113.9976504"/>
+  <node id="7057414607" lat="22.6009887" lon="113.9966887"/>
+  <node id="8509221954" lat="22.6029474" lon="113.9934627"/>
+  <node id="8509221955" lat="22.6026295" lon="113.9936260"/>
+  <node id="8509221956" lat="22.6024141" lon="113.9936021"/>
+  <node id="8509411438" lat="22.6021098" lon="113.9936367"/>
+  <node id="8535716252" lat="22.6046269" lon="113.9934065"/>
+  <node id="8535716253" lat="22.6045092" lon="113.9934316"/>
+  <node id="8535716254" lat="22.6045522" lon="113.9936683"/>
+  <node id="8535716255" lat="22.6046724" lon="113.9936428"/>
+  <node id="8535716256" lat="22.6046974" lon="113.9937803"/>
+  <node id="8535716257" lat="22.6048072" lon="113.9937569"/>
+  <node id="8535791124" lat="22.6003895" lon="113.9981924"/>
+  <node id="8535791125" lat="22.6003541" lon="113.9982060"/>
+  <node id="8535791126" lat="22.6004510" lon="113.9985028"/>
+  <node id="8535791127" lat="22.6003800" lon="113.9985300"/>
+  <node id="8535791128" lat="22.6002248" lon="113.9980548"/>
+  <node id="8535791129" lat="22.6003312" lon="113.9980140"/>
+  <node id="8535802324" lat="22.6015635" lon="113.9974134"/>
+  <node id="8604483297" lat="22.6053972" lon="113.9950903"/>
+  <node id="8604483300" lat="22.6050027" lon="113.9952555"/>
+  <node id="8604483304" lat="22.6052994" lon="113.9956507"/>
+  <node id="8604483305" lat="22.6058156" lon="113.9957548"/>
+  <node id="8604483306" lat="22.6057825" lon="113.9957004"/>
+  <node id="8604483307" lat="22.6058360" lon="113.9956814"/>
+  <node id="8604483308" lat="22.6057919" lon="113.9956670"/>
+  <node id="8604483309" lat="22.6049575" lon="113.9956308"/>
+  <node id="8604483310" lat="22.6049673" lon="113.9956005"/>
+  <node id="8604483311" lat="22.6042833" lon="113.9947062"/>
+  <node id="8604483312" lat="22.6043432" lon="113.9947857"/>
+  <node id="8604575429" lat="22.6062622" lon="113.9969757"/>
+  <node id="8604575430" lat="22.6063626" lon="113.9970796"/>
+  <node id="8604575431" lat="22.6063798" lon="113.9966504"/>
+  <node id="8604575432" lat="22.6065145" lon="113.9966426"/>
+  <node id="8604669048" lat="22.6020420" lon="113.9972372"/>
+  <node id="8604669049" lat="22.6021367" lon="113.9972352"/>
+  <node id="8604669050" lat="22.6026425" lon="113.9973318"/>
+  <node id="8604669051" lat="22.6025849" lon="113.9973760"/>
+  <node id="8604669052" lat="22.6025367" lon="113.9971554"/>
+  <node id="8604669053" lat="22.6026270" lon="113.9970951"/>
+  <node id="8853596667" lat="22.6016675" lon="113.9946730"/>
+  <node id="8853596668" lat="22.6015907" lon="113.9946221"/>
+  <node id="8853596669" lat="22.6015598" lon="113.9945188"/>
+  <node id="8853596670" lat="22.6016167" lon="113.9944357"/>
+  <node id="8853596671" lat="22.6017455" lon="113.9945228"/>
+  <node id="8853596672" lat="22.6024797" lon="113.9952430"/>
+  <node id="8853596673" lat="22.6023571" lon="113.9950714"/>
+  <node id="8853596674" lat="22.6018854" lon="113.9947548"/>
+  <node id="8856043160" lat="22.6051317" lon="113.9953064"/>
+  <node id="9070798461" lat="22.6006547" lon="113.9934151"/>
+  <node id="10243691516" lat="22.6031668" lon="113.9950557"/>
+  <way id="980598946">
+    <nd ref="9070798417"/>
+    <nd ref="6683163597"/>
+    <nd ref="6683163598"/>
+    <nd ref="9070771516"/>
+    <nd ref="9070771515"/>
+    <nd ref="9070798417"/>
+  </way>
+  <way id="980598947">
+    <nd ref="9070798424"/>
+    <nd ref="9070798423"/>
+    <nd ref="9070798422"/>
+    <nd ref="9070798421"/>
+    <nd ref="9070798420"/>
+    <nd ref="9070798419"/>
+    <nd ref="9070798418"/>
+    <nd ref="9070798424"/>
+  </way>
+  <way id="980598950">
+    <nd ref="9070798441"/>
+    <nd ref="9070798440"/>
+    <nd ref="9070798439"/>
+    <nd ref="9070798438"/>
+    <nd ref="8552234693"/>
+    <nd ref="9070798437"/>
+    <nd ref="9070798436"/>
+    <nd ref="9070798435"/>
+    <nd ref="9070798434"/>
+    <nd ref="9070798441"/>
+  </way>
+  <way id="980598951">
+    <nd ref="9070798446"/>
+    <nd ref="9070798445"/>
+    <nd ref="9070798444"/>
+    <nd ref="9070798443"/>
+    <nd ref="9070798442"/>
+    <nd ref="9070798446"/>
+  </way>
+  <way id="980598952">
+    <nd ref="8552263729"/>
+    <nd ref="9070798454"/>
+    <nd ref="9070798453"/>
+    <nd ref="9070798452"/>
+    <nd ref="9070798451"/>
+    <nd ref="9070798450"/>
+    <nd ref="9070798447"/>
+    <nd ref="9070798449"/>
+    <nd ref="6683163629"/>
+    <nd ref="8552263727"/>
+    <nd ref="8552263728"/>
+    <nd ref="8552263729"/>
+  </way>
+  <way id="980598954">
+    <nd ref="9070798469"/>
+    <nd ref="9070798468"/>
+    <nd ref="9070798467"/>
+    <nd ref="9070798466"/>
+    <nd ref="9070798465"/>
+    <nd ref="9070798464"/>
+    <nd ref="9070798463"/>
+    <nd ref="9070798462"/>
+    <nd ref="9070798461"/>
+    <nd ref="9070798469"/>
+  </way>
+  <way id="1360556610">
+    <nd ref="12595086536"/>
+    <nd ref="12595086535"/>
+    <nd ref="12595086534"/>
+    <nd ref="12595086533"/>
+    <nd ref="12595086532"/>
+    <nd ref="12595086531"/>
+    <nd ref="12595086530"/>
+    <nd ref="12595086529"/>
+    <nd ref="12595086528"/>
+    <nd ref="12595086527"/>
+    <nd ref="12595086526"/>
+    <nd ref="12595086536"/>
+  </way>
+  <way id="533170976">
+    <nd ref="5173028415"/>
+    <nd ref="5173028416"/>
+    <nd ref="5173028417"/>
+    <nd ref="5173028420"/>
+    <nd ref="5173028415"/>
+  </way>
+  <way id="536044889">
+    <nd ref="5193738593"/>
+    <nd ref="5193738594"/>
+    <nd ref="5193738595"/>
+    <nd ref="5193738596"/>
+    <nd ref="5193738593"/>
+  </way>
+  <way id="536044890">
+    <nd ref="5193738597"/>
+    <nd ref="5193738598"/>
+    <nd ref="5193738599"/>
+    <nd ref="5193738600"/>
+    <nd ref="5193738597"/>
+  </way>
+  <way id="1360560720">
+    <nd ref="12595084588"/>
+    <nd ref="12595084587"/>
+    <nd ref="12595084586"/>
+    <nd ref="12595084585"/>
+    <nd ref="12595084588"/>
+  </way>
+  <way id="1360556609">
+    <nd ref="12595086525"/>
+    <nd ref="12595086524"/>
+    <nd ref="12595086523"/>
+    <nd ref="12595086522"/>
+    <nd ref="12595086521"/>
+    <nd ref="12595086525"/>
+  </way>
+  <way id="980598948">
+    <nd ref="9070798428"/>
+    <nd ref="9070798427"/>
+    <nd ref="9070798426"/>
+    <nd ref="9070798425"/>
+    <nd ref="9070798428"/>
+  </way>
+  <way id="980598953">
+    <nd ref="9070798460"/>
+    <nd ref="9070798459"/>
+    <nd ref="9070798458"/>
+    <nd ref="9070798457"/>
+    <nd ref="9070798456"/>
+    <nd ref="9070798455"/>
+    <nd ref="9070798460"/>
+  </way>
+  <way id="533170989">
+    <nd ref="5173028685"/>
+    <nd ref="5173028703"/>
+    <nd ref="5173028686"/>
+    <nd ref="5173028687"/>
+    <nd ref="5173028688"/>
+    <nd ref="5173028689"/>
+    <nd ref="8853596674"/>
+    <nd ref="8853596673"/>
+    <nd ref="8853596672"/>
+    <nd ref="5173028690"/>
+    <nd ref="5173028691"/>
+    <nd ref="5173028692"/>
+    <nd ref="5173028693"/>
+    <nd ref="5173028694"/>
+    <nd ref="5173028695"/>
+    <nd ref="5173028698"/>
+    <nd ref="5173028699"/>
+    <nd ref="5173028700"/>
+    <nd ref="5173028701"/>
+    <nd ref="5173028702"/>
+    <nd ref="5173028685"/>
+  </way>
+  <way id="956649059">
+    <nd ref="8853596671"/>
+    <nd ref="8853596670"/>
+    <nd ref="8853596669"/>
+    <nd ref="8853596668"/>
+    <nd ref="8853596667"/>
+    <nd ref="8853596671"/>
+  </way>
+
+</osm>
