@@ -54,6 +54,12 @@ namespace VehicleBehaviour {
          */
         [SerializeField] AnimationCurve turnInputCurve = AnimationCurve.Linear(-1.0f, -1.0f, 1.0f, 1.0f);
 
+        [Header("Speed Sensitive Steering")]
+        [SerializeField] AnimationCurve speedSteerCurve = new AnimationCurve(
+            new Keyframe(0, 1),    // 0km/h时100%转向
+            new Keyframe(150, 0.25f) // 150km/h时10%转向
+        );
+
         [Header("Wheels")]
         [SerializeField] WheelCollider[] driveWheel = new WheelCollider[0];
         public WheelCollider[] DriveWheel => driveWheel;
@@ -85,7 +91,10 @@ namespace VehicleBehaviour {
          *  The higher the torque the faster it accelerate
          *  the longer the curve the faster it gets
          */
-        [SerializeField] AnimationCurve motorTorque = new AnimationCurve(new Keyframe(0, 200), new Keyframe(50, 300), new Keyframe(200, 0));
+        [SerializeField] AnimationCurve motorTorque = new AnimationCurve(
+            new Keyframe(0, 180), 
+            new Keyframe(50, 130), 
+            new Keyframe(120, 0));
 
         // Differential gearing ratio
         [Range(2, 16)]
@@ -122,7 +131,7 @@ namespace VehicleBehaviour {
         }
 
         // How hard do you want to drift?
-        [Range(0.0f, 2f)]
+        [Range(0.0f, 20f)]
         [SerializeField] float driftIntensity = 1f;
         public float DriftIntensity { get => driftIntensity;
             set => driftIntensity = Mathf.Clamp(value, 0.0f, 2.0f);
@@ -140,7 +149,7 @@ namespace VehicleBehaviour {
         [SerializeField] Transform centerOfMass = null;
 
         // Force aplied downwards on the car, proportional to the car speed
-        [Range(0.5f, 10f)]
+        [Range(0.5f, 30f)]
         [SerializeField] float downforce = 1.0f;
 
         public float Downforce
@@ -288,7 +297,9 @@ namespace VehicleBehaviour {
         // Update everything
         void FixedUpdate () {
             // Mesure current speed
-            speed = transform.InverseTransformDirection(rb.velocity).z * 3.6f;
+            speed = rb.velocity.magnitude * 3.6f; // m/s to km/h
+            float currentSpeed = Mathf.Abs(speed); // 取绝对值确保倒车时逻辑一致
+            float speedFactor = speedSteerCurve.Evaluate(currentSpeed);
 
             // // Get all the inputs!
             // if (isPlayer) {
@@ -312,8 +323,11 @@ namespace VehicleBehaviour {
                 // 油门 & 刹车（合并为一个轴）
                 throttle = throttleAction.ReadValue<float>() - brakeAction.ReadValue<float>();
 
-                // 转向
-                steering = turnInputCurve.Evaluate(steerAction.ReadValue<float>()) * steerAngle;
+                // 转向，速度越快转得越慢
+                // steering = turnInputCurve.Evaluate(steerAction.ReadValue<float>()) * steerAngle;
+                steering = turnInputCurve.Evaluate(steerAction.ReadValue<float>()) 
+                            * steerAngle 
+                            * speedFactor; // 应用速度系数
 
                 // 手刹
                 handbrake = handbrakeAction.ReadValue<float>() > 0.5f;
@@ -403,6 +417,8 @@ namespace VehicleBehaviour {
 
             // Drift
             if (drift && allowDrift) {
+                float rawSteerInput = turnInputCurve.Evaluate(steerAction.ReadValue<float>());
+                
                 Vector3 driftForce = -transform.right;
                 driftForce.y = 0.0f;
                 driftForce.Normalize();
@@ -413,7 +429,9 @@ namespace VehicleBehaviour {
 
 
                 rb.AddForce(driftForce * driftIntensity, ForceMode.Force);
-                rb.AddTorque(driftTorque * driftIntensity, ForceMode.VelocityChange);             
+                rb.AddTorque(driftTorque * driftIntensity, ForceMode.VelocityChange);
+
+                Debug.Log($"Drift Force: {driftForce.magnitude} | Torque: {driftTorque.magnitude}");
             }
             
             // Downforce

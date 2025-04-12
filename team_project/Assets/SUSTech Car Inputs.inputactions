@@ -71,26 +71,37 @@
             ],
             "bindings": [
                 {
-                    "name": "",
-                    "id": "d6b60cdc-3915-46ea-a3d3-2770896f2b3d",
+                    "name": "1D Axis",
+                    "id": "3edeb26d-f236-4a2d-980e-54227f8aa326",
+                    "path": "1DAxis",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Throttle",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "positive",
+                    "id": "83c0f494-0395-496c-a2d8-a49548bd66ae",
                     "path": "<Keyboard>/w",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
                     "action": "Throttle",
                     "isComposite": false,
-                    "isPartOfComposite": false
+                    "isPartOfComposite": true
                 },
                 {
-                    "name": "",
-                    "id": "71961f91-bdff-4059-8749-0c362cb67471",
+                    "name": "negative",
+                    "id": "2c0fad14-eb54-4d6c-ac75-8d4bedc64baa",
                     "path": "<Keyboard>/s",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Brake",
+                    "action": "Throttle",
                     "isComposite": false,
-                    "isPartOfComposite": false
+                    "isPartOfComposite": true
                 },
                 {
                     "name": "1D Axis",
