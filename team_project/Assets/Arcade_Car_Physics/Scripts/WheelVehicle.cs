@@ -364,7 +364,7 @@ namespace VehicleBehaviour {
                     wheel.brakeTorque = brakeForce;
                 }
             }
-            else if (throttle != 0 && (Mathf.Abs(speed) < 4 || Mathf.Sign(speed) == Mathf.Sign(throttle)))
+            else if (throttle != 0 && (Mathf.Abs(speed) < 25 || Mathf.Sign(speed) == Mathf.Sign(throttle)))
             {
                 foreach (WheelCollider wheel in driveWheel)
                 {
