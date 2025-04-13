@@ -4,7 +4,7 @@ using UnityEngine.UI;
 
 public class LapCounter : MonoBehaviour
 {
-    public int totalLaps = 3;
+    public int totalLaps = 1;
     private int currentLap = 0;
     private bool raceStarted = false;
     private float raceTimer = 0f;
@@ -12,7 +12,7 @@ public class LapCounter : MonoBehaviour
 
     // 存档点相关
     private int lastCheckpointIndex = 0;
-    private int totalCheckpoints = 3;
+    private int totalCheckpoints = 6;
     private Vector3 lastCheckpointPosition;
     private Quaternion lastCheckpointRotation;
     private bool[] checkpointsPassed;
