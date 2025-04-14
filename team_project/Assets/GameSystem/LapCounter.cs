@@ -1,7 +1,13 @@
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
-
+/** 
+     * AI-generated-content 
+     * tool: grok 
+     * version: 3.0
+     * usage: I used the prompt "我想要基于unity制作一个赛车小游戏，现在我要实现附着在车上的记圈脚本，同时实现游戏逻辑的控制，如....，你能帮我写一下控制脚本吗", and 
+     * directly copy the code from its response 
+     */
 public class LapCounter : MonoBehaviour
 {
     public int totalLaps = 1;
@@ -44,7 +50,6 @@ public class LapCounter : MonoBehaviour
         UpdateSpeedDisplay(); // 初始更新速度显示
         finishText.gameObject.SetActive(false);
         quitButton.gameObject.SetActive(false);
-        quitButton.onClick.AddListener(QuitGame);
 
         checkpointsPassed = new bool[totalCheckpoints + 1];
         lastCheckpointPosition = playerCar.transform.position;
@@ -195,6 +200,10 @@ public class LapCounter : MonoBehaviour
     {
         if (finishText != null)
         {
+            finishText.text=$"You successfully completed {totalLaps} lap with a time of {raceTimer:F2}s";
+            lapText.gameObject.SetActive(false);
+            timeText.gameObject.SetActive(false);
+            speedText.gameObject.SetActive(false);
             finishText.gameObject.SetActive(true);
         }
         if (quitButton != null)

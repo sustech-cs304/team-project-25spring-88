@@ -4,6 +4,13 @@ using UnityEngine;
 using UnityEditor;
 
 public class ClearAllTerrainsTool : MonoBehaviour
+/** 
+     * AI-generated-content 
+     * tool: grok 
+     * version: 3.0
+     * usage: I used the prompt "æˆ‘æƒ³è¦åŸºäºunityåˆ¶ä½œä¸€ä¸ªèµ›è½¦å°æ¸¸æˆï¼Œç°åœ¨æˆ‘è¦å®ç°æ¸…æ¥šåœ°å½¢ä¸Šæ‰€æœ‰çš„è‰ï¼Œä½ èƒ½å¸®æˆ‘å†™ä¸€ä¸‹æ§åˆ¶è„šæœ¬å—", and 
+     * directly copy the code from its response 
+     */
 {
     [MenuItem("Tools/Clear All Terrain Trees and Details")]
     public static void ClearAllTerrains()
@@ -15,17 +22,17 @@ public class ClearAllTerrainsTool : MonoBehaviour
         {
             TerrainData data = terrain.terrainData;
 
-            // Çå³ıËùÓĞ²İ
+            // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ğ²ï¿½
             for (int i = 0; i < data.detailPrototypes.Length; i++)
             {
                 int[,] emptyDetail = new int[data.detailWidth, data.detailHeight];
                 data.SetDetailLayer(0, 0, i, emptyDetail);
             }
 
-            // Çå³ıËùÓĞÊ÷
+            // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
             data.treeInstances = new TreeInstance[0];
 
-            // ¿ÉÑ¡£ºÇå³ıÔ­ĞÍ¶¨Òå£¨½÷É÷Ê¹ÓÃ£©
+            // ï¿½ï¿½Ñ¡ï¿½ï¿½ï¿½ï¿½ï¿½Ô­ï¿½Í¶ï¿½ï¿½å£¨ï¿½ï¿½ï¿½ï¿½Ê¹ï¿½Ã£ï¿½
             // data.treePrototypes = new TreePrototype[0];
             // data.detailPrototypes = new DetailPrototype[0];
 
@@ -33,6 +40,6 @@ public class ClearAllTerrainsTool : MonoBehaviour
             clearedCount++;
         }
 
-        Debug.Log($"ÒÑÇå³ı {clearedCount} ¸ö Terrain ÖĞµÄËùÓĞÊ÷ºÍ²İ£¡");
+        Debug.Log($"ï¿½ï¿½ï¿½ï¿½ï¿½ {clearedCount} ï¿½ï¿½ Terrain ï¿½Ğµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í²İ£ï¿½");
     }
 }

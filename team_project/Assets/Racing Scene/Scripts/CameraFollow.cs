@@ -6,7 +6,13 @@
 using System.Text;
 using UnityEngine;
 using UnityEngine.UI;
-
+/** 
+     * AI-generated-content 
+     * tool: grok 
+     * version: 3.0
+     * usage: I used the prompt "我想要基于unity制作一个赛车小游戏，现在我要实现camera跟随小车脚本，你能帮我写一下控制脚本吗", and 
+     * directly copy the code from its response 
+     */
 namespace VehicleBehaviour.Utils {
 	public class CameraFollow : MonoBehaviour {
 		// Should the camera follow the target

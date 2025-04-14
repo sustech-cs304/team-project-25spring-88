@@ -1,29 +1,35 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+/** 
+     * AI-generated-content 
+     * tool: grok 
+     * version: 3.0
+     * usage: I used the prompt "æˆ‘æƒ³è¦åŸºäºŽunityåˆ¶ä½œä¸€ä¸ªèµ›è½¦å°æ¸¸æˆï¼ŒçŽ°åœ¨æˆ‘è¦å®žçŽ°æ—¶é—´å˜åŒ–è„šæœ¬ï¼Œä½ èƒ½å¸®æˆ‘å†™ä¸€ä¸‹æŽ§åˆ¶è„šæœ¬å—", and 
+     * directly copy the code from its response 
+     */
 public class DayNightCycle : MonoBehaviour
 {
-    [Header("Ê±¼ä¿ØÖÆ")]
-    public float dayLengthInMinutes = 1f; // Ò»ÌìµÄ³¤¶È£¨1·ÖÖÓ=Ò»Ìì£©
-    private float timeOfDay = 0f; // ·¶Î§ 0.0~1.0 ±íÊ¾Ò»ÕûÌìµÄ½ø¶È
+    [Header("Ê±ï¿½ï¿½ï¿½ï¿½ï¿½")]
+    public float dayLengthInMinutes = 1f; // Ò»ï¿½ï¿½Ä³ï¿½ï¿½È£ï¿½1ï¿½ï¿½ï¿½ï¿½=Ò»ï¿½ì£©
+    private float timeOfDay = 0f; // ï¿½ï¿½Î§ 0.0~1.0 ï¿½ï¿½Ê¾Ò»ï¿½ï¿½ï¿½ï¿½Ä½ï¿½ï¿½ï¿½
 
-    [Header("Ì«ÑôÉèÖÃ")]
+    [Header("Ì«ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½")]
     public Light sun;
     public Gradient lightColor;
     public AnimationCurve lightIntensity;
 
     void Update()
     {
-        // Ê±¼äÍÆ½ø
+        // Ê±ï¿½ï¿½ï¿½Æ½ï¿½
         timeOfDay += Time.deltaTime / (dayLengthInMinutes * 60f);
         if (timeOfDay > 1f) timeOfDay -= 1f;
 
-        // Ì«ÑôÐý×ª
+        // Ì«ï¿½ï¿½ï¿½ï¿½×ª
         float sunAngle = timeOfDay * 360f - 90f;
         sun.transform.rotation = Quaternion.Euler(sunAngle, -90f, 10f);
 
-        // ÉèÖÃ¹âÕÕÑÕÉ«ÓëÇ¿¶È
+        // ï¿½ï¿½ï¿½Ã¹ï¿½ï¿½ï¿½ï¿½ï¿½É«ï¿½ï¿½Ç¿ï¿½ï¿½
         sun.color = lightColor.Evaluate(timeOfDay);
         sun.intensity = lightIntensity.Evaluate(timeOfDay);
     }

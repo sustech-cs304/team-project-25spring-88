@@ -1,5 +1,11 @@
 using UnityEngine;
-
+/** 
+     * AI-generated-content 
+     * tool: grok 
+     * version: 3.0
+     * usage: I used the prompt "我想要基于unity制作一个赛车小游戏，现在我要实现存档点和记录点实现存档和如果不经过这些点不能正常结束游戏，你能帮我写一下控制脚本吗", and 
+     * directly copy the code from its response 
+     */
 public class Checkpoint : MonoBehaviour
 {
     public int checkpointIndex;

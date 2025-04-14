@@ -4,18 +4,25 @@ using UnityEngine;
 
 public class WeatherSystem : MonoBehaviour
 {
+    /** 
+     * AI-generated-content 
+     * tool: grok 
+     * version: 3.0
+     * usage: I used the prompt "æˆ‘æƒ³è¦åŸºäºunityåˆ¶ä½œä¸€ä¸ªèµ›è½¦å°æ¸¸æˆï¼Œç°åœ¨æˆ‘è¦å®ç°å¤©æ°”æ§åˆ¶ï¼Œä½ èƒ½å¸®æˆ‘å†™ä¸€ä¸‹æ§åˆ¶è„šæœ¬å—", and 
+     * directly copy the code from its response 
+     */
     public enum WeatherType { Clear, Rain, Fog }
 
-    [Header("ÌìÆøÉèÖÃ")]
+    [Header("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½")]
     public WeatherType currentWeather = WeatherType.Clear;
     public ParticleSystem rainParticle;
     public Light directionalLight;
 
-    [Header("ÎíÉèÖÃ")]
+    [Header("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½")]
     public Color fogColor = new Color(0.7f, 0.7f, 0.7f);
     public float fogDensity = 0.01f;
 
-    [Header("ÌìÆøÇĞ»»ÖÜÆÚ")]
+    [Header("ï¿½ï¿½ï¿½ï¿½ï¿½Ğ»ï¿½ï¿½ï¿½ï¿½ï¿½")]
     public float weatherChangeInterval = 60f;
     private float weatherTimer;
 
