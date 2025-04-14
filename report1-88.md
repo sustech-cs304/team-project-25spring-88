@@ -4,7 +4,7 @@ Race through a detailed SUSTech campus map with advanced tracks, obstacles, and 
 
 ## Features
 
-1. **SUSTech Campus Racing Map**  
+1. **SUSTech Campus Racing Map & UI**  
    Race through a detailed and immersive map inspired by SUSTech’s campus.
 
 2. **Advanced Track Design**  
@@ -20,10 +20,10 @@ Race through a detailed SUSTech campus map with advanced tracks, obstacles, and 
 4. **Dynamic Weather & Time System**  
    Experience realistic changes in weather (rain, fog, etc.) and time (day/night cycles) that affect gameplay.
 
-5. **Themed Vehicles & Power-Ups**  
-   Select from a variety of department- or college-themed cars, each featuring unique power-ups, to enrich your driving experience and gain strategic advantages in races.
+5. **Themed Vehicles**  
+   Select from a variety of themed cars to enrich players' driving experience in races.
 
-6. **Realistic Driving Experience**  
+6. **Realistic Driving sExperience**  
    Provides torque-based control systems, realistic driving sounds, speed-up mechanisms, and drift mechanisms.
 
 7. **Multi-View Switching & Recording**  
