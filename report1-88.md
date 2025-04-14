@@ -8,7 +8,7 @@ Race through a detailed SUSTech campus map with advanced tracks, obstacles, and 
    Race through a detailed and immersive map inspired by SUSTech’s campus.
 
 2. **Advanced Track Design**  
-   Challenging tracks with obstacles and hidden shortcuts for strategic gameplay.
+   User-friendly tracks for beginners and hidden shortcuts for strategic gameplay.
 
 3. **Multiple Game Modes**  
    - **Regular Racing Mode**: Classic racing for speed enthusiasts.  
