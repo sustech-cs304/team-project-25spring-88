@@ -24,7 +24,7 @@ Race through a detailed SUSTech campus map with advanced tracks, obstacles, and 
    Select from a variety of department- or college-themed cars, each featuring unique power-ups, to enrich your driving experience and gain strategic advantages in races.
 
 6. **Realistic Driving Experience**  
-   Provides options for automatic and manual transmission, along with realistic physics-based driving mechanics.
+   Provides torque-based control systems, realistic driving sounds, speed-up mechanisms, and drift mechanisms.
 
 7. **Multi-View Switching & Recording**  
    Switch between different camera angles (e.g., first-person, third-person) and record your best moments.
