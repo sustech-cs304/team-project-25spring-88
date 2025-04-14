@@ -6,7 +6,7 @@
 
 ## 1. Architecture Design
 
-![](resource\Architecture.png)
+![](resource/Architecture.png)
 
 <!-- Ensure this architecture diagram (e.g., architecture_diagram.png) has been uploaded to the images/ folder in your GitHub repository -->
 
