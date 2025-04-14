@@ -8,7 +8,7 @@ Race through a detailed SUSTech campus map with advanced tracks, obstacles, and 
    Race through a detailed and immersive map inspired by SUSTech’s campus.
 
 2. **Advanced Track Design**  
-   Challenging tracks with obstacles and hidden shortcuts for strategic gameplay.
+   User-friendly tracks for beginners and hidden shortcuts for strategic gameplay.
 
 3. **Multiple Game Modes**  
    - **Regular Racing Mode**: Classic racing for speed enthusiasts.  
@@ -24,7 +24,7 @@ Race through a detailed SUSTech campus map with advanced tracks, obstacles, and 
    Select from a variety of department- or college-themed cars, each featuring unique power-ups, to enrich your driving experience and gain strategic advantages in races.
 
 6. **Realistic Driving Experience**  
-   Provides options for automatic and manual transmission, along with realistic physics-based driving mechanics.
+   Provides torque-based control systems, realistic driving sounds, speed-up mechanisms, and drift mechanisms.
 
 7. **Multi-View Switching & Recording**  
    Switch between different camera angles (e.g., first-person, third-person) and record your best moments.
