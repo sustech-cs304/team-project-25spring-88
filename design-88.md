@@ -69,10 +69,12 @@ We used Figma to create basic UI design, please visit the follwoing link to acce
 ## 3. Project Progress
 
 
-1. **SUSTech Campus Racing Map** (6/10)
+1. **SUSTech Campus Racing Map & UI** (6/10)
+   
    Race through a detailed and immersive map inspired by SUSTech’s campus.
 
 2. **Advanced Track Design**  (1/2)
+   
    User-friendly tracks for beginners and hidden shortcuts for strategic gameplay.
 
 3. **Multiple Game Modes**  (4/25)
@@ -83,13 +85,17 @@ We used Figma to create basic UI design, please visit the follwoing link to acce
    - **Electric Vehicles vs Security Guard (PvE Mode)**: A unique player-vs-environment challenge.
 
 4. **Dynamic Weather & Time System**  (4/6)
+   
    Experience realistic changes in weather (rain, fog, etc.) and time (day/night cycles) that affect gameplay.
 
 5. **Themed Vehicles** (3/4) 
+   
    Select from a variety of department- or college-themed cars, each featuring unique power-ups, to enrich your driving experience and gain strategic advantages in races.
 
 6. **Realistic Driving Experience** (4/4)  
+   
    Provides torque-based control systems, realistic driving sounds, speed-up mechanisms, and drift mechanisms.
 
 7. **Multi-View Switching & Recording** (0/2) 
+   
    Switch between different camera angles (e.g., first-person, third-person) and record your best moments.
