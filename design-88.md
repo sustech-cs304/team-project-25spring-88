@@ -12,19 +12,18 @@
 
 <!-- If the image filename or path differs, modify accordingly, e.g., ![Project Architecture Diagram](images/your_architecture_diagram.jpg) -->
 
-**Diagram Description**:
 <!-- AI-generated-content  -->
 <!-- tool: ChatGPT -->
 <!-- version: 4o -->
   
 As illustrated in the above figure, the project currently consists of three scenes: `Landing Scene`, `Picking Car Scene`, `Racing Scene`.
-#### 1.1 Landing Scene 
+### 1.1 Landing Scene 
 The initial interface presented to users when the game starts. It allows players to choose different game modes. At current stage, only `Regular Racing Mode` is available.
 
-#### 1.2 Picking Car Scene  
+### 1.2 Picking Car Scene  
 Enables users to browse and select their preferred vehicle before entering the race. It reuses the car models in `Racing Scene`.
 
-#### 1.3 Racing Scene  
+### 1.3 Racing Scene  
 The main interactive environment where the race takes place. All modes share the same racing scene. It consists of several critical components:
 
 - **Map Component**: Defines the spatial structure of the game environment, including terrain, buildings and plants. **Note**: This component is built on the basis of [Real World Terrain](https://assetstore.unity.com/packages/tools/terrain/real-world-terrain-8752).
@@ -39,7 +38,7 @@ The main interactive environment where the race takes place. All modes share the
 
 - **Camera Autofollow**: Provides dynamic camera tracking by following the player's car with smooth and intuitive movement.
 
-#### 1.4 Additional Notes  
+### 1.4 Additional Notes  
 The current architecture focuses on single-player gameplay and does not yet consider multiplayer online functionality. If multiplayer support is needed in the future, network synchronization components can be introduced. Additionally, the weather and day/night effects in the environment system are only implemented with basic functionality in Sprint 1, with further optimizations planned for future iterations.
 
 <!-- Modify the architecture type (e.g., MVC, client-server architecture) based on your project's actual situation -->
