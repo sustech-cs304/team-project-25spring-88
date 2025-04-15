@@ -16,7 +16,7 @@
 <!-- tool: ChatGPT -->
 <!-- version: 4o -->
   
-As illustrated in the above figure, the project currently consists of three scenes: `Landing Scene`, `Picking Car Scene`, `Racing Scene`.
+As illustrated in the above figure, the project is built with Unity 3D and currently consists of three scenes: `Landing Scene`, `Picking Car Scene`, `Racing Scene`.
 ### 1.1 Landing Scene 
 The initial interface presented to users when the game starts. It allows players to choose different game modes. At current stage, only `Regular Racing Mode` is available.
 
