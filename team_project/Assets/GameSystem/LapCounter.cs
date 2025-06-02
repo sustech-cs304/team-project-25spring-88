@@ -154,7 +154,7 @@ public class LapCounter : MonoBehaviour
                     raceStarted = false;
                     Debug.Log($"Race Finished! Total Time: {raceTimer:F2}s");
                     TriggerCelebration();
-                    ShowEndScreen();
+                    ShowEndScreen(false);
                 }
             }
             else
@@ -195,13 +195,11 @@ public class LapCounter : MonoBehaviour
     public void gameover()
     {    
         TriggerCelebration();     
-        ShowEndScreen();
+        ShowEndScreen(false);
         Debug.Log("Game Over!");
         raceStarted = false;
         hasCelebrated = false;
-        currentLap = 0;
-        raceTimer = 0f;
-       
+        currentLap = 0;       
     }
     private void TriggerCelebration()
     {
@@ -227,20 +225,37 @@ public class LapCounter : MonoBehaviour
         hasCelebrated = true;
     }
 
-    private void ShowEndScreen()
+    private void ShowEndScreen(bool finish)
     {
-        if (finishText != null)
-        {
-            finishText.text=$"You have been caught by the police, and you escaped for a total of {raceTimer:F2} second.";
-            lapText.gameObject.SetActive(false);
-            timeText.gameObject.SetActive(false);
-            speedText.gameObject.SetActive(false);
-            distanceText.gameObject.SetActive(false); // 新增：隐藏距离显示
-            finishText.gameObject.SetActive(true);
+        if(finish){
+            if (finishText != null)
+            {
+                finishText.text=$"You have been caught by the police, and you escaped for a total of {raceTimer:F2} second.";
+                lapText.gameObject.SetActive(false);
+                timeText.gameObject.SetActive(false);
+                speedText.gameObject.SetActive(false);
+                distanceText.gameObject.SetActive(false); // 新增：隐藏距离显示
+                finishText.gameObject.SetActive(true);
+            }
+            if (quitButton != null)
+            {
+                quitButton.gameObject.SetActive(true);
+            }
         }
-        if (quitButton != null)
-        {
-            quitButton.gameObject.SetActive(true);
+        else{
+            if (finishText != null)
+            {
+                finishText.text=$"You completed a lap and toyed with the captor in the palm of your hand.";
+                lapText.gameObject.SetActive(false);
+                timeText.gameObject.SetActive(false);
+                speedText.gameObject.SetActive(false);
+                distanceText.gameObject.SetActive(false); // 新增：隐藏距离显示
+                finishText.gameObject.SetActive(true);
+            }
+            if (quitButton != null)
+            {
+                quitButton.gameObject.SetActive(true);
+            }
         }
     }
 
