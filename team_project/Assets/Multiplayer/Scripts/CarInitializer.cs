@@ -15,12 +15,7 @@ public class CarInitializer : NetworkBehaviour
         // 只让本地玩家控制自己拥有的车辆
         if (netId != null && !netId.isOwned) return;
 
-        // 启用本地玩家控制
         var vehicle = GetComponent<WheelVehicle>();
-        // if (vehicle != null)
-        // {
-        //     vehicle.IsPlayer = true;
-        // }
 
         // 设置摄像机跟随
         var cam = Camera.main?.GetComponent<CameraFollow>();
@@ -53,7 +48,6 @@ public class CarInitializer : NetworkBehaviour
         {
             Debug.LogWarning("Speedometer not found in the scene.");
         }
-
 
 
         var lapTracker = GetComponent<LapTracker>();
@@ -102,36 +96,44 @@ public class CarInitializer : NetworkBehaviour
             Debug.LogWarning("LapTracker component not found on this vehicle.");
         }
 
+        
 
         var cameraSwitch = FindObjectOfType<CameraSwitch>();
         if (cameraSwitch != null)
         {
-            // 1) 绑定外部视角：将主摄像机（Main Camera）当作 Camera1
+            // 5.1 绑定外部视角：默认把 Main Camera 当作 Camera1
             if (Camera.main != null)
             {
                 cameraSwitch.Camera1 = Camera.main.gameObject;
+                cameraSwitch.Camera1.SetActive(true);
             }
             else
             {
                 Debug.LogWarning("Main Camera not found in the scene!");
             }
 
-            // 2) 绑定车内视角：找到标签为 "carCamera" 的摄像机
-            var inCarCam = GameObject.FindWithTag("carCamera");
-            if (inCarCam != null)
+            // 5.2 绑定车内视角：只在当前 car 的子物体范围内寻找 Tag = "carCamera" 的 Camera
+            //     假设“车内摄像机”是挂在这辆车子下的子对象，并且打了 Tag “carCamera”。
+            Camera inCarCamera = null;
+            // 遍历所有挂在当前车（及其子节点）上的 Camera 组件，找第一个带 tag = "carCamera" 的
+            foreach (var cam_instance in GetComponentsInChildren<Camera>(true))
             {
-                cameraSwitch.Camera2 = inCarCam;
-                // 一开始先让车内摄像机关闭（可根据需要调整初始状态）
+                if (cam_instance.CompareTag("carCamera"))
+                {
+                    inCarCamera = cam_instance;
+                    break;
+                }
+            }
+
+            if (inCarCamera != null)
+            {
+                cameraSwitch.Camera2 = inCarCamera.gameObject;
                 cameraSwitch.Camera2.SetActive(false);
             }
             else
             {
-                Debug.LogWarning("No GameObject with tag 'carCamera' found for in-car view.");
+                Debug.LogWarning($"[{name}] Cannot find any child Camera with tag 'carCamera'.");
             }
-
-            // 3) 确保外部视角默认打开
-            if (cameraSwitch.Camera1 != null)
-                cameraSwitch.Camera1.SetActive(true);
         }
         else
         {

@@ -40,7 +40,12 @@ public class XPlayer : NetworkBehaviour
 
     void PlayerNameChanged(string _, string newName)
     {
-        Debug.Log($"Player name changed to: {newName}");
+        Debug.Log($"[XPlayer] Player name changed to: {newName}");
+        if (isLocalPlayer)
+        {
+            PlayerPrefs.SetString("XPlayerName", newName);
+            PlayerPrefs.Save();
+        }
     }
 
     #endregion
@@ -130,7 +135,17 @@ public class XPlayer : NetworkBehaviour
     /// Called when the local player object has been set up.
     /// <para>This happens after OnStartClient(), as it is triggered by an ownership message from the server. This is an appropriate place to activate components or functionality that should only be active for the local player, such as cameras and input.</para>
     /// </summary>
-    public override void OnStartLocalPlayer() { }
+    public override void OnStartLocalPlayer()
+    {
+        base.OnStartLocalPlayer();
+
+        string savedName = PlayerPrefs.GetString("XPlayerName", "");
+        if (string.IsNullOrEmpty(savedName))
+        {
+            savedName = $"Player{netId}";
+        }
+        CmdSetPlayerName(savedName);
+    }
 
     /// <summary>
     /// Called when the local player object is being stopped.

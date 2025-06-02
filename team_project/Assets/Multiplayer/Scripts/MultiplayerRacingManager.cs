@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Mirror;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class MultiplayerRacingManager : NetworkBehaviour
 {
@@ -13,6 +14,32 @@ public class MultiplayerRacingManager : NetworkBehaviour
 
     private readonly List<XPlayer> readyPlayers = new();
     private readonly Dictionary<XPlayer, float> finishTimes = new();
+
+
+    // 在客户端被服务器断开时会被 XNetworkManager 调用
+    private void OnEnable()
+    {
+        XNetworkManager.OnClientDisconnectedExternally += HandleClientDisconnected;
+    }
+
+    private void OnDisable()
+    {
+        XNetworkManager.OnClientDisconnectedExternally -= HandleClientDisconnected;
+    }
+
+
+    // <summary>
+    // 一旦断开，就立刻跳到主界面
+    // </summary>
+    private void HandleClientDisconnected()
+    {
+        // 确保只在客户端执行 LoadScene
+        if (isClient && !isServer)
+        {
+            // 这里假设主界面的场景名叫 "MainMenu"
+            SceneManager.LoadScene("LandingScene");
+        }
+    }
 
     [Server]
     public void PlayerReady(XPlayer player)

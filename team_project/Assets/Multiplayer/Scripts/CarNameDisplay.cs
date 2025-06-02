@@ -14,8 +14,7 @@ public class CarNameDisplay : NetworkBehaviour
         nameText.text = newName;
 
         // 比较本地连接的 identity 来判断是不是自己
-        if (NetworkClient.connection != null &&
-            NetworkClient.connection.identity == connectionToClient?.identity)
+        if (isOwned)
         {
             nameText.color = Color.green;
         }
