@@ -28,6 +28,7 @@ public class LapCounter : MonoBehaviour
     public TMP_Text timeText;
     public TMP_Text finishText;
     public TMP_Text speedText; // 新增：速度显示文本
+    public TMP_Text distanceText; // 新增：距离显示文本
     public Button quitButton;
 
     // 庆祝效果
@@ -37,6 +38,7 @@ public class LapCounter : MonoBehaviour
 
     // 赛车引用
     public GameObject playerCar;
+    public GameObject aiCar; // 新增：AI 警车引用
 
     // 存档点引用（用于控制光束）
     public Checkpoint[] checkpointObjects;
@@ -47,7 +49,8 @@ public class LapCounter : MonoBehaviour
     {
         UpdateLapDisplay();
         UpdateTimeDisplay();
-        UpdateSpeedDisplay(); // 初始更新速度显示
+        UpdateSpeedDisplay();
+        UpdateDistanceDisplay(); // 新增：初始更新距离显示
         finishText.gameObject.SetActive(false);
         quitButton.gameObject.SetActive(false);
 
@@ -55,7 +58,6 @@ public class LapCounter : MonoBehaviour
         lastCheckpointPosition = playerCar.transform.position;
         lastCheckpointRotation = playerCar.transform.rotation;
 
-        // 获取赛车的Rigidbody组件
         if (playerCar != null)
         {
             carRigidbody = playerCar.GetComponent<Rigidbody>();
@@ -68,9 +70,15 @@ public class LapCounter : MonoBehaviour
         {
             Debug.LogWarning("Player car is not assigned in LapCounter!");
         }
+
+        // 检查 AI 警车是否分配
+        if (aiCar == null)
+        {
+            Debug.LogWarning("AI car is not assigned in LapCounter!");
+        }
     }
 
-    void Update()
+ void Update()
     {
         if (raceStarted)
         {
@@ -83,10 +91,23 @@ public class LapCounter : MonoBehaviour
             RespawnToLastCheckpoint();
         }
 
-        // 实时更新速度显示
         UpdateSpeedDisplay();
+        UpdateDistanceDisplay(); // 新增：实时更新距离显示
     }
 
+    // 新增：更新距离显示
+    private void UpdateDistanceDisplay()
+    {
+        if (distanceText != null && playerCar != null && aiCar != null)
+        {
+            float distance = Vector3.Distance(playerCar.transform.position, aiCar.transform.position);
+            distanceText.text = $"Distance to AI: {distance:F1} m";
+        }
+        else if (distanceText != null)
+        {
+            distanceText.text = "Distance to AI: N/A";
+        }
+    }
     public void OnStartLinePassed()
     {
         Debug.Log("Start Line Logic Executed");
@@ -171,7 +192,17 @@ public class LapCounter : MonoBehaviour
             Debug.Log("Respawned to last checkpoint at: " + lastCheckpointPosition);
         }
     }
-
+    public void gameover()
+    {    
+        TriggerCelebration();     
+        ShowEndScreen();
+        Debug.Log("Game Over!");
+        raceStarted = false;
+        hasCelebrated = false;
+        currentLap = 0;
+        raceTimer = 0f;
+       
+    }
     private void TriggerCelebration()
     {
         if (hasCelebrated) return;
@@ -200,10 +231,11 @@ public class LapCounter : MonoBehaviour
     {
         if (finishText != null)
         {
-            finishText.text=$"You successfully completed {totalLaps} lap with a time of {raceTimer:F2}s";
+            finishText.text=$"You have been caught by the police, and you escaped for a total of {raceTimer:F2} second.";
             lapText.gameObject.SetActive(false);
             timeText.gameObject.SetActive(false);
             speedText.gameObject.SetActive(false);
+            distanceText.gameObject.SetActive(false); // 新增：隐藏距离显示
             finishText.gameObject.SetActive(true);
         }
         if (quitButton != null)
@@ -271,6 +303,7 @@ public class LapCounter : MonoBehaviour
         UpdateLapDisplay();
         UpdateTimeDisplay();
         UpdateSpeedDisplay();
+        UpdateDistanceDisplay(); // 新增：重置时更新距离显示
         finishText.gameObject.SetActive(false);
         quitButton.gameObject.SetActive(false);
 
