@@ -99,14 +99,7 @@ public class AICarPathFollower : MonoBehaviour
         
         // 创建UI显示
         CreatePIPDisplay();
-        
-        // 打印控制提示到控制台
-        Debug.Log("PIP Camera Controls:\n" +
-                  "< and > : Rotate Camera\n" +
-                  "- and + : Zoom Camera\n" +
-                  "[ and ] : Adjust Height\n" +
-                  "P : Toggle View Mode\n" +
-                  "O : Toggle Visibility");
+    
     }
 
     // 创建画中画显示UI（左下角）
@@ -192,71 +185,6 @@ public class AICarPathFollower : MonoBehaviour
             UpdatePIPCameraPosition();
         }
     }
-    
-    void Update()
-    {
-        // 画中画相机控制
-        HandlePIPCameraControls();
-    }
-    
-    // 画中画相机控制
-    void HandlePIPCameraControls()
-    {
-        if (!enablePIPCamera || pipCamera == null) return;
-        
-        // 旋转相机
-        if (Input.GetKey(KeyCode.Comma)) // < 键
-        {
-            cameraRig.transform.Rotate(0, -50 * Time.deltaTime, 0);
-        }
-        if (Input.GetKey(KeyCode.Period)) // > 键
-        {
-            cameraRig.transform.Rotate(0, 50 * Time.deltaTime, 0);
-        }
-        
-        // 缩放相机
-        if (Input.GetKey(KeyCode.Minus)) // - 键
-        {
-            pipCameraDistance = Mathf.Clamp(pipCameraDistance + 2f * Time.deltaTime, 4f, 20f);
-        }
-        if (Input.GetKey(KeyCode.Equals)) // + 键
-        {
-            pipCameraDistance = Mathf.Clamp(pipCameraDistance - 2f * Time.deltaTime, 4f, 20f);
-        }
-        
-        // 调整高度
-        if (Input.GetKey(KeyCode.LeftBracket)) // [ 键
-        {
-            pipCameraHeight = Mathf.Clamp(pipCameraHeight + 2f * Time.deltaTime, 2f, 15f);
-        }
-        if (Input.GetKey(KeyCode.RightBracket)) // ] 键
-        {
-            pipCameraHeight = Mathf.Clamp(pipCameraHeight - 2f * Time.deltaTime, 2f, 15f);
-        }
-        
-        // 调整横向偏移
-        if (Input.GetKey(KeyCode.Semicolon)) // ; 键
-        {
-            pipCameraOffset = Mathf.Clamp(pipCameraOffset - 1f * Time.deltaTime, -3f, 3f);
-        }
-        if (Input.GetKey(KeyCode.Quote)) // ' 键
-        {
-            pipCameraOffset = Mathf.Clamp(pipCameraOffset + 1f * Time.deltaTime, -3f, 3f);
-        }
-        
-        // 切换相机模式
-        if (Input.GetKeyDown(KeyCode.P))
-        {
-            TogglePIPCameraMode();
-        }
-        
-        // 显示/隐藏小窗口
-        if (Input.GetKeyDown(KeyCode.O))
-        {
-            TogglePIPVisibility();
-        }
-    }
-    
     // 切换相机模式
     void TogglePIPCameraMode()
     {
