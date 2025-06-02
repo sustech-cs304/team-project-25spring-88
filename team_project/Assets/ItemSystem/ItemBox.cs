@@ -30,6 +30,7 @@ public class ItemBox : MonoBehaviour
 
     private IEnumerator ApplyEffect(WheelVehicle car, EffectType effect)
     {
+        GameEffectUIManager.Instance?.Show(effect.ToString());
         switch (effect)
         {
             case EffectType.SpeedUp:
@@ -43,7 +44,7 @@ public class ItemBox : MonoBehaviour
                     rbSpeed.AddForce(car.transform.forward * 5000f, ForceMode.Impulse); // 瞬间爆发加速
                 }
 
-                yield return new WaitForSeconds(3f);
+                yield return new WaitForSeconds(2f);
                 car.BoostForce = originalBoostForce;
                 break;
 
@@ -59,7 +60,7 @@ public class ItemBox : MonoBehaviour
                     rbSlow.velocity *= 0.5f;
                 }
 
-                yield return new WaitForSeconds(3f);
+                yield return new WaitForSeconds(2f);
                 car.DiffGearing = originalDiff;
                 break;
 
@@ -70,7 +71,7 @@ public class ItemBox : MonoBehaviour
                 {
                     Vector3 originalVelocity = rb.velocity;
                     rb.velocity = Vector3.zero;
-                    yield return new WaitForSeconds(4f);
+                    yield return new WaitForSeconds(2f);
                     rb.velocity = originalVelocity;
                 }
                 break;
@@ -78,7 +79,7 @@ public class ItemBox : MonoBehaviour
             case EffectType.ReverseControl:
                 Debug.Log("ReverseControl effect triggered.");
                 car.SetReverseControl(true);
-                yield return new WaitForSeconds(3f);
+                yield return new WaitForSeconds(2f);
                 car.SetReverseControl(false);
                 break;
 
