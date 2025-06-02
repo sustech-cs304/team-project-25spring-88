@@ -4,6 +4,7 @@
  * This is distributed under the MIT Licence (see LICENSE.md for details)
  */
 
+using System.Collections;
 using System.Runtime.CompilerServices;
 using UnityEngine;
 using UnityEngine.InputSystem; // 引入 Input System
@@ -276,6 +277,47 @@ namespace VehicleBehaviour {
             {
                 wheel.motorTorque = 0.0001f;
             }
+
+            visualParts = new Transform[5];
+            visualParts[0] = transform.Find("Body");
+            visualParts[1] = transform.Find("FLWheel");
+            visualParts[2] = transform.Find("FRWheel");
+            visualParts[3] = transform.Find("BLWheel");
+            visualParts[4] = transform.Find("BRWheel");
+            for (int i = 0; i < visualParts.Length; i++)
+            {
+                if (visualParts[i] == null)
+                {
+                    Debug.LogWarning($"[WheelVehicle] Missing visual part at index {i}. Check name or hierarchy.");
+                }
+            }
+        }
+
+        private Transform[] visualParts;
+
+        private bool isSpinning = false;
+        private float spinTimer = 0f;
+        private float spinDuration = 0f;
+        private float spinSpeed = 0f;
+        private bool disableSteering = false;
+
+        public void TriggerSpinOut(float duration = 2f, float speed = 1080f)
+        {
+            if (isSpinning) return;
+
+            isSpinning = true;
+            spinTimer = 0f;
+            spinDuration = duration;
+            spinSpeed = speed;
+
+            disableSteering = true; // 禁止转向控制
+        }
+
+
+        private bool reverseControl = false;
+        public void SetReverseControl(bool enable)
+        {
+            reverseControl = enable;
         }
 
         // Visual feedbacks and boost regen
@@ -286,6 +328,35 @@ namespace VehicleBehaviour {
                 gasParticle.Play();
                 ParticleSystem.EmissionModule em = gasParticle.emission;
                 em.rateOverTime = handbrake ? 0 : Mathf.Lerp(em.rateOverTime.constant, Mathf.Clamp(150.0f * throttle, 30.0f, 100.0f), 0.1f);
+            }
+
+            if (isSpinning && visualParts != null)
+            {
+                spinTimer += Time.deltaTime;
+                if (spinTimer >= spinDuration)
+                {
+                    isSpinning = false;
+                    disableSteering = false;
+
+                    // ✅ 强制将所有视觉物体角度归正
+                    foreach (var part in visualParts)
+                    {
+                        if (part != null)
+                        {
+                            part.rotation = transform.rotation;
+                        }
+                    }
+                }
+                else
+                {
+                    foreach (var part in visualParts)
+                    {
+                        if (part != null)
+                        {
+                            part.Rotate(Vector3.up * spinSpeed * Time.deltaTime, Space.Self);
+                        }
+                    }
+                }
             }
 
             if (isPlayer && allowBoost) {
@@ -325,9 +396,13 @@ namespace VehicleBehaviour {
 
                 // 转向，速度越快转得越慢
                 // steering = turnInputCurve.Evaluate(steerAction.ReadValue<float>()) * steerAngle;
-                steering = turnInputCurve.Evaluate(steerAction.ReadValue<float>()) 
-                            * steerAngle 
-                            * speedFactor; // 应用速度系数
+                if (!disableSteering)
+                {
+                    steering = turnInputCurve.Evaluate(steerAction.ReadValue<float>())
+                            * steerAngle
+                            * speedFactor // 应用速度系数
+                            * (reverseControl ? -1 : 1);
+                }
 
                 // 手刹
                 handbrake = handbrakeAction.ReadValue<float>() > 0.5f;
