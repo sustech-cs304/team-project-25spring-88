@@ -17,8 +17,8 @@ public class LapTracker : NetworkBehaviour
     private bool hasFinished = false;
     private bool racingEnabled = false;
 
-    [SerializeField] private TMP_Text lapText;
-    [SerializeField] private TMP_Text timerText;
+    [SerializeField] public TMP_Text lapText;
+    [SerializeField] public TMP_Text timerText;
 
     private Vector3 lastCheckpointPosition;
     private Quaternion lastCheckpointRotation;
@@ -148,7 +148,7 @@ public class LapTracker : NetworkBehaviour
 
     private void UpdateLapUI()
     {
-        if (lapText) lapText.text = $"Lap: {currentLap}/{totalLaps}";
+        if (lapText) lapText.text = $"Lap: {currentLap - 1}/{totalLaps}";
     }
 
     private void UpdateTimerUI()

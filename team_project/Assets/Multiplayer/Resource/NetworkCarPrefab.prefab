@@ -533,6 +533,7 @@ MonoBehaviour:
   syncMode: 0
   syncInterval: 0
   totalLaps: 1
+  totalCheckpoints: 6
   lapText: {fileID: 0}
   timerText: {fileID: 0}
 --- !u!146 &1116497088416765114 stripped
