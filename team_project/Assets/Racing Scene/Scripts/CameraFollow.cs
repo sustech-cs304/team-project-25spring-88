@@ -75,6 +75,13 @@ namespace VehicleBehaviour.Utils {
 			}
 		}
 
+		public void FollowTarget(Transform carTransform)
+		{
+			target = carTransform;
+			vehicle = target.GetComponent<WheelVehicle>();
+			follow = true;
+		}
+
 		void FixedUpdate() {
 			// If we don't follow or target is null return
 			if (!follow || target == null) return;
