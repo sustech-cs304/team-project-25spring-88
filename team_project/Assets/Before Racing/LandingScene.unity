@@ -387,6 +387,7 @@ GameObject:
   - component: {fileID: 389490711}
   - component: {fileID: 389490710}
   - component: {fileID: 389490709}
+  - component: {fileID: 389490713}
   m_Layer: 5
   m_Name: Free Walk
   m_TagString: Untagged
@@ -516,6 +517,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 389490707}
   m_CullTransparentMesh: 1
+--- !u!114 &389490713
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 389490707}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c78766acdd70e5647ac170ea280dd46a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetSceneName: MirrorBasic
 --- !u!1 &391343893
 GameObject:
   m_ObjectHideFlags: 0
@@ -702,6 +716,7 @@ GameObject:
   - component: {fileID: 554180303}
   - component: {fileID: 554180302}
   - component: {fileID: 554180301}
+  - component: {fileID: 554180305}
   m_Layer: 5
   m_Name: Multi-user Mode
   m_TagString: Untagged
@@ -831,6 +846,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 554180299}
   m_CullTransparentMesh: 1
+--- !u!114 &554180305
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 554180299}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c78766acdd70e5647ac170ea280dd46a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetSceneName: MultiplayerWelcome
 --- !u!1 &719847265
 GameObject:
   m_ObjectHideFlags: 0
