@@ -32,7 +32,6 @@ jobs:
         with:
           githubToken: ${{ secrets.GITHUB_TOKEN }}
           projectPath: team_project
-          ciMode: true
 
       # —— 在测试结束后，立即恢复工作区 —— 
       - name: Clean workspace after tests
