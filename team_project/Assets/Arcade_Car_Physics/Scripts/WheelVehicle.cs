@@ -1,42 +1,26 @@
-﻿/*
- * This code is part of Arcade Car Physics for Unity by Saarg (2018)
- * 
- * This is distributed under the MIT Licence (see LICENSE.md for details)
- */
-
-using System.Runtime.CompilerServices;
+﻿using System.Runtime.CompilerServices;
 using UnityEngine;
-using UnityEngine.InputSystem; // 引入 Input System
-
+using UnityEngine.InputSystem;
+using System.Collections.Generic;
 
 #if MULTIOSCONTROLS
-    using MOSC;
+using MOSC;
 #endif
 
 [assembly: InternalsVisibleTo("VehicleBehaviour.Dots")]
-namespace VehicleBehaviour {
+namespace VehicleBehaviour
+{
     [RequireComponent(typeof(Rigidbody))]
     [RequireComponent(typeof(PlayerInput))] // 依赖 PlayerInput
-    public class WheelVehicle : MonoBehaviour {
-        
+    public class WheelVehicle : MonoBehaviour
+    {
         [Header("Inputs")]
-    #if MULTIOSCONTROLS
+#if MULTIOSCONTROLS
         [SerializeField] PlayerNumber playerId;
-    #endif
+#endif
         // If isPlayer is false inputs are ignored
         [SerializeField] bool isPlayer = true;
-        public bool IsPlayer { get => isPlayer;
-            set => isPlayer = value;
-        } 
-
-        // 移除旧的输入字段
-        // [SerializeField] internal VehicleInputs m_Inputs;
-        // string throttleInput => m_Inputs.ThrottleInput;
-        // string brakeInput => m_Inputs.BrakeInput;
-        // string turnInput => m_Inputs.TurnInput;
-        // string jumpInput => m_Inputs.JumpInput;
-        // string driftInput => m_Inputs.DriftInput;
-        // string boostInput => m_Inputs.BoostInput;
+        public bool IsPlayer { get => isPlayer; set => isPlayer = value; }
 
         // 新的 Input System 变量
         private PlayerInput playerInput;
@@ -47,205 +31,129 @@ namespace VehicleBehaviour {
         private InputAction driftAction;
         private InputAction boostAction;
         private InputAction handbrakeAction;
-            
-        /* 
-         *  Turn input curve: x real input, y value used
-         *  My advice (-1, -1) tangent x, (0, 0) tangent 0 and (1, 1) tangent x
-         */
+
+        /* Turn input curve: x real input, y value used */
         [SerializeField] AnimationCurve turnInputCurve = AnimationCurve.Linear(-1.0f, -1.0f, 1.0f, 1.0f);
 
         [Header("Speed Sensitive Steering")]
         [SerializeField] AnimationCurve speedSteerCurve = new AnimationCurve(
             new Keyframe(0, 1),    // 0km/h时100%转向
-            new Keyframe(150, 0.25f) // 150km/h时10%转向
+            new Keyframe(150, 0.25f) // 150km/h时25%转向
         );
 
         [Header("Wheels")]
         [SerializeField] WheelCollider[] driveWheel = new WheelCollider[0];
         public WheelCollider[] DriveWheel => driveWheel;
         [SerializeField] WheelCollider[] turnWheel = new WheelCollider[0];
-
         public WheelCollider[] TurnWheel => turnWheel;
 
-        // This code checks if the car is grounded only when needed and the data is old enough
+        // Ground check
         bool isGrounded = false;
         int lastGroundCheck = 0;
-        public bool IsGrounded { get {
-            if (lastGroundCheck == Time.frameCount)
-                return isGrounded;
-
-            lastGroundCheck = Time.frameCount;
-            isGrounded = true;
-            foreach (WheelCollider wheel in wheels)
+        public bool IsGrounded
+        {
+            get
             {
-                if (!wheel.gameObject.activeSelf || !wheel.isGrounded)
-                    isGrounded = false;
+                if (lastGroundCheck == Time.frameCount)
+                    return isGrounded;
+
+                lastGroundCheck = Time.frameCount;
+                isGrounded = true;
+                foreach (WheelCollider wheel in wheels)
+                {
+                    if (!wheel.gameObject.activeSelf || !wheel.isGrounded)
+                        isGrounded = false;
+                }
+                return isGrounded;
             }
-            return isGrounded;
-        }}
+        }
 
         [Header("Behaviour")]
-        /*
-         *  Motor torque represent the torque sent to the wheels by the motor with x: speed in km/h and y: torque
-         *  The curve should start at x=0 and y>0 and should end with x>topspeed and y<0
-         *  The higher the torque the faster it accelerate
-         *  the longer the curve the faster it gets
-         */
         [SerializeField] AnimationCurve motorTorque = new AnimationCurve(
-            new Keyframe(0, 180), 
-            new Keyframe(50, 130), 
+            new Keyframe(0, 180),
+            new Keyframe(50, 130),
             new Keyframe(120, 0));
-
-        // Differential gearing ratio
         [Range(2, 16)]
         [SerializeField] float diffGearing = 4.0f;
-        public float DiffGearing { get => diffGearing;
-            set => diffGearing = value;
-        }
-
-        // Basicaly how hard it brakes
+        public float DiffGearing { get => diffGearing; set => diffGearing = value; }
         [SerializeField] float brakeForce = 1500.0f;
-        public float BrakeForce { get => brakeForce;
-            set => brakeForce = value;
-        }
-
-        // Max steering hangle, usualy higher for drift car
+        public float BrakeForce { get => brakeForce; set => brakeForce = value; }
         [Range(0f, 50.0f)]
         [SerializeField] float steerAngle = 30.0f;
-        public float SteerAngle { get => steerAngle;
-            set => steerAngle = Mathf.Clamp(value, 0.0f, 50.0f);
-        }
-
-        // The value used in the steering Lerp, 1 is instant (Strong power steering), and 0 is not turning at all
+        public float SteerAngle { get => steerAngle; set => steerAngle = Mathf.Clamp(value, 0.0f, 50.0f); }
         [Range(0.001f, 1.0f)]
         [SerializeField] float steerSpeed = 0.2f;
-        public float SteerSpeed { get => steerSpeed;
-            set => steerSpeed = Mathf.Clamp(value, 0.001f, 1.0f);
-        }
-
-        // How hight do you want to jump?
+        public float SteerSpeed { get => steerSpeed; set => steerSpeed = Mathf.Clamp(value, 0.001f, 1.0f); }
         [Range(1f, 1.5f)]
         [SerializeField] float jumpVel = 1.3f;
-        public float JumpVel { get => jumpVel;
-            set => jumpVel = Mathf.Clamp(value, 1.0f, 1.5f);
-        }
-
-        // How hard do you want to drift?
+        public float JumpVel { get => jumpVel; set => jumpVel = Mathf.Clamp(value, 1.0f, 1.5f); }
         [Range(0.0f, 20f)]
         [SerializeField] float driftIntensity = 1f;
-        public float DriftIntensity { get => driftIntensity;
-            set => driftIntensity = Mathf.Clamp(value, 0.0f, 2.0f);
-        }
+        public float DriftIntensity { get => driftIntensity; set => driftIntensity = Mathf.Clamp(value, 0.0f, 2.0f); }
 
-        // Reset Values
         Vector3 spawnPosition;
         Quaternion spawnRotation;
-
-        /*
-         *  The center of mass is set at the start and changes the car behavior A LOT
-         *  I recomment having it between the center of the wheels and the bottom of the car's body
-         *  Move it a bit to the from or bottom according to where the engine is
-         */
         [SerializeField] Transform centerOfMass = null;
-
-        // Force aplied downwards on the car, proportional to the car speed
         [Range(0.5f, 30f)]
         [SerializeField] float downforce = 1.0f;
+        public float Downforce { get => downforce; set => downforce = Mathf.Clamp(value, 0, 5); }
 
-        public float Downforce
-        {
-            get => downforce;
-            set => downforce = Mathf.Clamp(value, 0, 5);
-        }     
-
-        // When IsPlayer is false you can use this to control the steering
         float steering;
-        public float Steering { get => steering;
-            set => steering = Mathf.Clamp(value, -1f, 1f);
-        } 
-
-        // When IsPlayer is false you can use this to control the throttle
+        public float Steering { get => steering; set => steering = Mathf.Clamp(value, -1f, 1f); }
         float throttle;
-        public float Throttle { get => throttle;
-            set => throttle = Mathf.Clamp(value, -1f, 1f);
-        } 
-
-        // Like your own car handbrake, if it's true the car will not move
+        public float Throttle { get => throttle; set => throttle = Mathf.Clamp(value, -1f, 1f); }
         [SerializeField] bool handbrake;
-        public bool Handbrake { get => handbrake;
-            set => handbrake = value;
-        } 
-        
-        // Use this to disable drifting
+        public bool Handbrake { get => handbrake; set => handbrake = value; }
         [HideInInspector] public bool allowDrift = true;
         bool drift;
-        public bool Drift { get => drift;
-            set => drift = value;
-        }         
-
-        // Use this to read the current car speed (you'll need this to make a speedometer)
+        public bool Drift { get => drift; set => drift = value; }
         [SerializeField] float speed = 0.0f;
         public float Speed => speed;
 
         [Header("Particles")]
-        // Exhaust fumes
         [SerializeField] ParticleSystem[] gasParticles = new ParticleSystem[0];
 
         [Header("Boost")]
-        // Disable boost
         [HideInInspector] public bool allowBoost = true;
-
-        // Maximum boost available
         [SerializeField] float maxBoost = 10f;
-        public float MaxBoost { get => maxBoost;
-            set => maxBoost = value;
-        }
-
-        // Current boost available
+        public float MaxBoost { get => maxBoost; set => maxBoost = value; }
         [SerializeField] float boost = 10f;
-        public float Boost { get => boost;
-            set => boost = Mathf.Clamp(value, 0f, maxBoost);
-        }
-
-        // Regen boostRegen per second until it's back to maxBoost
+        public float Boost { get => boost; set => boost = Mathf.Clamp(value, 0f, maxBoost); }
         [Range(0f, 1f)]
         [SerializeField] float boostRegen = 0.2f;
-        public float BoostRegen { get => boostRegen;
-            set => boostRegen = Mathf.Clamp01(value);
-        }
-
-        /*
-         *  The force applied to the car when boosting
-         *  NOTE: the boost does not care if the car is grounded or not
-         */
+        public float BoostRegen { get => boostRegen; set => boostRegen = Mathf.Clamp01(value); }
         [SerializeField] float boostForce = 5000;
-        public float BoostForce { get => boostForce;
-            set => boostForce = value;
-        }
-
-        // Use this to boost when IsPlayer is set to false
+        public float BoostForce { get => boostForce; set => boostForce = value; }
         public bool boosting = false;
-        // Use this to jump when IsPlayer is set to false
         public bool jumping = false;
 
-        // Boost particles and sound
         [SerializeField] ParticleSystem[] boostParticles = new ParticleSystem[0];
         [SerializeField] AudioClip boostClip = default;
         [SerializeField] AudioSource boostSource = default;
-        
-        // Private variables set at the start
+
         Rigidbody rb = default;
         internal WheelCollider[] wheels = new WheelCollider[0];
+        [Header("Waypoint Settings")]
+        public List<Vector3> waypoints = new List<Vector3>();
+        public float waypointInterval = 5f; // 基于距离的间隔
+        public float angleThreshold = 30f; // 转向角度阈值（度）
+        public LayerMask trackLayer; 
+        public float waypointHeightOffset = 0.2f; // 路径点高度偏移
+        public int waypointsmaxnumber = 100; // 最大路径点数量
+        private Vector3 lastWaypoint;
+        private Vector3 lastForward;
 
-        // Init rigidbody, center of mass, wheels and more
-        void Start() {
-            #if MULTIOSCONTROLS
-                        Debug.Log("[ACP] Using MultiOSControls");
-            #endif
+        [Header("Debug")]
+        public bool showWaypoints = true; // 调试显示路径点
+        public Color waypointColor = Color.red;
+        public float waypointSize = 0.5f;
+        void Start()
+        {
+#if MULTIOSCONTROLS
+            Debug.Log("[ACP] Using MultiOSControls");
+#endif
 
-            // 初始化 Input System
             playerInput = GetComponent<PlayerInput>();
-            
             throttleAction = playerInput.actions["Throttle"];
             brakeAction = playerInput.actions["Brake"];
             steerAction = playerInput.actions["Steer"];
@@ -254,11 +162,12 @@ namespace VehicleBehaviour {
             boostAction = playerInput.actions["Boost"];
             handbrakeAction = playerInput.actions["Handbrake"];
 
-            if (boostClip != null) {
+            if (boostClip != null)
+            {
                 boostSource.clip = boostClip;
             }
 
-		    boost = maxBoost;
+            boost = maxBoost;
 
             rb = GetComponent<Rigidbody>();
             spawnPosition = transform.position;
@@ -271,14 +180,15 @@ namespace VehicleBehaviour {
 
             wheels = GetComponentsInChildren<WheelCollider>();
 
-            // Set the motor torque to a non null value because 0 means the wheels won't turn no matter what
             foreach (WheelCollider wheel in wheels)
             {
                 wheel.motorTorque = 0.0001f;
             }
+            lastWaypoint = transform.position;
+            lastForward = transform.forward;
+            waypoints.Add(AdjustWaypointHeight(lastWaypoint)); // 初始路径点
         }
 
-        // Visual feedbacks and boost regen
         void Update()
         {
             foreach (ParticleSystem gasParticle in gasParticles)
@@ -288,60 +198,31 @@ namespace VehicleBehaviour {
                 em.rateOverTime = handbrake ? 0 : Mathf.Lerp(em.rateOverTime.constant, Mathf.Clamp(150.0f * throttle, 30.0f, 100.0f), 0.1f);
             }
 
-            if (isPlayer && allowBoost) {
+            if (isPlayer && allowBoost)
+            {
                 boost += Time.deltaTime * boostRegen;
                 if (boost > maxBoost) { boost = maxBoost; }
             }
         }
-        
-        // Update everything
-        void FixedUpdate () {
-            // Mesure current speed
-            speed = rb.velocity.magnitude * 3.6f; // m/s to km/h
-            float currentSpeed = Mathf.Abs(speed); // 取绝对值确保倒车时逻辑一致
-            float speedFactor = speedSteerCurve.Evaluate(currentSpeed);
 
-            // // Get all the inputs!
-            // if (isPlayer) {
-            //     // Accelerate & brake
-            //     if (throttleInput != "" && throttleInput != null)
-            //     {
-            //         throttle = GetInput(throttleInput) - GetInput(brakeInput);
-            //     }
-            //     // Boost
-            //     boosting = (GetInput(boostInput) > 0.5f);
-            //     // Turn
-            //     steering = turnInputCurve.Evaluate(GetInput(turnInput)) * steerAngle;
-            //     // Dirft
-            //     drift = GetInput(driftInput) > 0 && rb.velocity.sqrMagnitude > 100;
-            //     // Jump
-            //     jumping = GetInput(jumpInput) != 0;
-            // }
+        void FixedUpdate()
+        {
+            // Measure current speed
+            speed = rb.velocity.magnitude * 3.6f; // m/s to km/h
+            float currentSpeed = Mathf.Abs(speed);
+            float speedFactor = speedSteerCurve.Evaluate(currentSpeed);
 
             if (isPlayer)
             {
-                // 油门 & 刹车（合并为一个轴）
+                // 油门 & 刹车
                 throttle = throttleAction.ReadValue<float>() - brakeAction.ReadValue<float>();
-
-                // 转向，速度越快转得越慢
-                // steering = turnInputCurve.Evaluate(steerAction.ReadValue<float>()) * steerAngle;
-                steering = turnInputCurve.Evaluate(steerAction.ReadValue<float>()) 
-                            * steerAngle 
-                            * speedFactor; // 应用速度系数
-
-                // 手刹
+                steering = turnInputCurve.Evaluate(steerAction.ReadValue<float>()) * steerAngle * speedFactor;
                 handbrake = handbrakeAction.ReadValue<float>() > 0.5f;
-
-                // 漂移
                 drift = driftAction.ReadValue<float>() > 0.5f && rb.velocity.sqrMagnitude > 100;
-
-                // 跳跃
                 jumping = jumpAction.ReadValue<float>() > 0.5f;
-
-                // Boost
                 boosting = boostAction.ReadValue<float>() > 0.5f;
             }
-            
+
             // Direction
             foreach (WheelCollider wheel in turnWheel)
             {
@@ -359,7 +240,6 @@ namespace VehicleBehaviour {
             {
                 foreach (WheelCollider wheel in wheels)
                 {
-                    // Don't zero out this value or the wheel completly lock up
                     wheel.motorTorque = 0.0001f;
                     wheel.brakeTorque = brakeForce;
                 }
@@ -380,69 +260,99 @@ namespace VehicleBehaviour {
             }
 
             // Jump
-            if (jumping && isPlayer) {
+            if (jumping && isPlayer)
+            {
                 if (!IsGrounded)
                     return;
-                
                 rb.velocity += transform.up * jumpVel;
             }
 
             // Boost
-            if (boosting && allowBoost && boost > 0.1f) {
+            if (boosting && allowBoost && boost > 0.1f)
+            {
                 rb.AddForce(transform.forward * boostForce);
-
                 boost -= Time.fixedDeltaTime;
                 if (boost < 0f) { boost = 0f; }
 
-                if (boostParticles.Length > 0 && !boostParticles[0].isPlaying) {
-                    foreach (ParticleSystem boostParticle in boostParticles) {
+                if (boostParticles.Length > 0 && !boostParticles[0].isPlaying)
+                {
+                    foreach (ParticleSystem boostParticle in boostParticles)
+                    {
                         boostParticle.Play();
                     }
                 }
 
-                if (boostSource != null && !boostSource.isPlaying) {
+                if (boostSource != null && !boostSource.isPlaying)
+                {
                     boostSource.Play();
                 }
-            } else {
-                if (boostParticles.Length > 0 && boostParticles[0].isPlaying) {
-                    foreach (ParticleSystem boostParticle in boostParticles) {
+            }
+            else
+            {
+                if (boostParticles.Length > 0 && boostParticles[0].isPlaying)
+                {
+                    foreach (ParticleSystem boostParticle in boostParticles)
+                    {
                         boostParticle.Stop();
                     }
                 }
 
-                if (boostSource != null && boostSource.isPlaying) {
+                if (boostSource != null && boostSource.isPlaying)
+                {
                     boostSource.Stop();
                 }
             }
 
             // Drift
-            if (drift && allowDrift) {
+            if (drift && allowDrift)
+            {
                 float rawSteerInput = turnInputCurve.Evaluate(steerAction.ReadValue<float>());
-                
                 Vector3 driftForce = -transform.right;
                 driftForce.y = 0.0f;
                 driftForce.Normalize();
 
                 if (steering != 0)
-                    driftForce *= rb.mass * speed/7f * throttle * steering/steerAngle;
-                Vector3 driftTorque = transform.up * 0.1f * steering/steerAngle;
-
+                    driftForce *= rb.mass * speed / 7f * throttle * steering / steerAngle;
+                Vector3 driftTorque = transform.up * 0.1f * steering / steerAngle;
 
                 rb.AddForce(driftForce * driftIntensity, ForceMode.Force);
                 rb.AddTorque(driftTorque * driftIntensity, ForceMode.VelocityChange);
-
-                Debug.Log($"Drift Force: {driftForce.magnitude} | Torque: {driftTorque.magnitude}");
             }
-            
+
             // Downforce
             rb.AddForce(-transform.up * speed * downforce);
+        // 路径点生成逻辑（修改部分）
+            float angleDifference = Vector3.Angle(lastForward, transform.forward);
+            float distance = Vector3.Distance(transform.position, lastWaypoint);
+
+            // 满足以下任一条件时生成新路径点
+            if (isPlayer && (distance > waypointInterval || angleDifference > angleThreshold))
+            {
+                Vector3 newWaypoint = transform.position;
+                RaycastHit hit;
+                
+                // 向下投射射线确保路径点在赛道上
+                if (Physics.Raycast(newWaypoint + Vector3.up * 2f, Vector3.down, out hit, 5f, trackLayer))
+                {
+                    newWaypoint = hit.point + Vector3.up * waypointHeightOffset;
+                }
+                
+                waypoints.Add(AdjustWaypointHeight(newWaypoint));
+                lastWaypoint = newWaypoint;
+                lastForward = transform.forward;
+
+                // 限制路径点数量
+                if (waypoints.Count > waypointsmaxnumber)
+                {
+                    waypoints.RemoveAt(0);
+                }
+            }
         }
 
-        // Reposition the car to the start position
-        public void ResetPos() {
+        public void ResetPos()
+        {
             transform.position = spawnPosition;
             transform.rotation = spawnRotation;
-
             rb.velocity = Vector3.zero;
             rb.angularVelocity = Vector3.zero;
         }
@@ -451,18 +361,40 @@ namespace VehicleBehaviour {
         {
             handbrake = h;
         }
-
-        // MULTIOSCONTROLS is another package I'm working on ignore it I don't know if it will get a release.
+        // 调整路径点高度使其贴合赛道
+        private Vector3 AdjustWaypointHeight(Vector3 position)
+        {
+            RaycastHit hit;
+            if (Physics.Raycast(position + Vector3.up * 2f, Vector3.down, out hit, 5f, trackLayer))
+            {
+                return hit.point + Vector3.up * waypointHeightOffset;
+            }
+            return position;
+        }// 调试绘制路径点
+        void OnDrawGizmos()
+        {
+            if (!showWaypoints || waypoints == null || waypoints.Count == 0) return;
+            
+            Gizmos.color = waypointColor;
+            for (int i = 0; i < waypoints.Count; i++)
+            {
+                Gizmos.DrawSphere(waypoints[i], waypointSize);
+                if (i > 0)
+                {
+                    Gizmos.DrawLine(waypoints[i - 1], waypoints[i]);
+                }
+            }
+        }
 #if MULTIOSCONTROLS
         private static MultiOSControls _controls;
 #endif
 
-        // Use this method if you want to use your own input manager
-        private float GetInput(string input) {
+        private float GetInput(string input)
+        {
 #if MULTIOSCONTROLS
-        return MultiOSControls.GetValue(input, playerId);
+            return MultiOSControls.GetValue(input, playerId);
 #else
-        return Input.GetAxis(input);
+            return Input.GetAxis(input);
 #endif
         }
     }
