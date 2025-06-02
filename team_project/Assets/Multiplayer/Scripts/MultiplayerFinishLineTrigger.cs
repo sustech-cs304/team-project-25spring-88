@@ -8,6 +8,13 @@ public class MultiplayerFinishLineTrigger : MonoBehaviour
         // 只对有玩家控制的车反应
         if (other.CompareTag("Player"))
         {
+            NetworkIdentity nid = other.GetComponent<NetworkIdentity>();
+            if (nid == null || !nid.isOwned)
+            {
+                // 如果没有 NetworkIdentity，或不是本地玩家，就什么都不做
+                return;
+            }
+
             // 尝试找到LapTracker组件（应该挂在车上）
             LapTracker tracker = other.GetComponent<LapTracker>();
 

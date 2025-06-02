@@ -15,7 +15,7 @@ public class MultiplayerCheckpoint : MonoBehaviour
 
         // 再拿到这个 Player 上的 NetworkIdentity，检查它是不是本地玩家
         NetworkIdentity nid = other.GetComponent<NetworkIdentity>();
-        if (nid == null || !nid.isLocalPlayer)
+        if (nid == null || !nid.isOwned)
         {
             // 如果没有 NetworkIdentity，或不是本地玩家，就什么都不做
             return;
