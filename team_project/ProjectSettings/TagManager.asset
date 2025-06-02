@@ -7,6 +7,7 @@ TagManager:
   - FinishLine
   - StartLine
   - Car
+  - aiCar
   layers:
   - Default
   - TransparentFX
@@ -14,8 +15,8 @@ TagManager:
   - 
   - Water
   - UI
-  - 
-  - 
+  - Wall
+  - track
   - Cars
   - 
   - 
