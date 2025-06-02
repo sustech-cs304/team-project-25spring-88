@@ -2,8 +2,6 @@ using Mirror;
 using UnityEngine;
 using VehicleBehaviour;
 using VehicleBehaviour.Utils;
-
-
 [RequireComponent(typeof(NetworkIdentity))]
 public class CarInitializer : NetworkBehaviour
 {
@@ -16,10 +14,10 @@ public class CarInitializer : NetworkBehaviour
 
         // 启用本地玩家控制
         var vehicle = GetComponent<WheelVehicle>();
-        if (vehicle != null)
-        {
-            vehicle.IsPlayer = true;
-        }
+        // if (vehicle != null)
+        // {
+        //     vehicle.IsPlayer = true;
+        // }
 
         // 设置摄像机跟随
         var cam = Camera.main?.GetComponent<CameraFollow>();

@@ -1,13 +1,18 @@
+using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
+using System.Linq;
 using Mirror;
+using UnityEngine;
 
 public class MultiplayerRacingManager : NetworkBehaviour
 {
     public Transform[] spawnPoints;
     public GameObject[] carPrefabs;
+    public GameResultUI gameResultUIPrefab;
+    public CountdownUI countdownUIPrefab;
 
-    private readonly List<XPlayer> readyPlayers = new List<XPlayer>();
+    private readonly List<XPlayer> readyPlayers = new();
+    private readonly Dictionary<XPlayer, float> finishTimes = new();
 
     [Server]
     public void PlayerReady(XPlayer player)
@@ -15,28 +20,64 @@ public class MultiplayerRacingManager : NetworkBehaviour
         if (!readyPlayers.Contains(player))
         {
             readyPlayers.Add(player);
-            Debug.Log($"Player ready: {player.playerName} ({readyPlayers.Count}/{NetworkServer.connections.Count})");
+            Debug.Log($"{player.playerName} is ready ({readyPlayers.Count}/{NetworkServer.connections.Count})");
         }
 
         if (readyPlayers.Count >= NetworkServer.connections.Count)
+            StartCoroutine(BeginRaceCountdown());
+    }
+
+    [Server]
+    private IEnumerator BeginRaceCountdown()
+    {
+        var players = FindObjectsOfType<XPlayer>();
+        for (int i = 0; i < players.Length; i++)
         {
-            Debug.Log("All players ready. Starting race...");
-            StartRace();
+            Transform spawn = spawnPoints[i % spawnPoints.Length];
+            players[i].SpawnCar(carPrefabs, spawn);
+        }
+
+        RpcStartCountdownUI(10);
+        yield return new WaitForSeconds(10f);
+
+        RpcStartRace(); // 通知所有客户端开始比赛
+    }
+
+    [ClientRpc]
+    void RpcStartCountdownUI(int seconds)
+    {
+        Instantiate(countdownUIPrefab).StartCountdown(seconds);
+    }
+
+    [ClientRpc]
+    void RpcStartRace()
+    {
+        foreach (var player in FindObjectsOfType<XPlayer>())
+        {
+            player.EnableControl();  // 让本地玩家激活控制权限
         }
     }
 
     [Server]
-    public void StartRace()
+    public void ReportPlayerFinished(XPlayer player, float time)
     {
-        Debug.Log("StartRace is called.");
-        var players = FindObjectsOfType<XPlayer>();
-
-        Debug.Log($"Found {players.Length} players.");
-        for (int i = 0; i < players.Length; i++)
+        if (!finishTimes.ContainsKey(player))
         {
-            Debug.Log("Spawning car for " + players[i].playerName);
-            Transform spawn = spawnPoints[i % spawnPoints.Length];
-            players[i].SpawnCar(carPrefabs, spawn);
+            finishTimes[player] = time;
+            Debug.Log($"{player.playerName} finished in {time:F2}s");
+
+            if (finishTimes.Count == NetworkServer.connections.Count)
+            {
+                var ordered = finishTimes.OrderBy(p => p.Value)
+                                         .Select(p => new RaceResult(p.Key.playerName, p.Value)).ToArray();
+                RpcShowFinalResults(ordered);
+            }
         }
+    }
+
+    [ClientRpc]
+    void RpcShowFinalResults(RaceResult[] results)
+    {
+        Instantiate(gameResultUIPrefab).Show(results);
     }
 }

@@ -50,7 +50,7 @@ public class HostUI : MonoBehaviour
         portText.text = $"Port: {selectedPort}";
 
         // 3. 获取 IP
-        string ip = GetInternalIP("10.16");
+        string ip = GetInternalIP("10.");
         ipText.text = $"IP: {ip}";
 
         // 4. 启动 Host

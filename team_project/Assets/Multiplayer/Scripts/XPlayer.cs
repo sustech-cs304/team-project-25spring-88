@@ -26,7 +26,7 @@ public class XPlayer : NetworkBehaviour
     [SyncVar(hook = nameof(PlayerNameChanged))]
     public string playerName = "";
 
-    [SyncVar] 
+    [SyncVar]
     public int selectedCarIndex = 0;  // 玩家选择的赛车编号
 
 
@@ -40,7 +40,7 @@ public class XPlayer : NetworkBehaviour
 
     void PlayerNameChanged(string _, string newName)
     {
-        // 可扩展事件通知或更新本地 UI
+        Debug.Log($"Player name changed to: {newName}");
     }
 
     #endregion
@@ -74,28 +74,30 @@ public class XPlayer : NetworkBehaviour
     /// <para>This could be triggered by NetworkServer.Listen() for objects in the scene, or by NetworkServer.Spawn() for objects that are dynamically created.</para>
     /// <para>This will be called for objects on a "host" as well as for object on a dedicated server.</para>
     /// </summary>
-    public override void OnStartServer() {
+    public override void OnStartServer()
+    {
         base.OnStartServer();
 
         // Add this to the static Players List
         playersList.Add(this);
 
-     }
+    }
 
     /// <summary>
     /// Invoked on the server when the object is unspawned
     /// <para>Useful for saving object data in persistent storage</para>
     /// </summary>
-    public override void OnStopServer() {
+    public override void OnStopServer()
+    {
 
         playersList.Remove(this);
-     }
+    }
 
     /// <summary>
     /// Called on every NetworkBehaviour when it is activated on a client.
     /// <para>Objects on the host have this function called, as there is a local client on the host. The values of SyncVars on object are guaranteed to be initialized correctly with the latest state from the server when this function is called on the client.</para>
     /// </summary>
-    public override void OnStartClient() 
+    public override void OnStartClient()
     {
         if (isLocalPlayer)
         {
@@ -134,14 +136,14 @@ public class XPlayer : NetworkBehaviour
     /// Called when the local player object is being stopped.
     /// <para>This happens before OnStopClient(), as it may be triggered by an ownership message from the server, or because the player object is being destroyed. This is an appropriate place to deactivate components or functionality that should only be active for the local player, such as cameras and input.</para>
     /// </summary>
-    public override void OnStopLocalPlayer() {}
+    public override void OnStopLocalPlayer() { }
 
     /// <summary>
     /// This is invoked on behaviours that have authority, based on context and <see cref="NetworkIdentity.hasAuthority">NetworkIdentity.hasAuthority</see>.
     /// <para>This is called after <see cref="OnStartServer">OnStartServer</see> and before <see cref="OnStartClient">OnStartClient.</see></para>
     /// <para>When <see cref="NetworkIdentity.AssignClientAuthority">AssignClientAuthority</see> is called on the server, this will be called on the client that owns the object. When an object is spawned with <see cref="NetworkServer.Spawn">NetworkServer.Spawn</see> with a NetworkConnectionToClient parameter included, this will be called on the client that owns the object.</para>
     /// </summary>
-    public override void OnStartAuthority() 
+    public override void OnStartAuthority()
     {
         CmdSelectCar(PlayerPrefs.GetInt("SelectedCarIndex", 0)); // 或 UI 中传入
     }
@@ -198,6 +200,31 @@ public class XPlayer : NetworkBehaviour
             mgr.PlayerReady(this);
         }
     }
+    
+    public void EnableControl()
+    {
+        if (!isLocalPlayer) return;
+
+        if (NetworkClient.spawned.TryGetValue(carNetId, out NetworkIdentity identity))
+        {
+            var vehicle = identity.GetComponent<WheelVehicle>();
+            if (vehicle != null)
+            {
+                vehicle.IsPlayer = true;
+            }
+
+            var lapTracker = identity.GetComponent<LapTracker>();
+            if (lapTracker != null)
+            {
+                lapTracker.EnableRacing();
+            }
+        }
+        else
+        {
+            Debug.LogWarning("Car not found in NetworkClient.spawned. Delaying control assignment...");
+        }
+    }
+
 
     #endregion
 }

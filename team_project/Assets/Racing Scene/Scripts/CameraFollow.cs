@@ -6,6 +6,7 @@
 using System.Text;
 using UnityEngine;
 using UnityEngine.UI;
+using VehicleBehaviour;
 /** 
      * AI-generated-content 
      * tool: grok 
@@ -13,118 +14,116 @@ using UnityEngine.UI;
      * usage: I used the prompt "我想要基于unity制作一个赛车小游戏，现在我要实现camera跟随小车脚本，你能帮我写一下控制脚本吗", and 
      * directly copy the code from its response 
      */
-namespace VehicleBehaviour.Utils {
-	public class CameraFollow : MonoBehaviour {
-		// Should the camera follow the target
-		[SerializeField] bool follow = false;
-		public bool Follow
+public class CameraFollow : MonoBehaviour {
+	// Should the camera follow the target
+	[SerializeField] bool follow = false;
+	public bool Follow
+	{
+		get => follow;
+		set => follow = value;
+	}
+
+	// Current target
+	[SerializeField] Transform target = default;
+
+	// ALl possible targets
+	[SerializeField] Transform[] targets = new Transform[0];
+
+	// Offset from the target position
+	[SerializeField] Vector3 offset = -Vector3.forward;
+
+	// Camera speeds
+	[Range(0, 10)]
+	[SerializeField] float lerpPositionMultiplier = 1f;
+	[Range(0, 10)]		
+	[SerializeField] float lerpRotationMultiplier = 1f;
+
+	// Speedometer
+	[SerializeField] Text speedometer = null;
+
+	// We use a rigidbody to prevent the camera from going in walls but it means sometime it can get stuck
+	Rigidbody rb;
+	Rigidbody targetRb;
+
+	WheelVehicle vehicle;
+
+	void Start () {
+		rb = GetComponent<Rigidbody>();
+	}
+
+	// Select target from targets list using it's index
+	public void SetTargetIndex(int i) {
+		WheelVehicle v;
+
+		foreach(Transform t in targets)
 		{
-			get => follow;
-			set => follow = value;
-		}
-
-		// Current target
-		[SerializeField] Transform target = default;
-
-		// ALl possible targets
-		[SerializeField] Transform[] targets = new Transform[0];
-
-		// Offset from the target position
-		[SerializeField] Vector3 offset = -Vector3.forward;
-
-		// Camera speeds
-		[Range(0, 10)]
-		[SerializeField] float lerpPositionMultiplier = 1f;
-		[Range(0, 10)]		
-		[SerializeField] float lerpRotationMultiplier = 1f;
-
-		// Speedometer
-		[SerializeField] Text speedometer = null;
-
-		// We use a rigidbody to prevent the camera from going in walls but it means sometime it can get stuck
-		Rigidbody rb;
-		Rigidbody targetRb;
-
-		WheelVehicle vehicle;
-
-		void Start () {
-			rb = GetComponent<Rigidbody>();
-		}
-
-		// Select target from targets list using it's index
-		public void SetTargetIndex(int i) {
-			WheelVehicle v;
-
-			foreach(Transform t in targets)
+			v = t != null ? t.GetComponent<WheelVehicle>() : null;
+			if (v != null)
 			{
-				v = t != null ? t.GetComponent<WheelVehicle>() : null;
-				if (v != null)
-				{
-					v.IsPlayer = false;
-					v.Handbrake = true;
-				}
-			}
-
-			target = targets[i % targets.Length];
-
-			vehicle = target != null ? target.GetComponent<WheelVehicle>() : null;
-			if (vehicle != null)
-			{
-				vehicle.IsPlayer = true;
-				vehicle.Handbrake = false;
+				v.IsPlayer = false;
+				v.Handbrake = true;
 			}
 		}
 
-		public void FollowTarget(Transform carTransform)
+		target = targets[i % targets.Length];
+
+		vehicle = target != null ? target.GetComponent<WheelVehicle>() : null;
+		if (vehicle != null)
 		{
-			target = carTransform;
-			vehicle = target.GetComponent<WheelVehicle>();
-			follow = true;
+			vehicle.IsPlayer = true;
+			vehicle.Handbrake = false;
+		}
+	}
+
+	public void FollowTarget(Transform carTransform)
+	{
+		target = carTransform;
+		vehicle = target.GetComponent<WheelVehicle>();
+		follow = true;
+	}
+
+	void FixedUpdate() {
+		// If we don't follow or target is null return
+		if (!follow || target == null) return;
+
+		// normalise velocity so it doesn't jump too far
+		this.rb.velocity.Normalize();
+
+		// Save transform localy
+		Quaternion curRot = transform.rotation;
+		Vector3 tPos = target.position + target.TransformDirection(offset);
+
+		// Look at the target
+		transform.LookAt(target);
+
+		// Keep the camera above the target y position
+		if (tPos.y < target.position.y) {
+			tPos.y = target.position.y;
 		}
 
-		void FixedUpdate() {
-			// If we don't follow or target is null return
-			if (!follow || target == null) return;
+		// Set transform with lerp
+		transform.position = Vector3.Lerp(transform.position, tPos, Time.fixedDeltaTime * lerpPositionMultiplier);
+		transform.rotation = Quaternion.Lerp(curRot, transform.rotation, Time.fixedDeltaTime * lerpRotationMultiplier);
 
-			// normalise velocity so it doesn't jump too far
-			this.rb.velocity.Normalize();
-
-			// Save transform localy
-			Quaternion curRot = transform.rotation;
-			Vector3 tPos = target.position + target.TransformDirection(offset);
-
-			// Look at the target
-			transform.LookAt(target);
-
-			// Keep the camera above the target y position
-			if (tPos.y < target.position.y) {
-				tPos.y = target.position.y;
-			}
-
-			// Set transform with lerp
-			transform.position = Vector3.Lerp(transform.position, tPos, Time.fixedDeltaTime * lerpPositionMultiplier);
-			transform.rotation = Quaternion.Lerp(curRot, transform.rotation, Time.fixedDeltaTime * lerpRotationMultiplier);
-
-			// Keep camera above the y:0.5f to prevent camera going underground
-			if (transform.position.y < 0.5f) {
-				transform.position = new Vector3(transform.position.x , 0.5f, transform.position.z);
-			}
-
-			// // Update speedometer
-			// if (speedometer != null && vehicle != null)
-			// {
-			// 	StringBuilder sb = new StringBuilder();
-			// 	sb.Append("Speed:");
-			// 	sb.Append(((int) (vehicle.Speed)).ToString());
-			// 	sb.Append(" Kph");
-
-			// 	speedometer.text = sb.ToString();
-			// }
-			// else if (speedometer.text != "")
-			// {
-			// 	speedometer.text = "";
-			// }
-			
+		// Keep camera above the y:0.5f to prevent camera going underground
+		if (transform.position.y < 0.5f) {
+			transform.position = new Vector3(transform.position.x , 0.5f, transform.position.z);
 		}
+
+		// // Update speedometer
+		// if (speedometer != null && vehicle != null)
+		// {
+		// 	StringBuilder sb = new StringBuilder();
+		// 	sb.Append("Speed:");
+		// 	sb.Append(((int) (vehicle.Speed)).ToString());
+		// 	sb.Append(" Kph");
+
+		// 	speedometer.text = sb.ToString();
+		// }
+		// else if (speedometer.text != "")
+		// {
+		// 	speedometer.text = "";
+		// }
+		
 	}
 }
