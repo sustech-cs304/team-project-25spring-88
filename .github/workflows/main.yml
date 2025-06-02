@@ -1,4 +1,4 @@
-name: Actions 😎
+name: Unity CI
 
 on: [push, pull_request]
 
@@ -45,7 +45,7 @@ jobs:
           projectPath: team_project
 
       # 5. Upload artifact：指向 Windows 的构建输出目录
-      - uses: actions/upload-artifact@v3
+      - uses: actions/upload-artifact@v4
         with:
           name: Build-Windows
           # 默认情况下，unity-builder 会把 Windows 构建输出到 team_project/build/Windows 目录
