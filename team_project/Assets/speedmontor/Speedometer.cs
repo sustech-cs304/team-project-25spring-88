@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 
 using UnityEngine;
 using UnityEngine.UI;
@@ -14,7 +15,8 @@ public class Speedometer : MonoBehaviour
     public float maxSpeedArrowAngle;
 
     [Header("UI")]
-    public Text speedLabel; // The label that displays the speed;
+    public TMP_Text speedLabel; // 新增：速度显示文本
+ // The label that displays the speed;
     public RectTransform arrow; // The arrow in the speedometer
 
     private float speed = 0.0f;

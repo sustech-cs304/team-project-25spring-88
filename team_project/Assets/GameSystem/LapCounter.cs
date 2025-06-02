@@ -154,7 +154,7 @@ public class LapCounter : MonoBehaviour
                     raceStarted = false;
                     Debug.Log($"Race Finished! Total Time: {raceTimer:F2}s");
                     TriggerCelebration();
-                    ShowEndScreen(false);
+                    ShowEndScreen(true);
                 }
             }
             else
@@ -230,11 +230,14 @@ public class LapCounter : MonoBehaviour
         if(finish){
             if (finishText != null)
             {
-                finishText.text=$"You have been caught by the police, and you escaped for a total of {raceTimer:F2} second.";
+                finishText.text=$"You completed a lap and toyed with the captor in the palm of your hand.";
                 lapText.gameObject.SetActive(false);
                 timeText.gameObject.SetActive(false);
                 speedText.gameObject.SetActive(false);
-                distanceText.gameObject.SetActive(false); // 新增：隐藏距离显示
+                if(distanceText != null)
+                {
+                    distanceText.gameObject.SetActive(false); // 新增：隐藏距离显示
+                }
                 finishText.gameObject.SetActive(true);
             }
             if (quitButton != null)
@@ -245,7 +248,7 @@ public class LapCounter : MonoBehaviour
         else{
             if (finishText != null)
             {
-                finishText.text=$"You completed a lap and toyed with the captor in the palm of your hand.";
+                finishText.text=$"You have been caught by the police, and you escaped for a total of {raceTimer:F2} second.";
                 lapText.gameObject.SetActive(false);
                 timeText.gameObject.SetActive(false);
                 speedText.gameObject.SetActive(false);
