@@ -8,6 +8,9 @@ TagManager:
   - StartLine
   - Car
   - aiCar
+  - lapText
+  - timeText
+  - carCamera
   layers:
   - Default
   - TransparentFX
