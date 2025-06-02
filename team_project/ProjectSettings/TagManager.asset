@@ -10,6 +10,7 @@ TagManager:
   - aiCar
   - lapText
   - timeText
+  - carCamera
   layers:
   - Default
   - TransparentFX

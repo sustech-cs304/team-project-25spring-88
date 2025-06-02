@@ -101,5 +101,41 @@ public class CarInitializer : NetworkBehaviour
         {
             Debug.LogWarning("LapTracker component not found on this vehicle.");
         }
+
+
+        var cameraSwitch = FindObjectOfType<CameraSwitch>();
+        if (cameraSwitch != null)
+        {
+            // 1) 绑定外部视角：将主摄像机（Main Camera）当作 Camera1
+            if (Camera.main != null)
+            {
+                cameraSwitch.Camera1 = Camera.main.gameObject;
+            }
+            else
+            {
+                Debug.LogWarning("Main Camera not found in the scene!");
+            }
+
+            // 2) 绑定车内视角：找到标签为 "carCamera" 的摄像机
+            var inCarCam = GameObject.FindWithTag("carCamera");
+            if (inCarCam != null)
+            {
+                cameraSwitch.Camera2 = inCarCam;
+                // 一开始先让车内摄像机关闭（可根据需要调整初始状态）
+                cameraSwitch.Camera2.SetActive(false);
+            }
+            else
+            {
+                Debug.LogWarning("No GameObject with tag 'carCamera' found for in-car view.");
+            }
+
+            // 3) 确保外部视角默认打开
+            if (cameraSwitch.Camera1 != null)
+                cameraSwitch.Camera1.SetActive(true);
+        }
+        else
+        {
+            Debug.LogWarning("CameraSwitch component not found in the scene.");
+        }
     }
 }
