@@ -1327,6 +1327,8 @@ MonoBehaviour:
   passwordText: {fileID: 414614542}
   playerListParent: {fileID: 877094820}
   playerEntryPrefab: {fileID: 871774619171894961, guid: c90b355417e5d4a47877b3d8fab64029, type: 3}
+  startGameButton: {fileID: 933429225}
+  gameSceneName: MultiplayerRacingScene
 --- !u!1 &1626174739
 GameObject:
   m_ObjectHideFlags: 0

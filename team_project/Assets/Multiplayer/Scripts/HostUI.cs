@@ -15,6 +15,10 @@ public class HostUI : MonoBehaviour
     public Transform playerListParent;
     public GameObject playerEntryPrefab;
 
+    [Header("Start Game")]
+    public Button startGameButton;
+    public string gameSceneName = "GameScene"; 
+
     private string generatedPassword;
     private ushort selectedPort;
 
@@ -24,36 +28,40 @@ public class HostUI : MonoBehaviour
     }
 
     void SetupHost()
-{
-    // 1. 生成密码
-    generatedPassword = GeneratePassword(6);
-    passwordText.text = $"Password: {generatedPassword}";
-
-    TokenAuthenticator authenticator = XNetworkManager.singleton.authenticator as TokenAuthenticator;
-    if (authenticator != null)
     {
-        authenticator.serverToken = generatedPassword;
-        authenticator.clientToken = generatedPassword; 
-    }
-    else
-    {
-        Debug.LogWarning("TokenAuthenticator not found on XNetworkManager.");
-    }
+        // 1. 生成密码
+        generatedPassword = GeneratePassword(6);
+        passwordText.text = $"Password: {generatedPassword}";
 
-    // 2. 自动选择端口
-    selectedPort = GetAvailablePort(7777, 7800);
-    XNetworkManager.singleton.GetComponent<TelepathyTransport>().port = selectedPort;
-    portText.text = $"Port: {selectedPort}";
+        TokenAuthenticator authenticator = XNetworkManager.singleton.authenticator as TokenAuthenticator;
+        if (authenticator != null)
+        {
+            authenticator.serverToken = generatedPassword;
+            authenticator.clientToken = generatedPassword; 
+        }
+        else
+        {
+            Debug.LogWarning("TokenAuthenticator not found on XNetworkManager.");
+        }
 
-    // 3. 获取 IP
-    string ip = GetInternalIP("10.16");
-    ipText.text = $"IP: {ip}";
+        // 2. 自动选择端口
+        selectedPort = GetAvailablePort(7777, 7800);
+        XNetworkManager.singleton.GetComponent<TelepathyTransport>().port = selectedPort;
+        portText.text = $"Port: {selectedPort}";
 
-    // 4. 启动 Host
-    XNetworkManager.singleton.StartHost();
+        // 3. 获取 IP
+        string ip = GetInternalIP("10.16");
+        ipText.text = $"IP: {ip}";
 
-    // 5. 启动玩家列表刷新
-    InvokeRepeating(nameof(UpdatePlayerList), 1f, 1f);
+        // 4. 启动 Host
+        XNetworkManager.singleton.StartHost();
+
+        // 5. 启动玩家列表刷新
+        InvokeRepeating(nameof(UpdatePlayerList), 1f, 1f);
+
+        startGameButton.interactable = false;
+
+        startGameButton.onClick.AddListener(OnStartGameClicked);
     }
 
 
@@ -108,6 +116,8 @@ public class HostUI : MonoBehaviour
         foreach (Transform child in playerListParent)
             Destroy(child.gameObject);
 
+        int playerCount = 0;
+
         foreach (var conn in NetworkServer.connections.Values)
         {
             if (conn.identity != null)
@@ -115,6 +125,9 @@ public class HostUI : MonoBehaviour
                 XPlayer player = conn.identity.GetComponent<XPlayer>();
                 if (player != null)
                 {
+
+                    playerCount++;
+
                     GameObject entry = Instantiate(playerEntryPrefab, playerListParent);
 
                     // 设置名字
@@ -137,6 +150,8 @@ public class HostUI : MonoBehaviour
                 }
             }
         }
+        // 启用/禁用 Start 按钮
+        startGameButton.interactable = playerCount >= 1;
     }
 
 
@@ -165,5 +180,25 @@ public class HostUI : MonoBehaviour
     {
         CancelInvoke(nameof(UpdatePlayerList));
     }
+
+    void OnStartGameClicked()
+    {
+        // 确保是 Host 且至少有 2 个客户端连接
+        if (!NetworkServer.active)
+        {
+            Debug.LogWarning("Only the host can start the game.");
+            return;
+        }
+
+        if (NetworkServer.connections.Count < 1)
+        {
+            Debug.LogWarning("No clients connected.");
+            return;
+        }
+
+        // 切换场景：所有客户端会自动跟随加载
+        XNetworkManager.singleton.ServerChangeScene(gameSceneName);
+    }
+
 
 }

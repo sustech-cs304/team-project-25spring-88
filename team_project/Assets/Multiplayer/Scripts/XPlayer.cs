@@ -1,6 +1,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Mirror;
+using VehicleBehaviour;
+using System.Collections;
 
 /*
 	Documentation: https://mirror-networking.gitbook.io/docs/guides/networkbehaviour
@@ -23,6 +25,13 @@ public class XPlayer : NetworkBehaviour
 
     [SyncVar(hook = nameof(PlayerNameChanged))]
     public string playerName = "";
+
+    [SyncVar] 
+    public int selectedCarIndex = 0;  // 玩家选择的赛车编号
+
+
+    [SyncVar]
+    public uint carNetId;
 
     void PlayerNumberChanged(byte _, byte newPlayerNumber)
     {
@@ -86,7 +95,28 @@ public class XPlayer : NetworkBehaviour
     /// Called on every NetworkBehaviour when it is activated on a client.
     /// <para>Objects on the host have this function called, as there is a local client on the host. The values of SyncVars on object are guaranteed to be initialized correctly with the latest state from the server when this function is called on the client.</para>
     /// </summary>
-    public override void OnStartClient() { }
+    public override void OnStartClient() 
+    {
+        if (isLocalPlayer)
+        {
+            StartCoroutine(NotifyRaceReadyWhenSceneIsLoaded());
+        }
+    }
+
+
+    IEnumerator NotifyRaceReadyWhenSceneIsLoaded()
+    {
+        // 等待1帧以确保场景完全初始化
+        yield return null;
+
+        // 找到 RacingManager 并发送准备消息
+        MultiplayerRacingManager mgr = FindObjectOfType<MultiplayerRacingManager>();
+        if (mgr != null)
+        {
+            CmdNotifyReady();
+        }
+    }
+
 
     /// <summary>
     /// This is invoked on clients when the server has caused this object to be destroyed.
@@ -111,7 +141,10 @@ public class XPlayer : NetworkBehaviour
     /// <para>This is called after <see cref="OnStartServer">OnStartServer</see> and before <see cref="OnStartClient">OnStartClient.</see></para>
     /// <para>When <see cref="NetworkIdentity.AssignClientAuthority">AssignClientAuthority</see> is called on the server, this will be called on the client that owns the object. When an object is spawned with <see cref="NetworkServer.Spawn">NetworkServer.Spawn</see> with a NetworkConnectionToClient parameter included, this will be called on the client that owns the object.</para>
     /// </summary>
-    public override void OnStartAuthority() { }
+    public override void OnStartAuthority() 
+    {
+        CmdSelectCar(PlayerPrefs.GetInt("SelectedCarIndex", 0)); // 或 UI 中传入
+    }
 
     /// <summary>
     /// This is invoked on behaviours when authority is removed.
@@ -132,6 +165,38 @@ public class XPlayer : NetworkBehaviour
         byte playerNumber = 0;
         foreach (XPlayer player in playersList)
             player.playerNumber = playerNumber++;
+    }
+
+    [Command]
+    void CmdSelectCar(int carIndex)
+    {
+        selectedCarIndex = carIndex;
+    }
+
+    [Server]
+    public void SpawnCar(GameObject[] carPrefabs, Transform spawnPoint)
+    {
+        GameObject car = Instantiate(carPrefabs[selectedCarIndex], spawnPoint.position, spawnPoint.rotation);
+        NetworkServer.Spawn(car, connectionToClient);
+
+        carNetId = car.GetComponent<NetworkIdentity>().netId;
+
+
+        var nameDisplay = car.GetComponentInChildren<CarNameDisplay>();
+        if (nameDisplay != null)
+        {
+            nameDisplay.SetPlayerName(playerName);
+        }
+    }
+
+    [Command]
+    void CmdNotifyReady()
+    {
+        MultiplayerRacingManager mgr = FindObjectOfType<MultiplayerRacingManager>();
+        if (mgr != null)
+        {
+            mgr.PlayerReady(this);
+        }
     }
 
     #endregion
