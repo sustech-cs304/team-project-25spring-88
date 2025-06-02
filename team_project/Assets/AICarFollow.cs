@@ -36,9 +36,12 @@ public class AICarPathFollower : MonoBehaviour
     private RenderTexture pipRenderTexture;       // 渲染纹理
     private RawImage pipDisplay;                  // 显示小窗口的UI元素
     private GameObject cameraRig;                 // 相机支架
-
+    private float lastCheckTime = 0f; // 上次检查时间
+    public float stuckThreshold = 0.5f; // 速度阈值（m/s）
+    public float stuckDuration = 3f; // 停滞持续时间（秒）
+    public float checkInterval = 0.5f; // 检查间隔（秒）
     private Rigidbody rb;
-    private int currentWaypointIndex = 0;
+    public int currentWaypointIndex = 0;
     private float stuckTimer = 0f;
     private Vector3 lastPosition;
     private bool isGrounded = false;
@@ -155,6 +158,46 @@ public class AICarPathFollower : MonoBehaviour
         pipCamera.transform.LookAt(lookTarget);
     }
 
+    private void CheckIfStuck()
+    {
+        if (rb != null && rb.velocity.magnitude < stuckThreshold)
+        {
+            stuckTimer += checkInterval;
+            if (stuckTimer >= stuckDuration)
+            {
+                Respawn();
+                stuckTimer = 0f; // 重置停滞计时器
+            }
+        }
+        else
+        {
+            stuckTimer = 0f;
+        }
+    }
+
+    private void Respawn()
+    {
+        if (rb != null)
+        {
+            currentWaypointIndex+=1;
+            UpdateTargetWaypoint();
+            transform.position=currentTarget;
+            Debug.Log($"{gameObject.name}: Respawned at position {transform.position}");
+        }
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        // 检测是否与玩家小车碰撞
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            Debug.Log($"{gameObject.name}: Collided with Player {collision.gameObject.name}");
+            LapCounter lapCounter = collision.gameObject.GetComponent<LapCounter>();
+            lapCounter.gameover();
+
+        }
+    }
+
     void FixedUpdate()
     {
         if (targetVehicle == null || targetVehicle.waypoints == null || 
@@ -164,7 +207,11 @@ public class AICarPathFollower : MonoBehaviour
         // 更新地面检测
         UpdateGroundStatus();
         
-        CheckIfStuck();
+        if (Time.time - lastCheckTime >= checkInterval)
+        {
+            CheckIfStuck();
+            lastCheckTime = Time.time;
+        }
         CheckWaypointReached();
         
         Vector3 direction = CalculateMovementDirection();
@@ -232,30 +279,6 @@ public class AICarPathFollower : MonoBehaviour
             }
         }
     }
-
-    void CheckIfStuck()
-    {
-        if (Vector3.Distance(transform.position, lastPosition) < 0.5f)
-        {
-            stuckTimer += Time.fixedDeltaTime;
-            
-            if (stuckTimer > 2f || timeAtCurrentWaypoint > MAX_TIME_AT_WAYPOINT)
-            {
-                rb.AddForce(transform.forward * maxForce * 0.7f, ForceMode.Impulse);
-                
-                currentWaypointIndex = Mathf.Min(currentWaypointIndex + 1, targetVehicle.waypoints.Count - 1);
-                UpdateTargetWaypoint();
-                
-                stuckTimer = 0f;
-                timeAtCurrentWaypoint = 0f;
-            }
-        }
-        else
-        {
-            stuckTimer = 0f;
-        }
-    }
-
     void CheckWaypointReached()
     {
         if (currentWaypointIndex >= targetVehicle.waypoints.Count)

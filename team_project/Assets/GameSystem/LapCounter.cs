@@ -192,7 +192,17 @@ public class LapCounter : MonoBehaviour
             Debug.Log("Respawned to last checkpoint at: " + lastCheckpointPosition);
         }
     }
-
+    public void gameover()
+    {    
+        TriggerCelebration();     
+        ShowEndScreen();
+        Debug.Log("Game Over!");
+        raceStarted = false;
+        hasCelebrated = false;
+        currentLap = 0;
+        raceTimer = 0f;
+       
+    }
     private void TriggerCelebration()
     {
         if (hasCelebrated) return;
@@ -221,7 +231,7 @@ public class LapCounter : MonoBehaviour
     {
         if (finishText != null)
         {
-            finishText.text=$"You successfully completed {totalLaps} lap with a time of {raceTimer:F2}s";
+            finishText.text=$"You have been caught by the police, and you escaped for a total of {raceTimer:F2} second.";
             lapText.gameObject.SetActive(false);
             timeText.gameObject.SetActive(false);
             speedText.gameObject.SetActive(false);
