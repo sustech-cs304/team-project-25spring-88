@@ -1,0 +1,52 @@
+name: Actions 😎
+
+on: [push, pull_request]
+
+jobs:
+  build:
+    name: Build & Test & Release
+    runs-on: ubuntu-latest
+
+    steps:
+      # 1. Checkout
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          lfs: true
+
+      # 2. Cache：缓存 team_project/Library
+      - uses: actions/cache@v3
+        with:
+          path: team_project/Library
+          key: Library-${{ hashFiles('team_project/Assets/**', 'team_project/Packages/**', 'team_project/ProjectSettings/**') }}
+          restore-keys: |
+            Library-
+
+      # 3. Run tests
+      - name: Run tests
+        uses: game-ci/unity-test-runner@v4
+        env:
+          UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
+          UNITY_EMAIL: ${{ secrets.UNITY_EMAIL }}
+          UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
+        with:
+          githubToken: ${{ secrets.GITHUB_TOKEN }}
+          projectPath: team_project
+
+      # 4. Build project（改成 Windows 平台）
+      - name: Build project
+        uses: game-ci/unity-builder@v4
+        env:
+          UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
+          UNITY_EMAIL: ${{ secrets.UNITY_EMAIL }}
+          UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
+        with:
+          targetPlatform: Windows
+          projectPath: team_project
+
+      # 5. Upload artifact：指向 Windows 的构建输出目录
+      - uses: actions/upload-artifact@v3
+        with:
+          name: Build-Windows
+          # 默认情况下，unity-builder 会把 Windows 构建输出到 team_project/build/Windows 目录
+          path: team_project/build/Windows
