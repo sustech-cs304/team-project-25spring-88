@@ -1,6 +1,8 @@
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
+using System.Collections;
+using UnityEngine.TestTools;
 /** 
      * AI-generated-content 
      * tool: grok 
@@ -30,7 +32,7 @@ public class LapCounter : MonoBehaviour
     public TMP_Text speedText; // 新增：速度显示文本
     public TMP_Text distanceText; // 新增：距离显示文本
     public Button quitButton;
-
+    public CountdownUI countdownscript; // 新增：倒计时脚本引用
     // 庆祝效果
     public ParticleSystem fireworkEffect;
     public ParticleSystem ribbonEffect;
@@ -47,6 +49,10 @@ public class LapCounter : MonoBehaviour
 
     void Start()
     {
+       playerCar.SetActive(false); // 确保玩家车在开始时不激活
+        aiCar.SetActive(false); // 确保 AI 警车在开始时不激活
+        StartCoroutine(StartRace()); // 启动协程处理倒计时和激活逻辑
+        aiCar.SetActive(true); // 确保 AI 警车在开始时不激活
         UpdateLapDisplay();
         UpdateTimeDisplay();
         UpdateSpeedDisplay();
@@ -77,7 +83,16 @@ public class LapCounter : MonoBehaviour
             Debug.LogWarning("AI car is not assigned in LapCounter!");
         }
     }
-
+    IEnumerator StartRace()
+    {
+        countdownscript.StartCountdown(5); // 开始5秒倒计时
+        yield return new WaitForSeconds(5.0f); // 等待倒计时结束
+        playerCar.SetActive(true); // 激活玩家车
+        Debug.Log("玩家小车已激活！");
+        yield return new WaitForSeconds(3.0f); // 再等待5秒
+        aiCar.SetActive(true); // 激活 AI 小车
+        Debug.Log("AI 小车已激活！");
+    }
  void Update()
     {
         if (raceStarted)
