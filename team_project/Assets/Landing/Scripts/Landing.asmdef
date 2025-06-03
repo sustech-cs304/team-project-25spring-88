@@ -1,0 +1,16 @@
+{
+    "name": "LandingScripts",
+    "rootNamespace": "",
+    "references": [
+        "GUID:faeab28900928f14d90d91f6ac2bba84"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
