@@ -17,7 +17,7 @@ The main goal of the game is to help students and players become more familiar w
 ## Game Modes
 
 ### Classic Racing Mode
-![racingscene](resource\regulargamescene.png)
+![racingscene](./resource/regulargamescene.png "regulargame")
 In the main menu, click **Regular Race** to enter Regular Racing Mode. In Classic Racing Mode, players start in front of the Third Teaching Building and race along the route of SUSTech Bus Line 1, returning to the starting point to complete the race. To ensure fair play and encourage campus exploration, there are barriers only on the outer edge of the track. Six checkpoints are placed along the route; players must pass through all checkpoints for their results to be recorded. If you get lost, press **R** to return to the last checkpoint.
 ![checkpoints](./resource/checkpoint.png "checkpoint")
 
