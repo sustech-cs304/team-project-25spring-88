@@ -49,10 +49,26 @@ public class LapCounter : MonoBehaviour
 
     void Start()
     {
-       playerCar.SetActive(false); // 确保玩家车在开始时不激活
-        aiCar.SetActive(false); // 确保 AI 警车在开始时不激活
-        StartCoroutine(StartRace()); // 启动协程处理倒计时和激活逻辑
-        aiCar.SetActive(true); // 确保 AI 警车在开始时不激活
+        Rigidbody PlayercarRigidbody = playerCar.GetComponent<Rigidbody>();
+        if (PlayercarRigidbody != null)
+        {
+            PlayercarRigidbody.isKinematic = true; // 禁用物理运动
+            // 或者使用 constraints
+            // carRigidbody.constraints = RigidbodyConstraints.FreezeAll;
+        }if(aiCar != null)
+        {  
+            AICarPathFollower aiCarPathFollower = aiCar.GetComponent<AICarPathFollower>();
+            aiCarPathFollower.enabled = false; // 确保 AI 小车的路径跟随脚本启用
+            Rigidbody AicarRigidbody = aiCar.GetComponent<Rigidbody>();
+            if (AicarRigidbody != null)
+            {
+                AicarRigidbody.isKinematic = true; // 禁用物理运动
+                // 或者使用 constraints
+                // carRigidbody.constraints = RigidbodyConstraints.FreezeAll;
+            } 
+        }
+        StartCoroutine(StartRace(PlayercarRigidbody,aiCar)); // 启动协程处理倒计时和激活逻辑
+
         UpdateLapDisplay();
         UpdateTimeDisplay();
         UpdateSpeedDisplay();
@@ -83,14 +99,27 @@ public class LapCounter : MonoBehaviour
             Debug.LogWarning("AI car is not assigned in LapCounter!");
         }
     }
-    IEnumerator StartRace()
+    IEnumerator StartRace(Rigidbody playerCar,GameObject aiCar)
     {
         countdownscript.StartCountdown(5); // 开始5秒倒计时
         yield return new WaitForSeconds(5.0f); // 等待倒计时结束
-        playerCar.SetActive(true); // 激活玩家车
+        playerCar.isKinematic = false; // 激活玩家小车的物理运动
         Debug.Log("玩家小车已激活！");
         yield return new WaitForSeconds(3.0f); // 再等待5秒
-        aiCar.SetActive(true); // 激活 AI 小车
+         if(aiCar != null)
+        {
+            AICarPathFollower aiCarPathFollower = aiCar.GetComponent<AICarPathFollower>();
+            Rigidbody AicarRigidbody = aiCar.GetComponent<Rigidbody>();
+            if (aiCarPathFollower != null)
+            {
+                aiCarPathFollower.enabled = true; // 确保 AI 小车的路径跟随脚本启用
+                AicarRigidbody.isKinematic = false; // 激活 AI 小车的物理运动
+            }
+            else
+            {
+                Debug.LogWarning("AI car does not have AICarPathFollower component!");
+            }
+        }
         Debug.Log("AI 小车已激活！");
     }
  void Update()

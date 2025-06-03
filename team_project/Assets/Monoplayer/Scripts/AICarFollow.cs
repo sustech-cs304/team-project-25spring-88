@@ -335,36 +335,98 @@ public class AICarPathFollower : MonoBehaviour
     }
 
     void ApplyMovementForce(Vector3 direction)
+{
+    // 检查路径点列表是否为空
+    if (targetVehicle == null || targetVehicle.waypoints == null || targetVehicle.waypoints.Count == 0)
     {
-        if (targetVehicle.waypoints.Count == 0) return;
-
-        float distanceToTarget = Vector3.Distance(transform.position, currentTarget);
-        
-        float speedFactor = Mathf.Clamp01(distanceToTarget / slowdownRadius);
-        float targetSpeed = Mathf.Lerp(0, moveSpeed, speedFactor);
-        
-        float minSpeed = 2.0f;
-        if (distanceToTarget > waypointThreshold * 2f)
-        {
-            targetSpeed = Mathf.Max(targetSpeed, minSpeed);
-        }
-        
-        targetSpeed = Mathf.Clamp(targetSpeed, -maxSpeed * 0.3f, maxSpeed);
-        
-        Vector3 targetVelocity = direction * targetSpeed;
-        Vector3 force = (targetVelocity - rb.velocity) * rb.mass;
-        
-        force = Vector3.ClampMagnitude(force, maxForce);
-        force.y = 0;
-        
-        rb.AddForce(force, ForceMode.Force);
-        
-        float dotProduct = Vector3.Dot(rb.velocity.normalized, direction);
-        if (dotProduct < 0.3f && rb.velocity.magnitude > 2f)
-        {
-            rb.velocity *= brakingFactor;
-        }
+        Debug.LogWarning("路径点列表为空或未分配！");
+        return;
     }
+
+    // 检查 Rigidbody 是否有效
+    if (rb == null)
+    {
+        Debug.LogError("Rigidbody 未分配！");
+        return;
+    }
+
+    // 检查是否允许移动（结合 LapCounter 的 canMove 逻辑）
+    if (rb.isKinematic)
+    {
+        Debug.Log("AI 小车物理运动被禁用，跳过施加力。");
+        return;
+    }
+
+    // 计算到目标点的距离
+    float distanceToTarget = Vector3.Distance(transform.position, currentTarget);
+    if (float.IsNaN(distanceToTarget) || float.IsInfinity(distanceToTarget))
+    {
+        Debug.LogWarning("到目标点的距离无效，跳过施加力。");
+        return;
+    }
+
+    // 计算速度因子
+    float speedFactor = Mathf.Clamp01(distanceToTarget / slowdownRadius);
+    float targetSpeed = Mathf.Lerp(0, moveSpeed, speedFactor);
+
+    // 确保最小速度
+    float minSpeed = 2.0f;
+    if (distanceToTarget > waypointThreshold * 2f)
+    {
+        targetSpeed = Mathf.Max(targetSpeed, minSpeed);
+    }
+
+    // 限制目标速度
+    targetSpeed = Mathf.Clamp(targetSpeed, -maxSpeed * 0.3f, maxSpeed);
+    if (float.IsNaN(targetSpeed) || float.IsInfinity(targetSpeed))
+    {
+        Debug.LogWarning("目标速度无效，设置为 0。");
+        targetSpeed = 0f;
+    }
+
+    // 检查方向向量是否有效
+    if (direction.sqrMagnitude < 0.0001f) // 避免零向量
+    {
+        Debug.LogWarning("方向向量无效，跳过施加力。");
+        return;
+    }
+
+    // 计算目标速度向量
+    Vector3 targetVelocity = direction.normalized * targetSpeed;
+    if (float.IsNaN(targetVelocity.x) || float.IsNaN(targetVelocity.y) || float.IsNaN(targetVelocity.z))
+    {
+        Debug.LogWarning("目标速度向量包含 NaN，跳过施加力。");
+        return;
+    }
+
+    // 计算力
+    Vector3 force = (targetVelocity - rb.velocity) * rb.mass;
+    if (float.IsNaN(force.x) || float.IsNaN(force.y) || float.IsNaN(force.z))
+    {
+        Debug.LogWarning("计算的力包含 NaN，跳过施加力。");
+        return;
+    }
+
+    // 限制力的大小并确保 y 轴为 0
+    force = Vector3.ClampMagnitude(force, maxForce);
+    force.y = 0;
+
+    // 应用力
+    rb.AddForce(force, ForceMode.Force);
+
+    // 刹车逻辑
+    float dotProduct = Vector3.Dot(rb.velocity.normalized, direction.normalized);
+    if (float.IsNaN(dotProduct))
+    {
+        Debug.LogWarning("点积计算无效，跳过刹车逻辑。");
+        return;
+    }
+
+    if (dotProduct < 0.3f && rb.velocity.magnitude > 2f)
+    {
+        rb.velocity *= brakingFactor;
+    }
+}
 
     void HandleRotation(Vector3 direction)
     {
