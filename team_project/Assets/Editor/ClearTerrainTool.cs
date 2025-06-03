@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
 
-public static class ClearAllTerrainsTool
+public class ClearAllTerrainsTool : MonoBehaviour
 /** 
      * AI-generated-content 
      * tool: grok 
