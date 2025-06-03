@@ -86,7 +86,7 @@ Since our project is a single-player game, it does not need to be accessible to 
 - **Hot Wheels Infinite Loop**
 - **Asphalt 9: Legends (mobile version uses Unity for some platforms)**
 
-These large-scale Unity racing games are typically not deployed online as containerized services because:
+These large-scale Unity racing games are typically **not deployed online** as containerized services because:
 - They are designed as standalone or client-based games, not as web services.
 - Performance requirements for real-time rendering and input are best met by running natively on the player's device.
 - Online deployment (such as via containers) is more suitable for backend services, not for delivering high-performance game clients.
