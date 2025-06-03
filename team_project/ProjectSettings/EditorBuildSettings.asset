@@ -27,13 +27,13 @@ EditorBuildSettings:
     path: Assets/Multiplayer/Scene/MultiplayerWaitingRoom.unity
     guid: 88f481d4071f77e4f827ef367740d60e
   - enabled: 1
-    path: Assets/Mirror/Examples/Basic/Scenes/MirrorBasic.unity
+    path: Assets/ThirdParty/Mirror/Examples/Basic/Scenes/MirrorBasic.unity
     guid: b30904751905d3f4dacde62ac85ec7c2
   - enabled: 1
-    path: Assets/Mirror/Examples/MultipleAdditiveScenes/Scenes/MirrorMultipleAdditiveScenesMain.unity
+    path: Assets/ThirdParty/Mirror/Examples/MultipleAdditiveScenes/Scenes/MirrorMultipleAdditiveScenesMain.unity
     guid: 0fa8b7965660de64f8aefd6b64f18a08
   - enabled: 1
-    path: Assets/Mirror/Examples/MultipleAdditiveScenes/Scenes/MirrorMultipleAdditiveScenesGame.unity
+    path: Assets/ThirdParty/Mirror/Examples/MultipleAdditiveScenes/Scenes/MirrorMultipleAdditiveScenesGame.unity
     guid: d45ed07e5475d4740812c97ae565255c
   - enabled: 1
     path: Assets/Multiplayer/Scene/MultiplayerRacingScene.unity
