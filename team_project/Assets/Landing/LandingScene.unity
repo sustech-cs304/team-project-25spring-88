@@ -96,7 +96,7 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
-  m_LightingDataAsset: {fileID: 0}
+  m_LightingDataAsset: {fileID: 112000002, guid: 925479cf07bf7c94cb13dcb4957a317f, type: 2}
   m_LightingSettings: {fileID: 0}
 --- !u!196 &4
 NavMeshSettings:
@@ -859,6 +859,50 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetSceneName: MultiplayerWelcome
+--- !u!1 &647827586
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 647827588}
+  - component: {fileID: 647827587}
+  m_Layer: 0
+  m_Name: LandingUIController
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &647827587
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 647827586}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0da880247e428114ca229a9c06ef12ab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &647827588
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 647827586}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 428.5, y: 249, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &719847265
 GameObject:
   m_ObjectHideFlags: 0
@@ -943,7 +987,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 719847268}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 647827587}
+        m_TargetAssemblyTypeName: LandingUIController, Assembly-CSharp
+        m_MethodName: DisableItemMode
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &719847268
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1028,6 +1084,7 @@ GameObject:
   - component: {fileID: 852550690}
   - component: {fileID: 852550689}
   - component: {fileID: 852550688}
+  - component: {fileID: 852550692}
   m_Layer: 5
   m_Name: Item Race
   m_TagString: Untagged
@@ -1118,7 +1175,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 852550690}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 647827587}
+        m_TargetAssemblyTypeName: LandingUIController, Assembly-CSharp
+        m_MethodName: EnableItemMode
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 1
 --- !u!114 &852550690
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1157,6 +1226,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 852550686}
   m_CullTransparentMesh: 1
+--- !u!114 &852550692
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 852550686}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c78766acdd70e5647ac170ea280dd46a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetSceneName: PickingCarScene
 --- !u!1 &916052640
 GameObject:
   m_ObjectHideFlags: 0
@@ -2017,3 +2099,4 @@ SceneRoots:
   - {fileID: 391343895}
   - {fileID: 1208475582}
   - {fileID: 1771062138}
+  - {fileID: 647827588}

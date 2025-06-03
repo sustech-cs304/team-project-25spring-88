@@ -135,6 +135,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rotationSpeed: 30
   cubeRenderer: {fileID: 0}
-  emissionMin: -1
-  emissionMax: 1
-  emissionSpeed: 1
+  emissionMin: 0
+  emissionMax: 0.3
+  emissionSpeed: 0.15

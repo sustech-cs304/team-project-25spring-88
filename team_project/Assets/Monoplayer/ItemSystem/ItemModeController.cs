@@ -6,7 +6,7 @@ using UnityEngine;
 public class ItemModeController : MonoBehaviour
 {
     [Tooltip("是否为道具模式，控制 ItemLine 是否显示")]
-    public bool isItemMode = true;
+    public static bool isItemMode = true;
 
     [Tooltip("ItemLine 对象的名称关键词")]
     public string itemLineKeyword = "ItemLine";
