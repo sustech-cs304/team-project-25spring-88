@@ -1,4 +1,6 @@
-# SUSTech Campus Racing Game User Manual
+---
+# Documentation
+## SUSTech Campus Racing Game User Manual
 ![landingscene](./resource/landingscene.png "landingscene")
 
 ## Project Introduction
