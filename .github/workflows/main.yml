@@ -107,8 +107,6 @@ jobs:
     - name: Install DocFX
       run: |
         dotnet tool update -g docfx
-        docfx template install default
-        docfx template install material-design
 
     - name: Build Documentation
       working-directory: team_project # 进入项目目录
