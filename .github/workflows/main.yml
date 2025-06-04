@@ -43,7 +43,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: CodeCoverage-Report
-          path: team_project/CodeCoverage/Report
+          path: CodeCoverage/Report
 
   build:
     name: Build Windows
