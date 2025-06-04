@@ -2,6 +2,23 @@
 #
 # Get latest from https://github.com/github/gitignore/blob/main/Unity.gitignore
 #
+# 永久忽略这些文件类型
+*.dll
+*.pdb
+*.exe
+*.cache
+
+# 忽略生成目录
+_site/
+obj/
+bin/
+api/
+temp/
+# Unity 构建输出文件
+/[Tt]eam_project_Data/
+# 忽略自动生成的文件
+toc.yml
+*.json.schema
 .utmp/
 [Ll]ibrary/
 [Tt]emp/
@@ -10,7 +27,6 @@
 [Bb]uilds/
 [Ll]ogs/
 [Uu]ser[Ss]ettings/
-
 # MemoryCaptures can get excessive in size.
 # They also could contain extremely sensitive data
 /[Mm]emoryCaptures/
