@@ -10,6 +10,7 @@ public class WeatherSystemTests
     private GameObject obj;
     private WeatherSystem weather;
     private ParticleSystem rainParticle;
+    private GameObject lightGO;
 
     [UnitySetUp]
     public IEnumerator SetUp()
@@ -17,15 +18,26 @@ public class WeatherSystemTests
         obj = new GameObject("WeatherSystemObject");
         weather = obj.AddComponent<WeatherSystem>();
 
-        // 加一个雨粒子系统
+        // 添加雨粒子系统
         var rainGO = new GameObject("Rain");
         rainParticle = rainGO.AddComponent<ParticleSystem>();
         weather.rainParticle = rainParticle;
 
-        // 设置雾默认状态
-        RenderSettings.fogColor = Color.white;
-        RenderSettings.fogDensity = 0.01f;
-        RenderSettings.fog = false;
+        // 添加方向光，避免 directionalLight 为空
+        lightGO = new GameObject("DirectionalLight");
+        Light dirLight = lightGO.AddComponent<Light>();
+        dirLight.type = LightType.Directional;
+        weather.directionalLight = dirLight;
+
+        // 设置默认天气系统参数
+        weather.fogColor = Color.gray;
+        weather.fogDensity = 0.01f;
+        weather.fogTransitionDuration = 0.5f;
+
+        // 设置初始环境雾参数
+        RenderSettings.fog = true;
+        RenderSettings.fogColor = Color.gray;
+        RenderSettings.fogDensity = 0.02f;
 
         yield return null;
     }
@@ -34,8 +46,9 @@ public class WeatherSystemTests
     public IEnumerator CycleWeather_LoopsThroughStates()
     {
         weather.currentWeather = WeatherSystem.WeatherType.Clear;
-        MethodInfo method = typeof(WeatherSystem).GetMethod("CycleWeather", BindingFlags.NonPublic | BindingFlags.Instance);
+        MethodInfo method = typeof(WeatherSystem).GetMethod("CycleWeather", BindingFlags.Public | BindingFlags.Instance);
         method.Invoke(weather, null);
+
         Assert.AreEqual(WeatherSystem.WeatherType.Rain, weather.currentWeather);
 
         method.Invoke(weather, null);
@@ -50,45 +63,40 @@ public class WeatherSystemTests
     [UnityTest]
     public IEnumerator ApplyWeather_Rain_ActivatesFogAndParticle()
     {
-        MethodInfo method = typeof(WeatherSystem).GetMethod("ApplyWeather", BindingFlags.NonPublic | BindingFlags.Instance);
-        method.Invoke(weather, new object[] { WeatherSystem.WeatherType.Rain });
-
-        Assert.IsTrue(RenderSettings.fog);
-        Assert.IsTrue(weather.rainParticle.isPlaying);
+        weather.ApplyWeather(WeatherSystem.WeatherType.Rain);
 
         yield return null;
+
+        Assert.IsTrue(RenderSettings.fog, "雾应该在下雨时开启");
+        Assert.IsTrue(weather.rainParticle.isPlaying, "雨粒子应该播放");
     }
 
     [UnityTest]
     public IEnumerator ApplyWeather_Clear_DisablesFogEventually()
     {
-        // 初始化为雾状态
+        // 启用雾作为初始状态
         RenderSettings.fog = true;
         RenderSettings.fogColor = Color.gray;
         RenderSettings.fogDensity = 0.02f;
 
-        // 触发切换到 Clear
-        MethodInfo applyMethod = typeof(WeatherSystem).GetMethod("ApplyWeather", BindingFlags.NonPublic | BindingFlags.Instance);
-        applyMethod.Invoke(weather, new object[] { WeatherSystem.WeatherType.Clear });
+        // 切换天气为 Clear
+        weather.ApplyWeather(WeatherSystem.WeatherType.Clear);
 
-        // 等待几帧，让渐变逻辑启动（不要求雾必须关闭）
-        yield return new WaitForSeconds(0.5f);
+        // 等待渐变开始
+        yield return new WaitForSeconds(0.2f);
 
-        // 检查 fog 状态开始发生变化（例如 color、density 开始变动）
-        Assert.Less(RenderSettings.fogDensity, 0.02f, "Fog density 应该开始减小");
-        Assert.IsTrue(RenderSettings.fog, "雾应该仍处于开启状态直到渐变完成");
+        // 检查 fog 密度是否开始降低
+        Assert.Less(RenderSettings.fogDensity, 0.02f, "雾密度应开始减少");
+        Assert.IsTrue(RenderSettings.fog, "雾仍应处于开启状态直到完全清除");
 
-        // ✅ 如果你只是想确认 `ApplyWeather` 的调用意图正常，则这里直接通过
-        Assert.Pass("成功触发 Clear 天气逻辑，雾开始渐变关闭");
+        yield return null;
     }
 
     [TearDown]
     public void TearDown()
     {
-        if (obj != null)
-            Object.DestroyImmediate(obj);
-
-        if (rainParticle != null && rainParticle.gameObject != null)
-            Object.DestroyImmediate(rainParticle.gameObject);
+        if (obj != null) Object.DestroyImmediate(obj);
+        if (rainParticle != null && rainParticle.gameObject != null) Object.DestroyImmediate(rainParticle.gameObject);
+        if (lightGO != null) Object.DestroyImmediate(lightGO);
     }
 }
