@@ -277,6 +277,13 @@ public class LapCounter : MonoBehaviour
                 // Format the time with bold tags and add it to the finish text
                 finishText.text = $"You completed a lap and toyed with the captor in the palm of your hand.\n<b>Time: {raceTimer:F2}s</b>";
                 
+                // Ensure finishText appears on top by setting its Canvas sorting order
+                Canvas finishTextCanvas = finishText.GetComponentInParent<Canvas>();
+                if (finishTextCanvas != null)
+                {
+                    finishTextCanvas.sortingOrder = 10; // Higher number appears on top
+                }
+                
                 // Reduce opacity of other UI elements to 0.5
                 Color fadedColor = new Color(1, 1, 1, 0.5f);
                 lapText.color = fadedColor;
@@ -300,6 +307,12 @@ public class LapCounter : MonoBehaviour
             if (quitButton != null)
             {
                 quitButton.gameObject.SetActive(true);
+                // Also ensure quit button appears on top
+                Canvas quitButtonCanvas = quitButton.GetComponentInParent<Canvas>();
+                if (quitButtonCanvas != null)
+                {
+                    quitButtonCanvas.sortingOrder = 10;
+                }
             }
         }
         else{
@@ -307,6 +320,13 @@ public class LapCounter : MonoBehaviour
             {
                 finishText.text = $"You have been caught by the police.\n<b>Escape time: {raceTimer:F2}s</b>";
                 
+                // Ensure finishText appears on top by setting its Canvas sorting order
+                Canvas finishTextCanvas = finishText.GetComponentInParent<Canvas>();
+                if (finishTextCanvas != null)
+                {
+                    finishTextCanvas.sortingOrder = 10; // Higher number appears on top
+                }
+                
                 // Reduce opacity of other UI elements to 0.5
                 Color fadedColor = new Color(1, 1, 1, 0.5f);
                 lapText.color = fadedColor;
@@ -330,6 +350,12 @@ public class LapCounter : MonoBehaviour
             if (quitButton != null)
             {
                 quitButton.gameObject.SetActive(true);
+                // Also ensure quit button appears on top
+                Canvas quitButtonCanvas = quitButton.GetComponentInParent<Canvas>();
+                if (quitButtonCanvas != null)
+                {
+                    quitButtonCanvas.sortingOrder = 10;
+                }
             }
         }
     }
