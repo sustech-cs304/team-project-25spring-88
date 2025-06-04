@@ -3,18 +3,54 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using Mirror;
 
+/// <summary>
+/// A Unity script that manages the client join UI for a multiplayer racing game.
+/// <para>
+/// This script handles user input for joining a server, including IP, port, password, and player name,
+/// and transitions to the waiting room upon successful connection.
+/// </para>
+/// </summary>
 public class JoinUI : MonoBehaviour
 {
+    /// <summary>
+    /// The UI input field for the player's name.
+    /// </summary>
     [Header("UI References")]
     public InputField nameInput;
+
+    /// <summary>
+    /// The UI input field for the server IP address.
+    /// </summary>
     public InputField ipInput;
+
+    /// <summary>
+    /// The UI input field for the server port number.
+    /// </summary>
     public InputField portInput;
+
+    /// <summary>
+    /// The UI input field for the server password.
+    /// </summary>
     public InputField passwordInput;
+
+    /// <summary>
+    /// The UI button to initiate the connection.
+    /// </summary>
     public Button connectButton;
+
+    /// <summary>
+    /// The UI text element displaying connection status.
+    /// </summary>
     public Text statusText;
 
+    /// <summary>
+    /// The TokenAuthenticator component for network authentication.
+    /// </summary>
     private TokenAuthenticator authenticator;
 
+    /// <summary>
+    /// Initializes UI components and event listeners.
+    /// </summary>
     void Start()
     {
         connectButton.onClick.AddListener(OnConnectClicked);
@@ -35,6 +71,9 @@ public class JoinUI : MonoBehaviour
         XNetworkManager.OnClientDisconnectedExternally += OnDisconnected;
     }
 
+    /// <summary>
+    /// Handles the connect button click to initiate a server connection.
+    /// </summary>
     void OnConnectClicked()
     {
         // 清空旧信息
@@ -79,7 +118,9 @@ public class JoinUI : MonoBehaviour
         statusText.text = "Connecting...";
     }
 
-    // Called when connected successfully
+    /// <summary>
+    /// Handles successful connection to the server.
+    /// </summary>
     public void OnConnected()
     {
         statusText.text = "Connected. Loading...";
@@ -89,20 +130,28 @@ public class JoinUI : MonoBehaviour
         StartCoroutine(SetNameAndEnterWaitingRoom(name));
     }
 
-
+    /// <summary>
+    /// Handles disconnection from the server.
+    /// </summary>
     void OnDisconnected()
     {
         statusText.text = "Connection failed or was rejected.";
         connectButton.interactable = true;
     }
 
+    /// <summary>
+    /// Unregisters event handlers when the GameObject is destroyed.
+    /// </summary>
     void OnDestroy()
     {
         XNetworkManager.OnClientConnectedExternally -= OnConnected;
         XNetworkManager.OnClientDisconnectedExternally -= OnDisconnected;
     }
 
-
+    /// <summary>
+    /// Coroutine that sets the player's name and loads the waiting room scene.
+    /// </summary>
+    /// <param name="name">The player's name to set.</param>
     System.Collections.IEnumerator SetNameAndEnterWaitingRoom(string name)
     {
         float timeout = 5f;
@@ -134,5 +183,4 @@ public class JoinUI : MonoBehaviour
             connectButton.interactable = true;
         }
     }
-
 }

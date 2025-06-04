@@ -9,75 +9,105 @@ using System.Collections;
 	API Reference: https://mirror-networking.com/docs/api/Mirror.NetworkBehaviour.html
 */
 
+/// <summary>
+/// A Unity script that manages player state and behavior in a multiplayer racing game.
+/// <para>
+/// This script handles player number assignment, name synchronization, car selection, and spawning,
+/// as well as enabling control for the local player's car. It maintains a static player list for
+/// managing player numbers and notifies the race manager when ready.
+/// </para>
+/// </summary>
 public class XPlayer : NetworkBehaviour
 {
+    /// <summary>
+    /// Event invoked when the player's number changes.
+    /// </summary>
     public event System.Action<byte> OnPlayerNumberChanged;
 
-    // Players List to manage playerNumber
+    /// <summary>
+    /// A static list of all active XPlayer instances for player number management.
+    /// </summary>
     static readonly List<XPlayer> playersList = new List<XPlayer>();
 
     #region SyncVars
-
+    /// <summary>
+    /// The player's unique number, synchronized across the network.
+    /// </summary>
     [Header("SyncVars")]
-
     [SyncVar(hook = nameof(PlayerNumberChanged))]
     public byte playerNumber = 0;
 
+    /// <summary>
+    /// The player's name, synchronized across the network.
+    /// </summary>
     [SyncVar(hook = nameof(PlayerNameChanged))]
     public string playerName = "";
 
+    /// <summary>
+    /// The index of the selected car prefab, synchronized across the network.
+    /// </summary>
     [SyncVar]
     public int selectedCarIndex = 0;  // 玩家选择的赛车编号
 
-
+    /// <summary>
+    /// The network ID of the player's spawned car, synchronized across the network.
+    /// </summary>
     [SyncVar]
     public uint carNetId;
 
+    /// <summary>
+    /// Handles the player number change event.
+    /// </summary>
+    /// <param name="_">The old player number (ignored).</param>
+    /// <param name="newPlayerNumber">The new player number.</param>
     void PlayerNumberChanged(byte _, byte newPlayerNumber)
     {
         OnPlayerNumberChanged?.Invoke(newPlayerNumber);
     }
 
+    /// <summary>
+    /// Handles the player name change event and saves the name locally.
+    /// </summary>
+    /// <param name="_">The old player name (ignored).</param>
+    /// <param name="newName">The new player name.</param>
     void PlayerNameChanged(string _, string newName)
     {
-        Debug.Log($"[XPlayer] Player name changed to: {newName}");
+        Debug.Log($"[{nameof(XPlayer)}] Player name changed to: {newName}");
         if (isLocalPlayer)
         {
             PlayerPrefs.SetString("XPlayerName", newName);
             PlayerPrefs.Save();
         }
     }
-
     #endregion
 
-
     #region Unity Callbacks
-
     /// <summary>
-    /// Add your validation code here after the base.OnValidate(); call.
+    /// Validates the component configuration in the Unity Editor.
     /// </summary>
     protected override void OnValidate()
     {
         base.OnValidate();
     }
 
-    // NOTE: Do not put objects in DontDestroyOnLoad (DDOL) in Awake.  You can do that in Start instead.
+    /// <summary>
+    /// Initializes the player instance.
+    /// </summary>
     void Awake()
     {
     }
 
+    /// <summary>
+    /// Performs initial setup for the player.
+    /// </summary>
     void Start()
     {
     }
-
     #endregion
 
     #region Start & Stop Callbacks
-
     /// <summary>
-    /// This is invoked for NetworkBehaviour objects when they become active on the server.
-    /// <para>This could be triggered by NetworkServer.Listen() for objects in the scene, or by NetworkServer.Spawn() for objects that are dynamically created.</para>
-    /// <para>This will be called for objects on a "host" as well as for object on a dedicated server.</para>
+    /// Initializes the player on the server and adds it to the player list.
     /// </summary>
     public override void OnStartServer()
     {
@@ -85,22 +115,18 @@ public class XPlayer : NetworkBehaviour
 
         // Add this to the static Players List
         playersList.Add(this);
-
     }
 
     /// <summary>
-    /// Invoked on the server when the object is unspawned
-    /// <para>Useful for saving object data in persistent storage</para>
+    /// Cleans up the player on the server and removes it from the player list.
     /// </summary>
     public override void OnStopServer()
     {
-
         playersList.Remove(this);
     }
 
     /// <summary>
-    /// Called on every NetworkBehaviour when it is activated on a client.
-    /// <para>Objects on the host have this function called, as there is a local client on the host. The values of SyncVars on object are guaranteed to be initialized correctly with the latest state from the server when this function is called on the client.</para>
+    /// Initializes the player on the client and notifies readiness for the local player.
     /// </summary>
     public override void OnStartClient()
     {
@@ -110,7 +136,9 @@ public class XPlayer : NetworkBehaviour
         }
     }
 
-
+    /// <summary>
+    /// Coroutine that notifies the race manager when the local player is ready.
+    /// </summary>
     IEnumerator NotifyRaceReadyWhenSceneIsLoaded()
     {
         // 等待1帧以确保场景完全初始化
@@ -124,16 +152,13 @@ public class XPlayer : NetworkBehaviour
         }
     }
 
-
     /// <summary>
-    /// This is invoked on clients when the server has caused this object to be destroyed.
-    /// <para>This can be used as a hook to invoke effects or do client specific cleanup.</para>
+    /// Cleans up the player on the client when destroyed.
     /// </summary>
     public override void OnStopClient() { }
 
     /// <summary>
-    /// Called when the local player object has been set up.
-    /// <para>This happens after OnStartClient(), as it is triggered by an ownership message from the server. This is an appropriate place to activate components or functionality that should only be active for the local player, such as cameras and input.</para>
+    /// Initializes the local player and sets its name.
     /// </summary>
     public override void OnStartLocalPlayer()
     {
@@ -148,15 +173,12 @@ public class XPlayer : NetworkBehaviour
     }
 
     /// <summary>
-    /// Called when the local player object is being stopped.
-    /// <para>This happens before OnStopClient(), as it may be triggered by an ownership message from the server, or because the player object is being destroyed. This is an appropriate place to deactivate components or functionality that should only be active for the local player, such as cameras and input.</para>
+    /// Cleans up the local player when stopped.
     /// </summary>
     public override void OnStopLocalPlayer() { }
 
     /// <summary>
-    /// This is invoked on behaviours that have authority, based on context and <see cref="NetworkIdentity.hasAuthority">NetworkIdentity.hasAuthority</see>.
-    /// <para>This is called after <see cref="OnStartServer">OnStartServer</see> and before <see cref="OnStartClient">OnStartClient.</see></para>
-    /// <para>When <see cref="NetworkIdentity.AssignClientAuthority">AssignClientAuthority</see> is called on the server, this will be called on the client that owns the object. When an object is spawned with <see cref="NetworkServer.Spawn">NetworkServer.Spawn</see> with a NetworkConnectionToClient parameter included, this will be called on the client that owns the object.</para>
+    /// Initializes the player when authority is assigned and selects the car.
     /// </summary>
     public override void OnStartAuthority()
     {
@@ -164,18 +186,23 @@ public class XPlayer : NetworkBehaviour
     }
 
     /// <summary>
-    /// This is invoked on behaviours when authority is removed.
-    /// <para>When NetworkIdentity.RemoveClientAuthority is called on the server, this will be called on the client that owns the object.</para>
+    /// Cleans up the player when authority is removed.
     /// </summary>
     public override void OnStopAuthority() { }
 
+    /// <summary>
+    /// Sets the player's name on the server.
+    /// </summary>
+    /// <param name="name">The player's name to set.</param>
     [Command]
     public void CmdSetPlayerName(string name)
     {
         playerName = name;
     }
 
-
+    /// <summary>
+    /// Resets player numbers for all players on the server.
+    /// </summary>
     [ServerCallback]
     internal static void ResetPlayerNumbers()
     {
@@ -184,12 +211,21 @@ public class XPlayer : NetworkBehaviour
             player.playerNumber = playerNumber++;
     }
 
+    /// <summary>
+    /// Selects a car prefab index on the server.
+    /// </summary>
+    /// <param name="carIndex">The index of the car prefab to select.</param>
     [Command]
     void CmdSelectCar(int carIndex)
     {
         selectedCarIndex = carIndex;
     }
 
+    /// <summary>
+    /// Spawns the player's car on the server.
+    /// </summary>
+    /// <param name="carPrefabs">An array of car prefabs to choose from.</param>
+    /// <param name="spawnPoint">The spawn point Transform for the car.</param>
     [Server]
     public void SpawnCar(GameObject[] carPrefabs, Transform spawnPoint)
     {
@@ -198,7 +234,6 @@ public class XPlayer : NetworkBehaviour
 
         carNetId = car.GetComponent<NetworkIdentity>().netId;
 
-
         var nameDisplay = car.GetComponentInChildren<CarNameDisplay>();
         if (nameDisplay != null)
         {
@@ -206,6 +241,9 @@ public class XPlayer : NetworkBehaviour
         }
     }
 
+    /// <summary>
+    /// Notifies the race manager that the player is ready on the server.
+    /// </summary>
     [Command]
     void CmdNotifyReady()
     {
@@ -215,7 +253,10 @@ public class XPlayer : NetworkBehaviour
             mgr.PlayerReady(this);
         }
     }
-    
+
+    /// <summary>
+    /// Enables control for the local player's car.
+    /// </summary>
     public void EnableControl()
     {
         if (!isLocalPlayer) return;
@@ -236,10 +277,8 @@ public class XPlayer : NetworkBehaviour
         }
         else
         {
-            Debug.LogWarning("Car not found in NetworkClient.spawned. Delaying control assignment...");
+            Debug.LogWarning($"[{nameof(XPlayer)}] Car not found in NetworkClient.spawned. Delaying control assignment...");
         }
     }
-
-
     #endregion
 }

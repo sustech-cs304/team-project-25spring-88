@@ -2,8 +2,6 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
-
-
 /** 
      * AI-generated-content 
      * tool: grok 
@@ -11,11 +9,19 @@ using UnityEngine.SceneManagement;
      * usage: I used the prompt "我想要基于unity制作一个赛车小游戏，现在我要实现怎么让某个按钮被点击了之后跳转到某个场景？，你能帮我写一下控制脚本吗", and 
      * directly copy the code from its response 
      */
+/// <summary>
+/// Handles button click events to load a specified scene in Unity.
+/// </summary>
 public class MyButtonHandler : MonoBehaviour
 {
-    [Tooltip("跳转的场景名称（必须在 Build Settings 中注册）")]
+    /// <summary>
+    /// The name of the target scene to load (must be registered in Build Settings).
+    /// </summary>
     public string targetSceneName = "GameScene";
 
+    /// <summary>
+    /// Initializes the button click listener during the Awake phase.
+    /// </summary>
     void Awake()
     {
         // 自动获取当前 GameObject 上的 Button 组件

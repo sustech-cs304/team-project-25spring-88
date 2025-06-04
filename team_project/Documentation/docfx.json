@@ -2,46 +2,27 @@
     "metadata": [
         {
             "src": [
-                {
-                    "src": "..",
-                    "files": [
-                        "Assets/CommonScripts"
-                    ]
-            
-                },{
-                    "src": "..",
-                    "files": [
-                        "Assets/Editor"
-                    ]
-                },{
-                    "src": "..",
-                    "files": [
-                        "Assets/GameSystem"
-                    ]
-                },{
-                    "src": "..",
-                    "files": [
-                        "Assets/Landing/Scripts"
-                    ]
-                },{
-                    "src": "..",
-                    "files": [
-                        "Assets/Monoplayer/Scripts"
-                    ]
-                },{
-                    "src": "..",
-                    "files": [
-                        "Assets/Multiplayer/Scripts"
-                    ]
-                }
-            ],
+            {
+                "src": "..",
+                "files": [
+                    "Assets/CommonScripts/**/*.cs",
+                    "Assets/Editor/**/*.cs",
+                    "Assets/GameSystem/**/*.cs",
+                    "Assets/Landing/Scripts/**/*.cs",
+                    "Assets/Monoplayer/Scripts/**/*.cs",
+                    "Assets/Multiplayer/Scripts/**/*.cs"
+                ],
+                "exclude": [
+                    "**/*.Tests.cs",
+                    "**/Mirror/**",
+                    "**/kcp2k/**",
+                    "**/IO.Swagger/**"
+                ]
+            }
+        ],
             "globalNamespaceId": "Global",
             "filter": "filterConfig.yml",
-            "dest": "api",
-            "compilationOptions": {
-                "sdkDirectory": "C:/Program Files/dotnet/sdk/9.0.300/", 
-                "allowUnsafe": true
-            }
+            "dest": "api"
         }
     ],
     "build": {
@@ -89,7 +70,7 @@
             }
         ],
         "sitemap": {
-            "baseUrl": "https://sustech-cs304.github.io/team-project-25spring-88",
+            "baseUrl": "https://normanderwan.github.io/DocFxForUnity",
             "changefreq": "weekly",
             "fileOptions": {
                 "api/*": {

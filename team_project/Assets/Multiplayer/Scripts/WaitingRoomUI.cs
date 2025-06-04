@@ -3,21 +3,56 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using Mirror;
 
+/// <summary>
+/// A Unity script that manages the waiting room UI in a multiplayer racing game.
+/// <para>
+/// This script displays a list of connected players, highlights the local player and host, and handles
+/// disconnection scenarios with a popup. It also allows players to quit to the main menu.
+/// </para>
+/// </summary>
 public class WaitingRoomUI : MonoBehaviour
 {
+    /// <summary>
+    /// The parent Transform for player list UI entries.
+    /// </summary>
     [Header("UI References")]
     public Transform playerListParent;
+
+    /// <summary>
+    /// The prefab for player list UI entries.
+    /// </summary>
     public GameObject playerEntryPrefab;
+
+    /// <summary>
+    /// The UI button to quit the waiting room and return to the main menu.
+    /// </summary>
     public Button quitButton;
 
+    /// <summary>
+    /// The name of the main menu scene to load when quitting.
+    /// </summary>
     [Header("Scene Settings")]
     public string mainMenuSceneName = "MainMenu";
 
+    /// <summary>
+    /// The popup GameObject displayed when a player is disconnected.
+    /// </summary>
     [Header("Kick Popup")]
     public GameObject kickedPopup; // 一个简单的弹窗，包含 Text + OK 按钮
+
+    /// <summary>
+    /// The UI text element in the kick popup displaying the disconnection message.
+    /// </summary>
     public Text popupText;
+
+    /// <summary>
+    /// The UI button in the kick popup to confirm and return to the main menu.
+    /// </summary>
     public Button popupOkButton;
 
+    /// <summary>
+    /// Initializes UI components, event listeners, and player list updates.
+    /// </summary>
     void Start()
     {
         quitButton.onClick.AddListener(OnQuitClicked);
@@ -29,6 +64,9 @@ public class WaitingRoomUI : MonoBehaviour
         XNetworkManager.OnClientDisconnectedExternally += OnDisconnected;
     }
 
+    /// <summary>
+    /// Updates the player list UI with current connected players.
+    /// </summary>
     void UpdatePlayerList()
     {
         if (!NetworkClient.isConnected) return;
@@ -66,7 +104,9 @@ public class WaitingRoomUI : MonoBehaviour
         }
     }
 
-
+    /// <summary>
+    /// Handles the quit button click to disconnect and return to the main menu.
+    /// </summary>
     void OnQuitClicked()
     {
         if (NetworkClient.isConnected)
@@ -76,22 +116,34 @@ public class WaitingRoomUI : MonoBehaviour
             NetworkManager.singleton.StopHost();
     }
 
+    /// <summary>
+    /// Displays a popup when the client is disconnected from the server.
+    /// </summary>
     void OnDisconnected()
     {
         kickedPopup.SetActive(true);
         popupText.text = "You have been disconnected from the server.";
     }
 
+    /// <summary>
+    /// Handles the popup confirm button click to load the main menu scene.
+    /// </summary>
     void OnPopupConfirm()
     {
         SceneManager.LoadScene(mainMenuSceneName);
     }
 
+    /// <summary>
+    /// Stops player list updates when the script is disabled.
+    /// </summary>
     void OnDisable()
     {
         CancelInvoke(nameof(UpdatePlayerList));
     }
 
+    /// <summary>
+    /// Unregisters event handlers and stops player list updates when the GameObject is destroyed.
+    /// </summary>
     void OnDestroy()
     {
         CancelInvoke(nameof(UpdatePlayerList));
