@@ -591,7 +591,7 @@ public class LapCounter : MonoBehaviour
     {
         if (timeText != null)
         {
-            timeText.text = $"Time: {raceTimer:F2}s";
+            timeText.text = $"{raceTimer:F2}s";
         }
     }
 
