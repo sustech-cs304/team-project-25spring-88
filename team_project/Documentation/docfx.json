@@ -26,7 +26,7 @@
         }
     ],
     "build": {
-        "template": ["default", "modern"],
+        "template": ["modern"],
         "exportApiNamespaceToc": true,
         "globalMetadata": {
             "_appTitle": "SUSTech Racing Car Documentation",
