@@ -3,9 +3,15 @@ name: Unity CI
 on: [ push, pull_request ]
 
 permissions:
-  contents: read
+  contents: write
   pages: write
   id-token: write
+  checks: write
+  packages: write
+  actions: write
+  attestations: write
+  deployments: write
+  statuses: write
 
 jobs:
   test:
