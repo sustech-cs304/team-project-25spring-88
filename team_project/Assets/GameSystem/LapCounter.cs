@@ -50,9 +50,17 @@ public class LapCounter : MonoBehaviour
     /// The UI text element displaying the race elapsed time.
     /// </summary>
     public TMP_Text timeText;
+       /// <summary>
+    /// the resultPanel appears when game ends, it shows the result of the game.
+    /// </summary>
     public GameObject resultPanel; // 结算面板
+    /// <summary>
+    /// The UI text element displaying the result title in the end screen.
+    /// </summary>
     public TMP_Text resultTitleText; // 结算标题文本
-
+       /// <summary>
+    ///the bool existAI indicates whether the game is in AI mode or not.
+    /// </summary>
     public bool existAI; //判断是否为ai模式
 
     /// <summary>
@@ -176,15 +184,8 @@ public class LapCounter : MonoBehaviour
             if (aiCarPathFollower != null) aiCarPathFollower.enabled = false;
             if (aiCarRigidbody != null) aiCarRigidbody.isKinematic = true;
         }
-
         checkpointsPassed = new bool[totalCheckpoints + 1];
-        lastCheckpointPosition = playerCar.transform.position;
-        lastCheckpointRotation = playerCar.transform.rotation;
-
-        UpdateLapDisplay();
-        UpdateTimeDisplay();
-        UpdateSpeedDisplay();
-        UpdateDistanceDisplay();
+        ResetRace();
         if (finishText != null) finishText.gameObject.SetActive(false);
         if (quitButton != null) quitButton.gameObject.SetActive(false);
 
@@ -360,7 +361,7 @@ public class LapCounter : MonoBehaviour
         currentLap = 0;
         TriggerCelebration();
         ShowEndScreen(false);
-        ResetAICar();
+        if(existAI) ResetAICar();
         Debug.Log($"[{nameof(LapCounter)}] Game over! Escaped for {raceTimer:F2} seconds.");
     }
 
@@ -564,12 +565,12 @@ public class LapCounter : MonoBehaviour
     /// </summary>
     private void QuitGame()
     {
-        Debug.Log($"[{nameof(LapCounter)}] Quitting game...");
-#if UNITY_EDITOR
-        UnityEditor.EditorApplication.isPlaying = false;
-#else
-        Application.Quit();
-#endif
+            Debug.Log($"[{nameof(LapCounter)}] Quitting game...");
+    #if UNITY_EDITOR
+            UnityEditor.EditorApplication.isPlaying = false;
+    #else
+            Application.Quit();
+    #endif
     }
 
     /// <summary>
@@ -638,7 +639,7 @@ public class LapCounter : MonoBehaviour
         }
 
         ResetCheckpoints();
-        ResetAICar();
+        if(existAI)ResetAICar();
     }
 
     /// <summary>

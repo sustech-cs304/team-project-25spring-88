@@ -34,7 +34,7 @@ public class FinishLineTrigger : MonoBehaviour
     /// <param name="other">The collider that entered the trigger.</param>
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player") || other.CompareTag("AI"))
+        if (other.CompareTag("Player") || other.CompareTag("aiCar"))
         {
             if (lapCounter == null)
             {
