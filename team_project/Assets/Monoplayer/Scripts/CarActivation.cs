@@ -27,6 +27,9 @@ public class CarActivation : MonoBehaviour
     [Tooltip("圈数计数器脚本")]
     public LapCounter lapCounter;
 
+    [Header("Speedometer")]
+    public Speedometer speedometer;
+
     void Start()
     {
         // 获取玩家选择的车辆ID
@@ -158,5 +161,20 @@ public class CarActivation : MonoBehaviour
         // 设置玩家车辆
         lapCounter.playerCar = car;
         Debug.Log($"已将圈数计数器的玩家车辆设置为: {car.name}");
+    }
+
+    private void SetupSpeedometerForCar(GameObject car)
+    {
+        if (speedometer == null)
+        {
+            Debug.LogWarning("未找到Speedometer脚本引用");
+            return;
+        }
+
+        Rigidbody carRigidbody = car.GetComponent<Rigidbody>();
+        
+        // 设置玩家车辆
+        speedometer.target = carRigidbody;
+        Debug.Log($"已将speedometer的target设置为: {car.name}");
     }
 }
