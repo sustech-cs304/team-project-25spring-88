@@ -274,13 +274,26 @@ public class LapCounter : MonoBehaviour
         if(finish){
             if (finishText != null)
             {
-                finishText.text=$"You completed a lap and toyed with the captor in the palm of your hand.";
-                lapText.gameObject.SetActive(false);
-                timeText.gameObject.SetActive(false);
-                speedText.gameObject.SetActive(false);
+                // Format the time with bold tags and add it to the finish text
+                finishText.text = $"You completed a lap and toyed with the captor in the palm of your hand.\n<b>Time: {raceTimer:F2}s</b>";
+                
+                // Reduce opacity of other UI elements to 0.5
+                Color fadedColor = new Color(1, 1, 1, 0.5f);
+                lapText.color = fadedColor;
+                timeText.color = fadedColor;
+                speedText.color = fadedColor;
                 if(distanceText != null)
                 {
-                    distanceText.gameObject.SetActive(false); // 新增：隐藏距离显示
+                    distanceText.color = fadedColor;
+                }
+                
+                // Keep these elements visible but faded
+                lapText.gameObject.SetActive(true);
+                timeText.gameObject.SetActive(true);
+                speedText.gameObject.SetActive(true);
+                if(distanceText != null)
+                {
+                    distanceText.gameObject.SetActive(true);
                 }
                 finishText.gameObject.SetActive(true);
             }
@@ -292,11 +305,26 @@ public class LapCounter : MonoBehaviour
         else{
             if (finishText != null)
             {
-                finishText.text=$"You have been caught by the police, and you escaped for a total of {raceTimer:F2} second.";
-                lapText.gameObject.SetActive(false);
-                timeText.gameObject.SetActive(false);
-                speedText.gameObject.SetActive(false);
-                distanceText.gameObject.SetActive(false); // 新增：隐藏距离显示
+                finishText.text = $"You have been caught by the police.\n<b>Escape time: {raceTimer:F2}s</b>";
+                
+                // Reduce opacity of other UI elements to 0.5
+                Color fadedColor = new Color(1, 1, 1, 0.5f);
+                lapText.color = fadedColor;
+                timeText.color = fadedColor;
+                speedText.color = fadedColor;
+                if(distanceText != null)
+                {
+                    distanceText.color = fadedColor;
+                }
+                
+                // Keep these elements visible but faded
+                lapText.gameObject.SetActive(true);
+                timeText.gameObject.SetActive(true);
+                speedText.gameObject.SetActive(true);
+                if(distanceText != null)
+                {
+                    distanceText.gameObject.SetActive(true);
+                }
                 finishText.gameObject.SetActive(true);
             }
             if (quitButton != null)
