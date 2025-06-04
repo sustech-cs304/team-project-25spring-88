@@ -37,7 +37,7 @@ jobs:
             generateHtmlReport;
             generateSummaryBadge;
             generateAdditionalMetrics;
-            assemblyFilters:+CommonScripts,+ItemSystem,+LandingScripts
+            assemblyFilters:+CommonScripts,+ItemSystem,+LandingScripts,+PlayMode
 
       - name: Upload Code Coverage Report
         uses: actions/upload-artifact@v4

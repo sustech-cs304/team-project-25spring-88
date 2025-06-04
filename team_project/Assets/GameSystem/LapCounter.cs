@@ -47,8 +47,14 @@ public class LapCounter : MonoBehaviour
 
     private Rigidbody carRigidbody; // 用于计算速度
 
+    // 结算界面元素
+    public GameObject resultPanel; // 结算面板
+    public TMP_Text resultTitleText; // 结算标题文本
+
+    public bool existAI; //判断是否为ai模式
     void Start()
-    {
+    {   
+        resultPanel.SetActive(false);
         Rigidbody PlayercarRigidbody = playerCar.GetComponent<Rigidbody>();
         if (PlayercarRigidbody != null)
         {
@@ -271,37 +277,144 @@ public class LapCounter : MonoBehaviour
 
     private void ShowEndScreen(bool finish)
     {
-        if(finish){
-            if (finishText != null)
+        if (resultPanel != null)
+        {
+            // 显示结算面板
+            resultPanel.SetActive(true);
+            
+            // 确保结算面板显示在最上层
+            Canvas resultPanelCanvas = resultPanel.GetComponent<Canvas>();
+            if (resultPanelCanvas != null)
             {
-                finishText.text=$"You completed a lap and toyed with the captor in the palm of your hand.";
-                lapText.gameObject.SetActive(false);
-                timeText.gameObject.SetActive(false);
-                speedText.gameObject.SetActive(false);
+                resultPanelCanvas.sortingOrder = 10;
+            }
+        }
+
+        
+        if(finish){
+            if (existAI){
+                if (finishText != null && resultTitleText != null)
+                {
+                    // 设置标题
+                    resultTitleText.text = "ESCAPE SUCCESSFUL";
+                    resultTitleText.color = new Color(0.2f, 0.8f, 0.2f); // 绿色表示成功
+                    
+                    // 设置详细信息
+                    finishText.text = $"You completed a lap and toyed with the captor in the palm of your hand.\n<b>Time: {raceTimer:F2}s</b>";
+                    
+                    // Reduce opacity of other UI elements to 0.5
+                    Color fadedColor = new Color(1, 1, 1, 0.5f);
+                    lapText.color = fadedColor;
+                    timeText.color = fadedColor;
+                    speedText.color = fadedColor;
+                    if(distanceText != null)
+                    {
+                        distanceText.color = fadedColor;
+                    }
+                    
+                    // Keep these elements visible but faded
+                    lapText.gameObject.SetActive(true);
+                    timeText.gameObject.SetActive(true);
+                    speedText.gameObject.SetActive(true);
+                    if(distanceText != null)
+                    {
+                        distanceText.gameObject.SetActive(true);
+                    }
+                    finishText.gameObject.SetActive(true);
+                }
+                if (quitButton != null)
+                {
+                    quitButton.gameObject.SetActive(true);
+                    // Also ensure quit button appears on top
+                    Canvas quitButtonCanvas = quitButton.GetComponentInParent<Canvas>();
+                    if (quitButtonCanvas != null)
+                    {
+                        quitButtonCanvas.sortingOrder = 11; // 确保按钮在面板之上
+                    }
+                }
+            }
+            else if(!existAI){
+                if (finishText != null && resultTitleText != null)
+                    {
+                        // 设置标题
+                        resultTitleText.text = "GAME FINISH";
+                        resultTitleText.color = new Color(0.2f, 0.8f, 0.2f); // 绿色表示成功
+                        
+                        // 设置详细信息
+                        finishText.text = $"You completed a lap.\n<b>Time: {raceTimer:F2}s</b>";
+                        
+                        // Reduce opacity of other UI elements to 0.5
+                        Color fadedColor = new Color(1, 1, 1, 0.5f);
+                        lapText.color = fadedColor;
+                        timeText.color = fadedColor;
+                        speedText.color = fadedColor;
+                        if(distanceText != null)
+                        {
+                            distanceText.color = fadedColor;
+                        }
+                        
+                        // Keep these elements visible but faded
+                        lapText.gameObject.SetActive(true);
+                        timeText.gameObject.SetActive(true);
+                        speedText.gameObject.SetActive(true);
+                        if(distanceText != null)
+                        {
+                            distanceText.gameObject.SetActive(true);
+                        }
+                        finishText.gameObject.SetActive(true);
+                    }
+                    if (quitButton != null)
+                    {
+                        quitButton.gameObject.SetActive(true);
+                        // Also ensure quit button appears on top
+                        Canvas quitButtonCanvas = quitButton.GetComponentInParent<Canvas>();
+                        if (quitButtonCanvas != null)
+                        {
+                            quitButtonCanvas.sortingOrder = 11; // 确保按钮在面板之上
+                        }
+                    }
+            }
+
+        }
+        else{
+            if (finishText != null && resultTitleText != null)
+            {
+                // 设置标题
+                resultTitleText.text = "CAUGHT";
+                resultTitleText.color = new Color(0.8f, 0.2f, 0.2f); // 红色表示失败
+                
+                // 设置详细信息
+                finishText.text = $"You have been caught by the police.\n<b>Escape time: {raceTimer:F2}s</b>";
+                
+                // Reduce opacity of other UI elements to 0.5
+                Color fadedColor = new Color(1, 1, 1, 0.5f);
+                lapText.color = fadedColor;
+                timeText.color = fadedColor;
+                speedText.color = fadedColor;
                 if(distanceText != null)
                 {
-                    distanceText.gameObject.SetActive(false); // 新增：隐藏距离显示
+                    distanceText.color = fadedColor;
+                }
+                
+                // Keep these elements visible but faded
+                lapText.gameObject.SetActive(true);
+                timeText.gameObject.SetActive(true);
+                speedText.gameObject.SetActive(true);
+                if(distanceText != null)
+                {
+                    distanceText.gameObject.SetActive(true);
                 }
                 finishText.gameObject.SetActive(true);
             }
             if (quitButton != null)
             {
                 quitButton.gameObject.SetActive(true);
-            }
-        }
-        else{
-            if (finishText != null)
-            {
-                finishText.text=$"You have been caught by the police, and you escaped for a total of {raceTimer:F2} second.";
-                lapText.gameObject.SetActive(false);
-                timeText.gameObject.SetActive(false);
-                speedText.gameObject.SetActive(false);
-                distanceText.gameObject.SetActive(false); // 新增：隐藏距离显示
-                finishText.gameObject.SetActive(true);
-            }
-            if (quitButton != null)
-            {
-                quitButton.gameObject.SetActive(true);
+                // Also ensure quit button appears on top
+                Canvas quitButtonCanvas = quitButton.GetComponentInParent<Canvas>();
+                if (quitButtonCanvas != null)
+                {
+                    quitButtonCanvas.sortingOrder = 11; // 确保按钮在面板之上
+                }
             }
         }
     }
@@ -368,6 +481,10 @@ public class LapCounter : MonoBehaviour
         UpdateDistanceDisplay(); // 新增：重置时更新距离显示
         finishText.gameObject.SetActive(false);
         quitButton.gameObject.SetActive(false);
+        if (resultPanel != null)
+        {
+            resultPanel.SetActive(false); // 重置时隐藏结算面板
+        }
 
         ResetCheckpoints();
     }
