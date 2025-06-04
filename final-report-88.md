@@ -5,13 +5,13 @@
    Race through a detailed and immersive map inspired by SUSTech’s campus.
 
 2. **Regular Racing Mode**
-   Classic racing for speed enthusiasts.
+   Classic time trial mode for speed enthusiasts.
 
 3. **Item Race**
-   Use power-ups and items to outsmart opponents.  
+   A solo time trial mode with item boxes—collect random power-ups to boost your performance or add challenges.
 
 4. **Electric Vehicles vs Security Guard (PvE Mode)**
-   A unique player-vs-environment challenge.
+   Outrun an AI-controlled security guard in this thrilling PvE challenge—get caught and the race is over!
 
 5. **Racing with Friends**
    Connect with your friends via local networks and have a race together!
