@@ -74,6 +74,37 @@ Experience the campus in all weather conditions, discover every building, and ch
 
 # Test
 
+## Automated Testing Frameworks and Tools
+
+We used the following technologies to implement automated testing in our Unity project:
+
+- **Unity Test Framework (UTF)**: For writing and running **EditMode** and **PlayMode** tests.
+- **NUnit**: As the underlying assertion framework used by UTF (e.g., `Assert.AreEqual`, `Assert.IsTrue`).
+- **Unity Code Coverage package** (`com.unity.testtools.codecoverage`): To generate HTML-based test coverage reports.
+- **GitHub Actions CI**: We integrated automated test execution and code coverage reporting into CI/CD using the `game-ci/unity-test-runner` and `upload-artifact` GitHub Actions.
+
+## Source Code / Test Artifacts
+
+You can find our test code and CI pipeline in the following locations:
+
+- **PlayMode Tests**: [`Assets/Tests/PlayMode/`](https://github.com/sustech-cs304/team-project-25spring-88/tree/main/team_project/Assets/Tests/PlayMode)
+- **EditMode Tests** (if applicable): [`Assets/Tests/EditMode/`](https://github.com/sustech-cs304/team-project-25spring-88/tree/main/team_project/Assets/Tests/EditMode)
+- **CI Configuration**: [`.github/workflows/main.yml`](https://github.com/sustech-cs304/team-project-25spring-88/blob/main/.github/workflows/main.yml)
+- **Sample Test Report Artifact**: [Code Coverage Report](https://github.com/sustech-cs304/team-project-25spring-88/actions/runs/15442882951)
+
+## Effectiveness of Tests
+
+We evaluated the effectiveness of our tests using **code coverage analysis**, which measures how much of our production code is exercised by the test suite.
+
+- **Coverage Tool**: Unity Code Coverage (HTML report generated).
+- **Included Assemblies**: `CommonScripts`, `ItemSystem`, `LandingScripts`, `PlayMode`.
+- **Sample Output**:
+![alt text](resource/codeCoverage.png)
+
+Based on the sample report, the overall **line coverage** of our project reached **77.7%**, furthermore, the **method coverage** is even higher, achieving **92%**.
+
+This demonstrates that the majority of our gameplay and UI logic has been validated through automated testing. Core systems such as `WeatherSystem`, `GameEffectUIManager`, `ItemBox`, and `PlayMode` were tested under various usage scenarios to ensure their robustness.
+
 ---
 
 # Build
