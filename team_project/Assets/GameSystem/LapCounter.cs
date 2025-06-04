@@ -47,6 +47,10 @@ public class LapCounter : MonoBehaviour
 
     private Rigidbody carRigidbody; // 用于计算速度
 
+    // 结算界面元素
+    public GameObject resultPanel; // 结算面板
+    public TMP_Text resultTitleText; // 结算标题文本
+
     void Start()
     {
         Rigidbody PlayercarRigidbody = playerCar.GetComponent<Rigidbody>();
@@ -271,18 +275,28 @@ public class LapCounter : MonoBehaviour
 
     private void ShowEndScreen(bool finish)
     {
-        if(finish){
-            if (finishText != null)
+        if (resultPanel != null)
+        {
+            // 显示结算面板
+            resultPanel.SetActive(true);
+            
+            // 确保结算面板显示在最上层
+            Canvas resultPanelCanvas = resultPanel.GetComponent<Canvas>();
+            if (resultPanelCanvas != null)
             {
-                // Format the time with bold tags and add it to the finish text
-                finishText.text = $"You completed a lap and toyed with the captor in the palm of your hand.\n<b>Time: {raceTimer:F2}s</b>";
+                resultPanelCanvas.sortingOrder = 10;
+            }
+        }
+
+        if(finish){
+            if (finishText != null && resultTitleText != null)
+            {
+                // 设置标题
+                resultTitleText.text = "ESCAPE SUCCESSFUL";
+                resultTitleText.color = new Color(0.2f, 0.8f, 0.2f); // 绿色表示成功
                 
-                // Ensure finishText appears on top by setting its Canvas sorting order
-                Canvas finishTextCanvas = finishText.GetComponentInParent<Canvas>();
-                if (finishTextCanvas != null)
-                {
-                    finishTextCanvas.sortingOrder = 10; // Higher number appears on top
-                }
+                // 设置详细信息
+                finishText.text = $"You completed a lap and toyed with the captor in the palm of your hand.\n<b>Time: {raceTimer:F2}s</b>";
                 
                 // Reduce opacity of other UI elements to 0.5
                 Color fadedColor = new Color(1, 1, 1, 0.5f);
@@ -311,21 +325,19 @@ public class LapCounter : MonoBehaviour
                 Canvas quitButtonCanvas = quitButton.GetComponentInParent<Canvas>();
                 if (quitButtonCanvas != null)
                 {
-                    quitButtonCanvas.sortingOrder = 10;
+                    quitButtonCanvas.sortingOrder = 11; // 确保按钮在面板之上
                 }
             }
         }
         else{
-            if (finishText != null)
+            if (finishText != null && resultTitleText != null)
             {
-                finishText.text = $"You have been caught by the police.\n<b>Escape time: {raceTimer:F2}s</b>";
+                // 设置标题
+                resultTitleText.text = "CAUGHT";
+                resultTitleText.color = new Color(0.8f, 0.2f, 0.2f); // 红色表示失败
                 
-                // Ensure finishText appears on top by setting its Canvas sorting order
-                Canvas finishTextCanvas = finishText.GetComponentInParent<Canvas>();
-                if (finishTextCanvas != null)
-                {
-                    finishTextCanvas.sortingOrder = 10; // Higher number appears on top
-                }
+                // 设置详细信息
+                finishText.text = $"You have been caught by the police.\n<b>Escape time: {raceTimer:F2}s</b>";
                 
                 // Reduce opacity of other UI elements to 0.5
                 Color fadedColor = new Color(1, 1, 1, 0.5f);
@@ -354,7 +366,7 @@ public class LapCounter : MonoBehaviour
                 Canvas quitButtonCanvas = quitButton.GetComponentInParent<Canvas>();
                 if (quitButtonCanvas != null)
                 {
-                    quitButtonCanvas.sortingOrder = 10;
+                    quitButtonCanvas.sortingOrder = 11; // 确保按钮在面板之上
                 }
             }
         }
@@ -422,6 +434,10 @@ public class LapCounter : MonoBehaviour
         UpdateDistanceDisplay(); // 新增：重置时更新距离显示
         finishText.gameObject.SetActive(false);
         quitButton.gameObject.SetActive(false);
+        if (resultPanel != null)
+        {
+            resultPanel.SetActive(false); // 重置时隐藏结算面板
+        }
 
         ResetCheckpoints();
     }
