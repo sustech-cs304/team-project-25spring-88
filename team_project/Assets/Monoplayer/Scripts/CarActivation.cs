@@ -88,6 +88,7 @@ public class CarActivation : MonoBehaviour
         {
             SetupCamerasForCar(selectedCar);
             SetupLapCounterForCar(selectedCar);
+            SetupSpeedometerForCar(selectedCar);
         }
         else
         {
