@@ -52,7 +52,8 @@ public class LapCounter : MonoBehaviour
     public TMP_Text resultTitleText; // 结算标题文本
 
     void Start()
-    {
+    {   
+        resultPanel.SetActive(false);
         Rigidbody PlayercarRigidbody = playerCar.GetComponent<Rigidbody>();
         if (PlayercarRigidbody != null)
         {
