@@ -8,32 +8,83 @@ using UnityEngine;
      * usage: I used the prompt "我想要基于unity制作一个赛车小游戏，现在我要实现时间变化脚本，你能帮我写一下控制脚本吗", and 
      * directly copy the code from its response 
      */
+/// <summary>
+/// Manages the day-night cycle in the game, controlling sun and moon lighting based on time and weather.
+/// </summary>
 public class DayNightCycle : MonoBehaviour
 {
-    [Header("时间设置")]
-    public float dayLengthInMinutes = 1f; // 一天的长度（1分钟 = 一天）
-    private float timeOfDay = 0f; // 范围 0.0~1.0，表示一天的进度
+    /// <summary>
+    /// The length of a full day in minutes.
+    /// </summary>
+    public float dayLengthInMinutes = 1f;
 
-    [Header("太阳设置")]
+    /// <summary>
+    /// The current progress of the day, ranging from 0.0 to 1.0.
+    /// </summary>
+    private float timeOfDay = 0f;
+
+    /// <summary>
+    /// The light representing the sun.
+    /// </summary>
     public Light sun;
+
+    /// <summary>
+    /// Animation curve controlling the sun's light intensity over time.
+    /// </summary>
     public AnimationCurve lightIntensity;
 
-    [Header("月亮设置")]
+    /// <summary>
+    /// The light representing the moon.
+    /// </summary>
     public Light moon;
-    public AnimationCurve moonIntensity; // 控制月亮亮度随时间变化
-    public Gradient moonColor;           // 控制月亮颜色随时间变化
 
-    [Header("天气影响强度")]
+    /// <summary>
+    /// Animation curve controlling the moon's light intensity over time.
+    /// </summary>
+    public AnimationCurve moonIntensity;
+
+    /// <summary>
+    /// Gradient controlling the moon's color changes over time.
+    /// </summary>
+    public Gradient moonColor;
+
+    /// <summary>
+    /// Reference to the weather system affecting light intensity.
+    /// </summary>
     public WeatherSystem weatherSystem;
-    public float maxIntensityClear = 1.2f;
-    public float maxIntensityRain = 0.6f;
-    public float maxIntensityFog = 0.4f;
 
-    [Header("不同天气的光照颜色渐变")]
+    /// <summary>
+    /// Maximum light intensity during clear weather.
+    /// </summary>
+    public float maxIntensityClear = 1.2f;
+
+    /// <summary>
+    /// Maximum light intensity during rainy weather.
+    /// </summary>
+    public float maxIntensityRain = 0.6f;
+
+    /// <summary>
+    /// Maximum light intensity during foggy weather.
+    /// </summary>
+    public float maxIntensityFog = 0.4f;
+    /// <summary>
+    /// Gradient for light color during clear weather.
+    /// </summary>
     public Gradient clearColor;
+
+    /// <summary>
+    /// Gradient for light color during rainy weather.
+    /// </summary>
     public Gradient rainColor;
+
+    /// <summary>
+    /// Gradient for light color during foggy weather.
+    /// </summary>
     public Gradient fogColor;
 
+    /// <summary>
+    /// Initializes the day-night cycle, setting up default gradients for moon and weather-based lighting.
+    /// </summary>
     void Start()
     {
         // 设置默认月亮颜色渐变（夜晚蓝白色）
@@ -52,61 +103,64 @@ public class DayNightCycle : MonoBehaviour
             }
         );
 
-        // ?? Clear�����죩��ɫ����
+        // 设置Clear（晴天）颜色渐变
         clearColor = new Gradient();
         clearColor.SetKeys(
             new GradientColorKey[]
             {
-            new GradientColorKey(new Color(15f / 255f, 20f / 255f, 50f / 255f), 0.0f),
-            new GradientColorKey(new Color(255f / 255f, 140f / 255f, 60f / 255f), 0.25f),
-            new GradientColorKey(new Color(255f / 255f, 255f / 255f, 240f / 255f), 0.5f),
-            new GradientColorKey(new Color(255f / 255f, 120f / 255f, 80f / 255f), 0.75f),
-            new GradientColorKey(new Color(15f / 255f, 20f / 255f, 50f / 255f), 1.0f)
+                new GradientColorKey(new Color(15f / 255f, 20f / 255f, 50f / 255f), 0.0f),
+                new GradientColorKey(new Color(255f / 255f, 140f / 255f, 60f / 255f), 0.25f),
+                new GradientColorKey(new Color(255f / 255f, 255f / 255f, 240f / 255f), 0.5f),
+                new GradientColorKey(new Color(255f / 255f, 120f / 255f, 80f / 255f), 0.75f),
+                new GradientColorKey(new Color(15f / 255f, 20f / 255f, 50f / 255f), 1.0f)
             },
             new GradientAlphaKey[]
             {
-            new GradientAlphaKey(1.0f, 0.0f),
-            new GradientAlphaKey(1.0f, 1.0f)
+                new GradientAlphaKey(1.0f, 0.0f),
+                new GradientAlphaKey(1.0f, 1.0f)
             }
         );
 
-        // ??? Rain�����죩��ɫ����
+        // 设置Rain（雨天）颜色渐变
         rainColor = new Gradient();
         rainColor.SetKeys(
             new GradientColorKey[]
             {
-            new GradientColorKey(new Color(115f / 255f, 120f / 255f, 133f / 255f), 0.0f),
-            new GradientColorKey(new Color(107f / 255f, 112f / 255f, 128f / 255f), 0.25f),
-            new GradientColorKey(new Color(102f / 255f, 107f / 255f, 125f / 255f), 0.5f),
-            new GradientColorKey(new Color(110f / 255f, 115f / 255f, 130f / 255f), 0.75f),
-            new GradientColorKey(new Color(120f / 255f, 122f / 255f, 135f / 255f), 1.0f)
+                new GradientColorKey(new Color(115f / 255f, 120f / 255f, 133f / 255f), 0.0f),
+                new GradientColorKey(new Color(107f / 255f, 112f / 255f, 128f / 255f), 0.25f),
+                new GradientColorKey(new Color(102f / 255f, 107f / 255f, 125f / 255f), 0.5f),
+                new GradientColorKey(new Color(110f / 255f, 115f / 255f, 130f / 255f), 0.75f),
+                new GradientColorKey(new Color(120f / 255f, 122f / 255f, 135f / 255f), 1.0f)
             },
             new GradientAlphaKey[]
             {
-            new GradientAlphaKey(1.0f, 0.0f),
-            new GradientAlphaKey(1.0f, 1.0f)
+                new GradientAlphaKey(1.0f, 0.0f),
+                new GradientAlphaKey(1.0f, 1.0f)
             }
         );
 
-        // ??? Fog�����죩��ɫ����
+        // 设置Fog（雾天）颜色渐变
         fogColor = new Gradient();
         fogColor.SetKeys(
             new GradientColorKey[]
             {
-            new GradientColorKey(new Color(191f / 255f, 191f / 255f, 191f / 255f), 0.0f),
-            new GradientColorKey(new Color(204f / 255f, 204f / 255f, 204f / 255f), 0.25f),
-            new GradientColorKey(new Color(217f / 255f, 217f / 255f, 217f / 255f), 0.5f),
-            new GradientColorKey(new Color(209f / 255f, 209f / 255f, 209f / 255f), 0.75f),
-            new GradientColorKey(new Color(199f / 255f, 199f / 255f, 199f / 255f), 1.0f)
+                new GradientColorKey(new Color(191f / 255f, 191f / 255f, 191f / 255f), 0.0f),
+                new GradientColorKey(new Color(204f / 255f, 204f / 255f, 204f / 255f), 0.25f),
+                new GradientColorKey(new Color(217f / 255f, 217f / 255f, 217f / 255f), 0.5f),
+                new GradientColorKey(new Color(209f / 255f, 209f / 255f, 209f / 255f), 0.75f),
+                new GradientColorKey(new Color(199f / 255f, 199f / 255f, 199f / 255f), 1.0f)
             },
             new GradientAlphaKey[]
             {
-            new GradientAlphaKey(1.0f, 0.0f),
-            new GradientAlphaKey(1.0f, 1.0f)
+                new GradientAlphaKey(1.0f, 0.0f),
+                new GradientAlphaKey(1.0f, 1.0f)
             }
         );
     }
 
+    /// <summary>
+    /// Updates the day-night cycle, adjusting sun and moon positions, colors, and intensities based on time and weather.
+    /// </summary>
     void Update()
     {
         // 更新时间
@@ -121,7 +175,7 @@ public class DayNightCycle : MonoBehaviour
         float moonAngle = sunAngle + 180f;
         moon.transform.rotation = Quaternion.Euler(moonAngle, -90f, 10f);
 
-        // ���ù�����ɫ
+        // 设置光照颜色
         Gradient currentGradient = clearColor;
         if (weatherSystem != null)
         {
@@ -133,7 +187,7 @@ public class DayNightCycle : MonoBehaviour
         }
         sun.color = currentGradient.Evaluate(timeOfDay);
 
-        // ���ù���ǿ��
+        // 设置光照强度
         float weatherMultiplier = 1f;
         if (weatherSystem != null)
         {

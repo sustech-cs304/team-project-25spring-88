@@ -2,12 +2,24 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Manages camera switching functionality in the game.
+/// </summary>
 public class CameraSwitch : MonoBehaviour
 {
-    public GameObject Camera1; // First camera
-    public GameObject Camera2; // Second camera
+    /// <summary>
+    /// The first camera GameObject.
+    /// </summary>
+    public GameObject Camera1;
 
-    // Update is called once per frame
+    /// <summary>
+    /// The second camera GameObject.
+    /// </summary>
+    public GameObject Camera2;
+
+    /// <summary>
+    /// Updates the camera states based on input, called once per frame.
+    /// </summary>
     void Update()
     {
         if (Input.GetButtonDown("camera1"))

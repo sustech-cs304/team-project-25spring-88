@@ -3,15 +3,37 @@ using System.Collections.Generic;
 using UnityEngine;
 using VehicleBehaviour;
 
+/// <summary>
+/// A Unity script that manages item boxes in a racing game, applying random effects to the player car upon collision.
+/// <para>
+/// This script is attached to item box GameObjects. When a player car collides with the box, it applies a random effect
+/// (e.g., SpeedUp, SlowDown) to the car and temporarily hides the box before respawning it. Effects are displayed via GameEffectUIManager.
+/// </para>
+/// </summary>
 public class ItemBox : MonoBehaviour
 {
+    /// <summary>
+    /// Enum defining the possible effects that can be applied to the player car.
+    /// </summary>
     public enum EffectType { SpeedUp, SlowDown, Stop, ReverseControl, SpinOut }
-    //public enum EffectType { SpinOut }
 
+    /// <summary>
+    /// The time (in seconds) before the item box respawns after being collected.
+    /// </summary>
     public float respawnTime = 3f;
 
+    /// <summary>
+    /// The multiplier applied to the car's boost force for the SpeedUp effect.
+    /// </summary>
     public float speedMultiplier = 3f;
 
+    /// <summary>
+    /// Called when another collider enters the item box's trigger collider.
+    /// <para>
+    /// If the collider is tagged as "Player", applies a random effect to the car and starts the hide/respawn coroutine.
+    /// </para>
+    /// </summary>
+    /// <param name="other">The collider that entered the trigger.</param>
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
@@ -28,6 +50,11 @@ public class ItemBox : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Coroutine that applies the specified effect to the player car and displays it via GameEffectUIManager.
+    /// </summary>
+    /// <param name="car">The WheelVehicle component of the player car.</param>
+    /// <param name="effect">The effect to apply.</param>
     private IEnumerator ApplyEffect(WheelVehicle car, EffectType effect)
     {
         GameEffectUIManager.Instance?.Show(effect.ToString());
@@ -41,7 +68,7 @@ public class ItemBox : MonoBehaviour
                 Rigidbody rbSpeed = car.GetComponent<Rigidbody>();
                 if (rbSpeed != null)
                 {
-                    rbSpeed.AddForce(car.transform.forward * 5000f, ForceMode.Impulse); // Ë²¼ä±¬·¢¼ÓËÙ
+                    rbSpeed.AddForce(car.transform.forward * 5000f, ForceMode.Impulse); // ç¬æ—¶çˆ†å‘æ¨åŠ›
                 }
 
                 yield return new WaitForSeconds(2f);
@@ -53,7 +80,7 @@ public class ItemBox : MonoBehaviour
                 float originalDiff = car.DiffGearing;
                 car.DiffGearing = originalDiff / speedMultiplier;
 
-                // Ç¿ÖÆÍÏÂıËÙ¶È
+                // å¼ºåˆ¶é™ä½é€Ÿåº¦
                 Rigidbody rbSlow = car.GetComponent<Rigidbody>();
                 if (rbSlow != null)
                 {
@@ -88,19 +115,22 @@ public class ItemBox : MonoBehaviour
                 car.TriggerSpinOut(2f, 1080f);
                 break;
         }
-        yield break; // ±£Ö¤ËùÓĞÂ·¾¶¶¼ÓĞ·µ»Ø
+        yield break; // ç¡®ä¿åç¨‹æ­£ç¡®è¿”å›å€¼
     }
 
+    /// <summary>
+    /// Coroutine that hides the item box and respawns it after a delay.
+    /// </summary>
     private IEnumerator HideAndRespawn()
     {
-        // Òş²Ø Mesh ºÍ½ûÓÃ Collider
+        // éšè— Mesh å’Œè§¦å‘ Collider
         GetComponent<MeshRenderer>().enabled = false;
         GetComponent<Collider>().enabled = false;
 
-        // µÈ´ıÒ»¶ÎÊ±¼ä
+        // ç­‰å¾…ä¸€æ®µæ—¶é—´
         yield return new WaitForSeconds(respawnTime);
 
-        // »Ö¸´ÏÔÊ¾Óë´¥·¢
+        // æ¢å¤æ˜¾ç¤ºå’Œè§¦å‘
         GetComponent<MeshRenderer>().enabled = true;
         GetComponent<Collider>().enabled = true;
     }

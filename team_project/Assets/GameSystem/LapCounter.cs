@@ -2,133 +2,229 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 using System.Collections;
-using UnityEngine.TestTools;
-/** 
-     * AI-generated-content 
-     * tool: grok 
-     * version: 3.0
-     * usage: I used the prompt "我想要基于unity制作一个赛车小游戏，现在我要实现附着在车上的记圈脚本，同时实现游戏逻辑的控制，如....，你能帮我写一下控制脚本吗", and 
-     * directly copy the code from its response 
-     */
+
+/// <summary>
+/// A Unity script that manages core race mechanics in a racing game, including lap counting and timing.
+/// <para>
+/// This script handles lap counting, checkpoint validation, race timing, UI updates, and celebration effects.
+/// It also controls player and AI car states (e.g., enabling/disabling physics) and supports respawning to
+/// checkpoints. The script ensures that all checkpoints must be passed to complete a lap.
+/// </para>
+/// <remarks>
+/// AI-generated-content
+/// <list type="bullet">
+/// <item>tool: Grok</item>
+/// <item>version: 3.0</item>
+/// <item>usage: Generated using the prompt "我想要基于Unity制作一个赛车小游戏，现在我要实现附着在车上的记圈脚本，同时实现游戏逻辑的控制，如....，你能帮我写一下控制脚本吗", and directly copied from its response.</item>
+/// </list>
+/// </remarks>
+/// </summary>
 public class LapCounter : MonoBehaviour
 {
+    /// <summary>
+    /// The total number of laps required to complete the race.
+    /// </summary>
     public int totalLaps = 1;
-    private int currentLap = 0;
-    private bool raceStarted = false;
-    private float raceTimer = 0f;
-    private bool hasCelebrated = false;
 
-    // 存档点相关
-    private int lastCheckpointIndex = 0;
-    private int totalCheckpoints = 6;
-    private Vector3 lastCheckpointPosition;
-    private Quaternion lastCheckpointRotation;
-    private bool[] checkpointsPassed;
-
-    // UI引用
-    public TMP_Text lapText;
-    public TMP_Text timeText;
-    public TMP_Text finishText;
-    public TMP_Text speedText; // 新增：速度显示文本
-    public TMP_Text distanceText; // 新增：距离显示文本
-    public Button quitButton;
-    public CountdownUI countdownscript; // 新增：倒计时脚本引用
-    // 庆祝效果
-    public ParticleSystem fireworkEffect;
-    public ParticleSystem ribbonEffect;
-    public AudioSource celebrationAudio;
-
-    // 赛车引用
+    /// <summary>
+    /// The GameObject representing the player car.
+    /// </summary>
     public GameObject playerCar;
-    public GameObject aiCar; // 新增：AI 警车引用
 
-    // 存档点引用（用于控制光束）
+    /// <summary>
+    /// The GameObject representing the AI car.
+    /// </summary>
+    public GameObject aiCar;
+
+    /// <summary>
+    /// An array of checkpoint objects in the race track.
+    /// </summary>
     public Checkpoint[] checkpointObjects;
 
-    private Rigidbody carRigidbody; // 用于计算速度
+    /// <summary>
+    /// The UI text element displaying the current lap number.
+    /// </summary>
+    public TMP_Text lapText;
 
-    // 结算界面元素
+    /// <summary>
+    /// The UI text element displaying the race elapsed time.
+    /// </summary>
+    public TMP_Text timeText;
     public GameObject resultPanel; // 结算面板
     public TMP_Text resultTitleText; // 结算标题文本
 
     public bool existAI; //判断是否为ai模式
-    void Start()
-    {   
-        resultPanel.SetActive(false);
-        Rigidbody PlayercarRigidbody = playerCar.GetComponent<Rigidbody>();
-        if (PlayercarRigidbody != null)
-        {
-            PlayercarRigidbody.isKinematic = true; // 禁用物理运动
-            // 或者使用 constraints
-            // carRigidbody.constraints = RigidbodyConstraints.FreezeAll;
-        }if(aiCar != null)
-        {  
-            AICarPathFollower aiCarPathFollower = aiCar.GetComponent<AICarPathFollower>();
-            aiCarPathFollower.enabled = false; // 确保 AI 小车的路径跟随脚本启用
-            Rigidbody AicarRigidbody = aiCar.GetComponent<Rigidbody>();
-            if (AicarRigidbody != null)
-            {
-                AicarRigidbody.isKinematic = true; // 禁用物理运动
-                // 或者使用 constraints
-                // carRigidbody.constraints = RigidbodyConstraints.FreezeAll;
-            } 
-        }
-        StartCoroutine(StartRace(PlayercarRigidbody,aiCar)); // 启动协程处理倒计时和激活逻辑
 
-        UpdateLapDisplay();
-        UpdateTimeDisplay();
-        UpdateSpeedDisplay();
-        UpdateDistanceDisplay(); // 新增：初始更新距离显示
-        finishText.gameObject.SetActive(false);
-        quitButton.gameObject.SetActive(false);
+    /// <summary>
+    /// The UI text element displaying race completion or game over messages.
+    /// </summary>
+    public TMP_Text finishText;
+
+    /// <summary>
+    /// The UI text element displaying the player car's speed.
+    /// </summary>
+    public TMP_Text speedText;
+
+    /// <summary>
+    /// The UI text element displaying the distance between player and AI cars.
+    /// </summary>
+    public TMP_Text distanceText;
+
+    /// <summary>
+    /// The UI button to quit the game.
+    /// </summary>
+    public Button quitButton;
+
+    /// <summary>
+    /// The script managing the countdown UI before the race starts.
+    /// </summary>
+    public CountdownUI countdownScript;
+
+    /// <summary>
+    /// The particle system for the firework celebration effect.
+    /// </summary>
+    public ParticleSystem fireworkEffect;
+
+    /// <summary>
+    /// The particle system for the ribbon celebration effect.
+    /// </summary>
+    public ParticleSystem ribbonEffect;
+
+    /// <summary>
+    /// The audio source for the celebration sound effect.
+    /// </summary>
+    public AudioSource celebrationAudio;
+
+    /// <summary>
+    /// The current lap number (starts at 0, increments to 1 when race starts).
+    /// </summary>
+    private int currentLap = 0;
+
+    /// <summary>
+    /// Whether the race has started.
+    /// </summary>
+    private bool raceStarted = false;
+
+    /// <summary>
+    /// The elapsed time since the race started (in seconds).
+    /// </summary>
+    private float raceTimer = 0f;
+
+    /// <summary>
+    /// Whether celebration effects have been triggered.
+    /// </summary>
+    private bool hasCelebrated = false;
+
+    /// <summary>
+    /// The index of the last checkpoint passed by the player.
+    /// </summary>
+    private int lastCheckpointIndex = 0;
+
+    /// <summary>
+    /// The total number of checkpoints in the race track.
+    /// </summary>
+    private int totalCheckpoints = 6;
+
+    /// <summary>
+    /// The position of the last checkpoint passed for respawn purposes.
+    /// </summary>
+    private Vector3 lastCheckpointPosition;
+
+    /// <summary>
+    /// The rotation of the last checkpoint passed for respawn purposes.
+    /// </summary>
+    private Quaternion lastCheckpointRotation;
+
+    /// <summary>
+    /// An array tracking which checkpoints have been passed.
+    /// </summary>
+    private bool[] checkpointsPassed;
+
+    /// <summary>
+    /// The Rigidbody component of the player car.
+    /// </summary>
+    private Rigidbody carRigidbody;
+
+    /// <summary>
+    /// Initializes the race state, disables car physics, and starts the countdown.
+    /// </summary>
+    void Start()
+    {
+        if (playerCar == null)
+        {
+            Debug.LogError($"[{nameof(LapCounter)}] Player car is not assigned!");
+            return;
+        }
+
+        carRigidbody = playerCar.GetComponent<Rigidbody>();
+        if (carRigidbody == null)
+        {
+            Debug.LogError($"[{nameof(LapCounter)}] Player car does not have a Rigidbody component!");
+            return;
+        }
+
+        if (aiCar == null)
+        {
+            Debug.LogWarning($"[{nameof(LapCounter)}] AI car is not assigned!");
+        }
+
+        carRigidbody.isKinematic = true;
+        if (aiCar != null)
+        {
+            var aiCarPathFollower = aiCar.GetComponent<AICarPathFollower>();
+            var aiCarRigidbody = aiCar.GetComponent<Rigidbody>();
+            if (aiCarPathFollower != null) aiCarPathFollower.enabled = false;
+            if (aiCarRigidbody != null) aiCarRigidbody.isKinematic = true;
+        }
 
         checkpointsPassed = new bool[totalCheckpoints + 1];
         lastCheckpointPosition = playerCar.transform.position;
         lastCheckpointRotation = playerCar.transform.rotation;
 
-        if (playerCar != null)
+        UpdateLapDisplay();
+        UpdateTimeDisplay();
+        UpdateSpeedDisplay();
+        UpdateDistanceDisplay();
+        if (finishText != null) finishText.gameObject.SetActive(false);
+        if (quitButton != null) quitButton.gameObject.SetActive(false);
+
+        StartCoroutine(StartRace());
+    }
+
+    /// <summary>
+    /// Coroutine that manages the race countdown and activates car physics.
+    /// </summary>
+    private IEnumerator StartRace()
+    {
+        if (countdownScript != null)
         {
-            carRigidbody = playerCar.GetComponent<Rigidbody>();
-            if (carRigidbody == null)
-            {
-                Debug.LogWarning("Player car does not have a Rigidbody component!");
-            }
+            countdownScript.StartCountdown(5);
+            yield return new WaitForSeconds(5f);
         }
         else
         {
-            Debug.LogWarning("Player car is not assigned in LapCounter!");
+            Debug.LogWarning($"[{nameof(LapCounter)}] Countdown script is not assigned!");
+            yield return new WaitForSeconds(5f);
         }
 
-        // 检查 AI 警车是否分配
-        if (aiCar == null)
+        carRigidbody.isKinematic = false;
+        Debug.Log($"[{nameof(LapCounter)}] Player car physics activated.");
+
+        if (aiCar != null)
         {
-            Debug.LogWarning("AI car is not assigned in LapCounter!");
+            yield return new WaitForSeconds(3f);
+            var aiCarPathFollower = aiCar.GetComponent<AICarPathFollower>();
+            var aiCarRigidbody = aiCar.GetComponent<Rigidbody>();
+            if (aiCarPathFollower != null) aiCarPathFollower.enabled = true;
+            if (aiCarRigidbody != null) aiCarRigidbody.isKinematic = false;
+            Debug.Log($"[{nameof(LapCounter)}] AI car physics and path follower activated.");
         }
     }
-    IEnumerator StartRace(Rigidbody playerCar,GameObject aiCar)
-    {
-        countdownscript.StartCountdown(5); // 开始5秒倒计时
-        yield return new WaitForSeconds(5.0f); // 等待倒计时结束
-        playerCar.isKinematic = false; // 激活玩家小车的物理运动
-        Debug.Log("玩家小车已激活！");
-        yield return new WaitForSeconds(3.0f); // 再等待5秒
-         if(aiCar != null)
-        {
-            AICarPathFollower aiCarPathFollower = aiCar.GetComponent<AICarPathFollower>();
-            Rigidbody AicarRigidbody = aiCar.GetComponent<Rigidbody>();
-            if (aiCarPathFollower != null)
-            {
-                aiCarPathFollower.enabled = true; // 确保 AI 小车的路径跟随脚本启用
-                AicarRigidbody.isKinematic = false; // 激活 AI 小车的物理运动
-            }
-            else
-            {
-                Debug.LogWarning("AI car does not have AICarPathFollower component!");
-            }
-        }
-        Debug.Log("AI 小车已激活！");
-    }
- void Update()
+
+    /// <summary>
+    /// Updates race timing, UI elements, and handles respawn input each frame.
+    /// </summary>
+    void Update()
     {
         if (raceStarted)
         {
@@ -142,10 +238,12 @@ public class LapCounter : MonoBehaviour
         }
 
         UpdateSpeedDisplay();
-        UpdateDistanceDisplay(); // 新增：实时更新距离显示
+        UpdateDistanceDisplay();
     }
 
-    // 新增：更新距离显示
+    /// <summary>
+    /// Updates the UI text displaying the distance between player and AI cars.
+    /// </summary>
     private void UpdateDistanceDisplay()
     {
         if (distanceText != null && playerCar != null && aiCar != null)
@@ -158,62 +256,71 @@ public class LapCounter : MonoBehaviour
             distanceText.text = "Distance to AI: N/A";
         }
     }
+
+    /// <summary>
+    /// Triggers the start of the race when the start line is passed.
+    /// </summary>
     public void OnStartLinePassed()
     {
-        Debug.Log("Start Line Logic Executed");
         if (!raceStarted)
         {
             raceStarted = true;
             currentLap = 1;
             UpdateLapDisplay();
-            Debug.Log("Race Started!");
+            Debug.Log($"[{nameof(LapCounter)}] Race started!");
         }
     }
 
+    /// <summary>
+    /// Handles the event when the finish line is passed, validating checkpoints and updating laps.
+    /// </summary>
     public void OnFinishLinePassed()
     {
-        Debug.Log("Finish Line Logic Executed");
-        if (raceStarted)
+        if (!raceStarted) return;
+
+        bool allCheckpointsPassed = true;
+        for (int i = 1; i <= totalCheckpoints; i++)
         {
-            bool allCheckpointsPassed = true;
+            if (!checkpointsPassed[i])
+            {
+                allCheckpointsPassed = false;
+                break;
+            }
+        }
+
+        if (allCheckpointsPassed)
+        {
+            currentLap++;
+            UpdateLapDisplay();
+            Debug.Log($"[{nameof(LapCounter)}] Lap {currentLap} completed!");
+
             for (int i = 1; i <= totalCheckpoints; i++)
             {
-                if (!checkpointsPassed[i])
-                {
-                    allCheckpointsPassed = false;
-                    break;
-                }
+                checkpointsPassed[i] = false;
             }
+            lastCheckpointIndex = 0;
+            ResetCheckpoints();
 
-            if (allCheckpointsPassed)
+            if (currentLap > totalLaps)
             {
-                currentLap++;
-                UpdateLapDisplay();
-                Debug.Log($"Lap {currentLap} Completed!");
-
-                for (int i = 1; i <= totalCheckpoints; i++)
-                {
-                    checkpointsPassed[i] = false;
-                }
-                lastCheckpointIndex = 0;
-
-                ResetCheckpoints();
-
-                if (currentLap >= totalLaps)
-                {
-                    raceStarted = false;
-                    Debug.Log($"Race Finished! Total Time: {raceTimer:F2}s");
-                    TriggerCelebration();
-                    ShowEndScreen(true);
-                }
+                raceStarted = false;
+                Debug.Log($"[{nameof(LapCounter)}] Race finished! Total time: {raceTimer:F2}s");
+                TriggerCelebration();
+                ShowEndScreen(true);
             }
-            else
-            {
-                Debug.Log("Cannot count lap: Not all checkpoints passed!");
-            }
+        }
+        else
+        {
+            Debug.LogWarning($"[{nameof(LapCounter)}] Cannot count lap: Not all checkpoints passed!");
         }
     }
 
+    /// <summary>
+    /// Records a checkpoint passage and updates the last checkpoint state.
+    /// </summary>
+    /// <param name="checkpointIndex">The index of the checkpoint passed.</param>
+    /// <param name="position">The position of the checkpoint for respawn.</param>
+    /// <param name="rotation">The rotation of the checkpoint for respawn.</param>
     public void OnCheckpointPassed(int checkpointIndex, Vector3 position, Quaternion rotation)
     {
         if (checkpointIndex == lastCheckpointIndex + 1)
@@ -222,35 +329,64 @@ public class LapCounter : MonoBehaviour
             checkpointsPassed[checkpointIndex] = true;
             lastCheckpointPosition = position;
             lastCheckpointRotation = rotation;
-            Debug.Log($"Checkpoint {checkpointIndex} recorded as last checkpoint.");
+            Debug.Log($"[{nameof(LapCounter)}] Checkpoint {checkpointIndex} recorded.");
         }
     }
 
+    /// <summary>
+    /// Respawns the player car to the last recorded checkpoint position and rotation.
+    /// </summary>
     private void RespawnToLastCheckpoint()
     {
-        if (playerCar != null)
+        if (playerCar != null && carRigidbody != null)
         {
-            Rigidbody rb = playerCar.GetComponent<Rigidbody>();
-            if (rb != null)
-            {
-                rb.velocity = Vector3.zero;
-                rb.angularVelocity = Vector3.zero;
-            }
-
+            carRigidbody.velocity = Vector3.zero;
+            carRigidbody.angularVelocity = Vector3.zero;
             playerCar.transform.position = lastCheckpointPosition;
             playerCar.transform.rotation = lastCheckpointRotation;
-            Debug.Log("Respawned to last checkpoint at: " + lastCheckpointPosition);
+            Debug.Log($"[{nameof(LapCounter)}] Player car respawned to checkpoint at: {lastCheckpointPosition}");
         }
     }
-    public void gameover()
-    {    
-        TriggerCelebration();     
-        ShowEndScreen(false);
-        Debug.Log("Game Over!");
+
+    /// <summary>
+    /// Ends the race with a game over state when the player is caught by the AI car.
+    /// </summary>
+    public void GameOver()
+    {
+        if (!raceStarted) return;
+
         raceStarted = false;
         hasCelebrated = false;
-        currentLap = 0;       
+        currentLap = 0;
+        TriggerCelebration();
+        ShowEndScreen(false);
+        ResetAICar();
+        Debug.Log($"[{nameof(LapCounter)}] Game over! Escaped for {raceTimer:F2} seconds.");
     }
+
+    /// <summary>
+    /// Resets the AI car's physics and path follower to a disabled state.
+    /// </summary>
+    private void ResetAICar()
+    {
+        if (aiCar != null)
+        {
+            var aiCarPathFollower = aiCar.GetComponent<AICarPathFollower>();
+            var aiCarRigidbody = aiCar.GetComponent<Rigidbody>();
+            if (aiCarPathFollower != null) aiCarPathFollower.enabled = false;
+            if (aiCarRigidbody != null)
+            {
+                aiCarRigidbody.isKinematic = true;
+                aiCarRigidbody.velocity = Vector3.zero;
+                aiCarRigidbody.angularVelocity = Vector3.zero;
+            }
+            Debug.Log($"[{nameof(LapCounter)}] AI car reset.");
+        }
+    }
+
+    /// <summary>
+    /// Triggers visual and audio celebration effects for race completion or game over.
+    /// </summary>
     private void TriggerCelebration()
     {
         if (hasCelebrated) return;
@@ -275,6 +411,10 @@ public class LapCounter : MonoBehaviour
         hasCelebrated = true;
     }
 
+    /// <summary>
+    /// Displays the end screen with a win or lose message and activates the quit button.
+    /// </summary>
+    /// <param name="finish">True for race completion, false for game over.</param>
     private void ShowEndScreen(bool finish)
     {
         if (resultPanel != null)
@@ -419,9 +559,12 @@ public class LapCounter : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Quits the game or stops play mode in the Unity Editor.
+    /// </summary>
     private void QuitGame()
     {
-        Debug.Log("Quitting Game...");
+        Debug.Log($"[{nameof(LapCounter)}] Quitting game...");
 #if UNITY_EDITOR
         UnityEditor.EditorApplication.isPlaying = false;
 #else
@@ -429,6 +572,9 @@ public class LapCounter : MonoBehaviour
 #endif
     }
 
+    /// <summary>
+    /// Updates the UI text displaying the current lap number.
+    /// </summary>
     private void UpdateLapDisplay()
     {
         if (lapText != null)
@@ -437,6 +583,9 @@ public class LapCounter : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Updates the UI text displaying the race elapsed time.
+    /// </summary>
     private void UpdateTimeDisplay()
     {
         if (timeText != null)
@@ -445,15 +594,14 @@ public class LapCounter : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Updates the UI text displaying the player car's speed in km/h.
+    /// </summary>
     private void UpdateSpeedDisplay()
     {
         if (speedText != null && carRigidbody != null)
         {
-            // 计算速度（单位：m/s）
-            float speed = carRigidbody.velocity.magnitude;
-            // 转换为km/h（1 m/s = 3.6 km/h）
-            float speedKmh = speed * 3.6f;
-            // 更新UI，保留1位小数
+            float speedKmh = carRigidbody.velocity.magnitude * 3.6f;
             speedText.text = $"Speed: {speedKmh:F1} km/h";
         }
         else if (speedText != null)
@@ -462,6 +610,9 @@ public class LapCounter : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Resets the race state and UI to initial conditions for a new race.
+    /// </summary>
     public void ResetRace()
     {
         raceStarted = false;
@@ -487,28 +638,24 @@ public class LapCounter : MonoBehaviour
         }
 
         ResetCheckpoints();
+        ResetAICar();
     }
 
+    /// <summary>
+    /// Resets all checkpoint objects to their initial state, enabling visual effects.
+    /// </summary>
     private void ResetCheckpoints()
     {
         if (checkpointObjects == null || checkpointObjects.Length == 0)
         {
-            Debug.LogWarning("Checkpoint objects not assigned in LapCounter!");
+            Debug.LogWarning($"[{nameof(LapCounter)}] Checkpoint objects not assigned!");
             return;
         }
 
         foreach (var checkpoint in checkpointObjects)
         {
             if (checkpoint == null) continue;
-
-            if (checkpoint.lightBeam != null)
-            {
-                checkpoint.lightBeam.enabled = true;
-            }
-            if (checkpoint.lightBeamParticles != null)
-            {
-                checkpoint.lightBeamParticles.Play();
-            }
+            checkpoint.ResetCheckpoint();
         }
     }
 }

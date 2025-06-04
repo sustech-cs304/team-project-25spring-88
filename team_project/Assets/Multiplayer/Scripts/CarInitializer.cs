@@ -4,10 +4,20 @@ using VehicleBehaviour;
 using VehicleBehaviour.Utils;
 using TMPro;
 
+/// <summary>
+/// A Unity script that initializes a networked car in a multiplayer racing game.
+/// <para>
+/// This script configures the camera, speedometer, lap tracker, and camera switching for a car owned by the local player.
+/// It ensures that only the local player's car is fully initialized with UI and camera bindings.
+/// </para>
+/// </summary>
 [RequireComponent(typeof(NetworkIdentity))]
 [RequireComponent(typeof(Rigidbody))]
 public class CarInitializer : NetworkBehaviour
 {
+    /// <summary>
+    /// Initializes the car for the local player, setting up camera, speedometer, lap tracker, and camera switching.
+    /// </summary>
     void Start()
     {
         var netId = GetComponent<NetworkIdentity>();
@@ -48,7 +58,6 @@ public class CarInitializer : NetworkBehaviour
         {
             Debug.LogWarning("Speedometer not found in the scene.");
         }
-
 
         var lapTracker = GetComponent<LapTracker>();
         if (lapTracker != null)
@@ -95,8 +104,6 @@ public class CarInitializer : NetworkBehaviour
         {
             Debug.LogWarning("LapTracker component not found on this vehicle.");
         }
-
-        
 
         var cameraSwitch = FindObjectOfType<CameraSwitch>();
         if (cameraSwitch != null)

@@ -1,19 +1,46 @@
 using UnityEngine;
 using UnityEngine.UI;
 
+/// <summary>
+/// Manages switching of RawImage textures based on keyboard input.
+/// </summary>
 public class KeyImageSwitcher : MonoBehaviour
 {
+    /// <summary>
+    /// Represents a pair of a key and its associated RawImage textures.
+    /// </summary>
     [System.Serializable]
     public class KeyImagePair
     {
-        public KeyCode key;           // 对应的按键
-        public RawImage targetImage;  // 目标Raw Image组件
-        public Texture normalTexture; // 普通状态的贴图
-        public Texture pressedTexture;// 按下状态的贴图
+        /// <summary>
+        /// The key associated with the image switch.
+        /// </summary>
+        public KeyCode key;
+
+        /// <summary>
+        /// The target RawImage component to update.
+        /// </summary>
+        public RawImage targetImage;
+
+        /// <summary>
+        /// The texture to display when the key is not pressed.
+        /// </summary>
+        public Texture normalTexture;
+
+        /// <summary>
+        /// The texture to display when the key is pressed.
+        /// </summary>
+        public Texture pressedTexture;
     }
 
-    public KeyImagePair[] keyImagePairs; // 在Inspector中设置按键和图片的对应关系
+    /// <summary>
+    /// Array of key-image pairs configured in the Inspector.
+    /// </summary>
+    public KeyImagePair[] keyImagePairs;
 
+    /// <summary>
+    /// Updates the texture of each RawImage based on the corresponding key's state, called once per frame.
+    /// </summary>
     void Update()
     {
         foreach (var pair in keyImagePairs)

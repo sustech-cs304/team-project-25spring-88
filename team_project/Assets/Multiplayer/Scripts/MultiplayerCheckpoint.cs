@@ -1,12 +1,37 @@
 using UnityEngine;
-using Mirror; // 记得引入 Mirror 命名空间
+using Mirror;
 
+/// <summary>
+/// A Unity script that manages checkpoint triggers in a multiplayer racing game.
+/// <para>
+/// This script detects when a local player's car passes through a checkpoint, updates the LapTracker,
+/// and disables visual effects like light beams and particles for the local client.
+/// </para>
+/// </summary>
 public class MultiplayerCheckpoint : MonoBehaviour
 {
+    /// <summary>
+    /// The unique index of this checkpoint in the race sequence.
+    /// </summary>
     public int checkpointIndex;
-    public LineRenderer lightBeam;             // 冲天的光束（Line Renderer）
+
+    /// <summary>
+    /// The LineRenderer component for the checkpoint's light beam effect.
+    /// </summary>
+    public LineRenderer lightBeam; // 冲天的光束（Line Renderer）
+
+    /// <summary>
+    /// The ParticleSystem component for the checkpoint's light beam particles.
+    /// </summary>
     public ParticleSystem lightBeamParticles; // 光束的粒子效果
 
+    /// <summary>
+    /// Handles the event when a collider enters the checkpoint trigger.
+    /// <para>
+    /// Updates the LapTracker and disables visual effects for the local player's car.
+    /// </para>
+    /// </summary>
+    /// <param name="other">The collider that entered the trigger.</param>
     private void OnTriggerEnter(Collider other)
     {
         // 先判断是否是“Player”标签

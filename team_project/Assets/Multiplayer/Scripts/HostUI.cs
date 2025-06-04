@@ -6,27 +6,73 @@ using UnityEngine;
 using UnityEngine.UI;
 using Mirror;
 
+/// <summary>
+/// A Unity script that manages the host UI for a multiplayer racing game.
+/// <para>
+/// This script sets up a network host, generates a password, selects a port, displays network details,
+/// manages the player list, and allows the host to start the game or kick players.
+/// </para>
+/// </summary>
 public class HostUI : MonoBehaviour
 {
+    /// <summary>
+    /// The UI text displaying the host's IP address.
+    /// </summary>
     [Header("UI References")]
     public Text ipText;
+
+    /// <summary>
+    /// The UI text displaying the selected port.
+    /// </summary>
     public Text portText;
+
+    /// <summary>
+    /// The UI text displaying the generated password.
+    /// </summary>
     public Text passwordText;
+
+    /// <summary>
+    /// The parent Transform for player list UI entries.
+    /// </summary>
     public Transform playerListParent;
+
+    /// <summary>
+    /// The prefab for player list UI entries.
+    /// </summary>
     public GameObject playerEntryPrefab;
 
+    /// <summary>
+    /// The UI button to start the game.
+    /// </summary>
     [Header("Start Game")]
     public Button startGameButton;
-    public string gameSceneName = "GameScene"; 
 
+    /// <summary>
+    /// The name of the game scene to load when starting the race.
+    /// </summary>
+    public string gameSceneName = "GameScene";
+
+    /// <summary>
+    /// The generated password for client authentication.
+    /// </summary>
     private string generatedPassword;
+
+    /// <summary>
+    /// The selected port for the network host.
+    /// </summary>
     private ushort selectedPort;
 
+    /// <summary>
+    /// Initializes the host UI, sets up network parameters, and starts the host.
+    /// </summary>
     private void Start()
     {
         SetupHost();
     }
 
+    /// <summary>
+    /// Configures the network host with a password, port, IP, and player list updates.
+    /// </summary>
     void SetupHost()
     {
         // 1. 生成密码
@@ -37,7 +83,7 @@ public class HostUI : MonoBehaviour
         if (authenticator != null)
         {
             authenticator.serverToken = generatedPassword;
-            authenticator.clientToken = generatedPassword; 
+            authenticator.clientToken = generatedPassword;
         }
         else
         {
@@ -64,7 +110,11 @@ public class HostUI : MonoBehaviour
         startGameButton.onClick.AddListener(OnStartGameClicked);
     }
 
-
+    /// <summary>
+    /// Generates a random password of specified length.
+    /// </summary>
+    /// <param name="length">The length of the password.</param>
+    /// <returns>The generated password.</returns>
     string GeneratePassword(int length)
     {
         const string chars = "ABCDEFGHJKLMNPQRSTUVWXYZ23456789";
@@ -72,6 +122,12 @@ public class HostUI : MonoBehaviour
         return new string(Enumerable.Repeat(chars, length).Select(s => s[rng.Next(s.Length)]).ToArray());
     }
 
+    /// <summary>
+    /// Finds an available network port within a specified range.
+    /// </summary>
+    /// <param name="startPort">The starting port number.</param>
+    /// <param name="endPort">The ending port number.</param>
+    /// <returns>The available port number or fallback (7777).</returns>
     ushort GetAvailablePort(int startPort, int endPort)
     {
         for (ushort port = (ushort)startPort; port <= endPort; port++)
@@ -82,6 +138,11 @@ public class HostUI : MonoBehaviour
         return 7777; // fallback
     }
 
+    /// <summary>
+    /// Checks if a port is available for use.
+    /// </summary>
+    /// <param name="port">The port number to check.</param>
+    /// <returns>True if the port is available, false otherwise.</returns>
     bool IsPortAvailable(ushort port)
     {
         try
@@ -97,6 +158,11 @@ public class HostUI : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Retrieves the internal IP address starting with a specified prefix.
+    /// </summary>
+    /// <param name="prefix">The IP address prefix (e.g., "10.").</param>
+    /// <returns>The internal IP address or "Unknown" if not found.</returns>
     string GetInternalIP(string prefix)
     {
         string fallback = "Unknown";
@@ -109,6 +175,9 @@ public class HostUI : MonoBehaviour
         return fallback;
     }
 
+    /// <summary>
+    /// Updates the player list UI with current connected players.
+    /// </summary>
     void UpdatePlayerList()
     {
         if (!NetworkServer.active) return;
@@ -125,7 +194,6 @@ public class HostUI : MonoBehaviour
                 XPlayer player = conn.identity.GetComponent<XPlayer>();
                 if (player != null)
                 {
-
                     playerCount++;
 
                     GameObject entry = Instantiate(playerEntryPrefab, playerListParent);
@@ -154,7 +222,10 @@ public class HostUI : MonoBehaviour
         startGameButton.interactable = playerCount >= 1;
     }
 
-
+    /// <summary>
+    /// Kicks a player from the server by disconnecting their connection.
+    /// </summary>
+    /// <param name="conn">The network connection to disconnect.</param>
     void KickPlayer(NetworkConnectionToClient conn)
     {
         if (conn != null && conn.isAuthenticated)
@@ -164,23 +235,34 @@ public class HostUI : MonoBehaviour
         }
     }
 
-
-
+    /// <summary>
+    /// Retrieves the generated password for client authentication.
+    /// </summary>
+    /// <returns>The generated password.</returns>
     public string GetHostPassword()
     {
         return generatedPassword;
     }
 
+    /// <summary>
+    /// Stops player list updates when the script is disabled.
+    /// </summary>
     void OnDisable()
-    {   
+    {
         CancelInvoke(nameof(UpdatePlayerList));
     }
 
+    /// <summary>
+    /// Stops player list updates when the GameObject is destroyed.
+    /// </summary>
     void OnDestroy()
     {
         CancelInvoke(nameof(UpdatePlayerList));
     }
 
+    /// <summary>
+    /// Starts the game by switching to the game scene if sufficient players are connected.
+    /// </summary>
     void OnStartGameClicked()
     {
         // 确保是 Host 且至少有 2 个客户端连接
@@ -199,6 +281,4 @@ public class HostUI : MonoBehaviour
         // 切换场景：所有客户端会自动跟随加载
         XNetworkManager.singleton.ServerChangeScene(gameSceneName);
     }
-
-
 }
