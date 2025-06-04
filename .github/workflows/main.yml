@@ -34,10 +34,10 @@ jobs:
           projectPath: team_project
           githubToken: ${{ secrets.GITHUB_TOKEN }}
           coverageOptions: |
-          generateHtmlReport;
-          generateSummaryBadge;
-          generateAdditionalMetrics;
-          assemblyFilters:+CommonScripts,+ItemSystem,+LandingScripts
+            generateHtmlReport;
+            generateSummaryBadge;
+            generateAdditionalMetrics;
+            assemblyFilters:+CommonScripts,+ItemSystem,+LandingScripts
 
       - name: Upload Code Coverage Report
         uses: actions/upload-artifact@v4
