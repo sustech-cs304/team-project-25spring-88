@@ -23,7 +23,7 @@ Race through a detailed SUSTech campus map with advanced tracks, obstacles, and 
 5. **Themed Vehicles**  
    Select from a variety of themed cars to enrich players' driving experience in races.
 
-6. **Realistic Driving sExperience**  
+6. **Realistic Driving Experience**  
    Provides torque-based control systems, realistic driving sounds, speed-up mechanisms, and drift mechanisms.
 
 7. **Multi-View Switching & Recording**  
