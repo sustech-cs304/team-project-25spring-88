@@ -131,6 +131,11 @@ jobs:
       with:
         name: Build-WebGL
         path: build/WebGL
+        
+    - name: Deploy
+      uses: actions/deploy-pages@v4
+      with:
+        artifact_name: Build-WebGL # 与上传名称匹配
 
   docs:
     name: Generate and Deploy Documentation
@@ -163,8 +168,3 @@ jobs:
       with:
         path: team_project/_site
         name: gh-pages # 自定义名称
-
-    - name: Deploy
-      uses: actions/deploy-pages@v4
-      with:
-        artifact_name: gh-pages # 与上传名称匹配
