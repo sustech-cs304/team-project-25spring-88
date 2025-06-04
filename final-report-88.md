@@ -142,22 +142,6 @@ Since our project is developed using the Unity engine, the build process is simp
 
 # Depolyment
 
-Since our project is a single-player game, it does not need to be accessible to the public. We can build executable files for mainstream platforms and architectures, ensuring that our project runs stably on various players' devices. Therefore, containerizing and deploying our project is not an ideal choice.
+The project is built using Unity’s WebGL platform and deployed on , allowing users to easily access and play the game directly through a web browser without the need for any installation. This ensures fast and universal access across most modern devices.
 
-### Common Deployment Methods for Unity Projects
-- **Standalone Executable Build**: The most common way is to build the game as a standalone executable for platforms such as Windows, macOS, or Linux. Players can download and run the game directly on their devices.
-- **Mobile Deployment**: Unity supports building for iOS and Android, allowing games to be published on the App Store or Google Play.
-- **WebGL Deployment**: Unity can export projects to WebGL, enabling games to run in web browsers. However, this is less common for large-scale or high-performance games due to browser limitations.
-- **Console Deployment**: Unity also supports building for consoles like PlayStation, Xbox, and Nintendo Switch, though this requires additional platform-specific setup and licensing.
-
-### Examples of Large-Scale Racing Games Developed with Unity
-- **KartRider: Drift**
-- **Hot Wheels Infinite Loop**
-- **Asphalt 9: Legends (mobile version uses Unity for some platforms)**
-
-These large-scale Unity racing games are typically **not deployed online** as containerized services because:
-- They are designed as standalone or client-based games, not as web services.
-- Performance requirements for real-time rendering and input are best met by running natively on the player's device.
-- Online deployment (such as via containers) is more suitable for backend services, not for delivering high-performance game clients.
-
-As a result, both our project and other large Unity racing games are distributed as downloadable executables or through app stores, rather than being deployed online as containerized applications.
+In addition to WebGL deployment, the Unity engine also supports building native executable files for a variety of platforms and system architectures, including Windows, macOS, Android, and iOS. This flexibility allows the project to be distributed in multiple formats depending on user needs or deployment environments.
