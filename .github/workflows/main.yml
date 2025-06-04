@@ -112,7 +112,7 @@ jobs:
 
     - name: Install DocFX
       run: |
-        dotnet tool update -g docfx --version 2.67.2
+        dotnet tool update -g docfx --version 2.62.2
 
     - name: Build Documentation
       working-directory: team_project # 进入项目目录
