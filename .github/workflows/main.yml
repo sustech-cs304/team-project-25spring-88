@@ -132,10 +132,10 @@ jobs:
         name: Build-WebGL
         path: build/WebGL
         
-    - name: Deploy
-      uses: actions/deploy-pages@v4
-      with:
-        artifact_name: Build-WebGL # 与上传名称匹配
+    # - name: Deploy
+    #   uses: actions/deploy-pages@v4
+    #   with:
+    #     artifact_name: Build-WebGL # 与上传名称匹配
 
   docs:
     name: Generate and Deploy Documentation
