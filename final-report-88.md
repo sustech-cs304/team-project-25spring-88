@@ -1,5 +1,30 @@
 # SUSTech Car Racing Game
 ---
+# Features
+1. **SUSTech Campus Racing Map & UI**  
+   Race through a detailed and immersive map inspired by SUSTech’s campus.
+
+2. **Regular Racing Mode**
+   Classic racing for speed enthusiasts.
+
+3. **Item Race**
+   Use power-ups and items to outsmart opponents.  
+
+4. **Electric Vehicles vs Security Guard (PvE Mode)**
+   A unique player-vs-environment challenge.
+
+5. **Racing with Friends**
+   Connect with your friends via local networks and have a race together!
+   
+7. **Dynamic Weather & Time System**  
+   Experience realistic changes in weather (rain, fog, etc.) and time (day/night cycles) that affect gameplay.
+
+8. **Realistic Driving Experience**  
+   Provides torque-based control systems, realistic driving sounds, speed-up mechanisms, and drift mechanisms.
+
+9. **Advanced Track Design**  
+   User-friendly tracks for beginners and hidden shortcuts for strategic gameplay.
+
 # Metrics
 
 ![landingscene](./resource/Cloc.png "landingscene")
