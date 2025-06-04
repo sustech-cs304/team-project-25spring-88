@@ -3,7 +3,7 @@ name: Unity CI
 on: [ push, pull_request ]
 
 permissions:
-  contents: read
+  contents: write
   pages: write
   id-token: write
 
@@ -105,11 +105,15 @@ jobs:
         dotnet-version: 9.x
 
     - name: Install DocFX
-      run: dotnet tool update -g docfx
+      run: |
+        dotnet tool update -g docfx
+        docfx template install default
+        docfx template install material-design
 
     - name: Build Documentation
       working-directory: team_project # 进入项目目录
       run: |
+        docfx metadata Documentation/docfx.json
         docfx build Documentation/docfx.json
 
     - name: Upload artifact
