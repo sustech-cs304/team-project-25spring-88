@@ -4,16 +4,16 @@
 1. **SUSTech Campus Racing Map & UI**  
    Race through a detailed and immersive map inspired by SUSTech’s campus.
 
-2. **Regular Racing Mode**
-   Classic time trial mode for speed enthusiasts.
+2. **Regular Racing Mode**  
+   Classic time trial mode for speed enthusiasts. We offer multiple themed cars with different driving experiences to suit your preferences! 
 
-3. **Item Race**
+3. **Item Race**  
    A solo time trial mode with item boxes—collect random power-ups to boost your performance or add challenges.
 
-4. **Electric Vehicles vs Security Guard (PvE Mode)**
+4. **Electric Vehicles vs Security Guard (PvE Mode)**  
    Outrun an AI-controlled security guard in this thrilling PvE challenge—get caught and the race is over!
 
-5. **Racing with Friends**
+5. **Racing with Friends**  
    Connect with your friends via local networks and have a race together!
    
 7. **Dynamic Weather & Time System**  
@@ -21,9 +21,7 @@
 
 8. **Realistic Driving Experience**  
    Provides torque-based control systems, realistic driving sounds, speed-up mechanisms, and drift mechanisms.
-
-9. **Advanced Track Design**  
-   User-friendly tracks for beginners and hidden shortcuts for strategic gameplay.
+   
 
 # Metrics
 
