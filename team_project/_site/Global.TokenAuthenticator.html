@@ -1,0 +1,260 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+
+  <head>
+    <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+      <title>Class TokenAuthenticator
+ | SUSTech Racing Car Documentation </title>
+      <meta name="viewport" content="width=device-width">
+      <meta name="title" content="Class TokenAuthenticator
+ | SUSTech Racing Car Documentation ">
+    
+      <link rel="shortcut icon" href="favicon.ico">
+      <link rel="stylesheet" href="styles/docfx.vendor.css">
+      <link rel="stylesheet" href="styles/docfx.css">
+      <link rel="stylesheet" href="styles/main.css">
+      <meta property="docfx:navrel" content="toc.html">
+      <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+
+              <a class="navbar-brand" href="index.html">
+                <img id="logo" class="svg" src="logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        <div class="article row grid">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="Global.TokenAuthenticator">
+
+
+  <h1 id="Global_TokenAuthenticator" data-uid="Global.TokenAuthenticator" class="text-break">Class TokenAuthenticator
+</h1>
+  <div class="markdown level0 summary"><p>A Unity script that implements token-based authentication for a multiplayer racing game using Mirror.</p>
+<p>
+This script authenticates clients by comparing their token with the server&apos;s token, handling authentication
+messages and managing connection acceptance or rejection.
+</p>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><span class="xref">object</span></div>
+    <div class="level1"><span class="xref">TokenAuthenticator</span></div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="Global.html">Global</a></h6>
+  <h6><strong>Assembly</strong>: cs.temp.dll.dll</h6>
+  <h5 id="Global_TokenAuthenticator_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public class TokenAuthenticator : NetworkAuthenticator</code></pre>
+  </div>
+  <h3 id="fields">Fields
+</h3>
+
+
+  <h4 id="Global_TokenAuthenticator_clientToken" data-uid="Global.TokenAuthenticator.clientToken">clientToken</h4>
+  <div class="markdown level1 summary"><p>The token sent by the client during authentication.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string clientToken</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">string</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <h4 id="Global_TokenAuthenticator_serverToken" data-uid="Global.TokenAuthenticator.serverToken">serverToken</h4>
+  <div class="markdown level1 summary"><p>The token expected from clients for server authentication.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string serverToken</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">string</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="methods">Methods
+</h3>
+
+
+  <a id="Global_TokenAuthenticator_OnClientAuthenticate_" data-uid="Global.TokenAuthenticator.OnClientAuthenticate*"></a>
+  <h4 id="Global_TokenAuthenticator_OnClientAuthenticate" data-uid="Global.TokenAuthenticator.OnClientAuthenticate">OnClientAuthenticate()</h4>
+  <div class="markdown level1 summary"><p>Initiates client-side authentication by sending the client token to the server.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override void OnClientAuthenticate()</code></pre>
+  </div>
+
+
+  <a id="Global_TokenAuthenticator_OnServerAuthenticate_" data-uid="Global.TokenAuthenticator.OnServerAuthenticate*"></a>
+  <h4 id="Global_TokenAuthenticator_OnServerAuthenticate_NetworkConnectionToClient_" data-uid="Global.TokenAuthenticator.OnServerAuthenticate(NetworkConnectionToClient)">OnServerAuthenticate(NetworkConnectionToClient)</h4>
+  <div class="markdown level1 summary"><p>Initiates server-side authentication, waiting for client authentication messages.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override void OnServerAuthenticate(NetworkConnectionToClient conn)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">NetworkConnectionToClient</span></td>
+        <td><span class="parametername">conn</span></td>
+        <td><p>The client connection to authenticate.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <a id="Global_TokenAuthenticator_OnStartClient_" data-uid="Global.TokenAuthenticator.OnStartClient*"></a>
+  <h4 id="Global_TokenAuthenticator_OnStartClient" data-uid="Global.TokenAuthenticator.OnStartClient">OnStartClient()</h4>
+  <div class="markdown level1 summary"><p>Registers the authentication response handler when the client starts.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override void OnStartClient()</code></pre>
+  </div>
+
+
+  <a id="Global_TokenAuthenticator_OnStartServer_" data-uid="Global.TokenAuthenticator.OnStartServer*"></a>
+  <h4 id="Global_TokenAuthenticator_OnStartServer" data-uid="Global.TokenAuthenticator.OnStartServer">OnStartServer()</h4>
+  <div class="markdown level1 summary"><p>Registers the authentication request handler when the server starts.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override void OnStartServer()</code></pre>
+  </div>
+
+
+  <a id="Global_TokenAuthenticator_OnStopClient_" data-uid="Global.TokenAuthenticator.OnStopClient*"></a>
+  <h4 id="Global_TokenAuthenticator_OnStopClient" data-uid="Global.TokenAuthenticator.OnStopClient">OnStopClient()</h4>
+  <div class="markdown level1 summary"><p>Unregisters the authentication response handler when the client stops.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override void OnStopClient()</code></pre>
+  </div>
+
+
+  <a id="Global_TokenAuthenticator_OnStopServer_" data-uid="Global.TokenAuthenticator.OnStopServer*"></a>
+  <h4 id="Global_TokenAuthenticator_OnStopServer" data-uid="Global.TokenAuthenticator.OnStopServer">OnStopServer()</h4>
+  <div class="markdown level1 summary"><p>Unregisters the authentication request handler when the server stops.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override void OnStopServer()</code></pre>
+  </div>
+</article>
+          </div>
+
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+      Generated by DocFX
+      
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script type="text/javascript" src="styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="styles/docfx.js"></script>
+    <script type="text/javascript" src="styles/main.js"></script>
+  </body>
+</html>

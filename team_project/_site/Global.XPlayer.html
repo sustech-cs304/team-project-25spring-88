@@ -1,0 +1,428 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+
+  <head>
+    <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+      <title>Class XPlayer
+ | SUSTech Racing Car Documentation </title>
+      <meta name="viewport" content="width=device-width">
+      <meta name="title" content="Class XPlayer
+ | SUSTech Racing Car Documentation ">
+    
+      <link rel="shortcut icon" href="favicon.ico">
+      <link rel="stylesheet" href="styles/docfx.vendor.css">
+      <link rel="stylesheet" href="styles/docfx.css">
+      <link rel="stylesheet" href="styles/main.css">
+      <meta property="docfx:navrel" content="toc.html">
+      <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+
+              <a class="navbar-brand" href="index.html">
+                <img id="logo" class="svg" src="logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        <div class="article row grid">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="Global.XPlayer">
+
+
+  <h1 id="Global_XPlayer" data-uid="Global.XPlayer" class="text-break">Class XPlayer
+</h1>
+  <div class="markdown level0 summary"><p>A Unity script that manages player state and behavior in a multiplayer racing game.</p>
+<p>
+This script handles player number assignment, name synchronization, car selection, and spawning,
+as well as enabling control for the local player&apos;s car. It maintains a static player list for
+managing player numbers and notifies the race manager when ready.
+</p>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><span class="xref">object</span></div>
+    <div class="level1"><span class="xref">XPlayer</span></div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="Global.html">Global</a></h6>
+  <h6><strong>Assembly</strong>: cs.temp.dll.dll</h6>
+  <h5 id="Global_XPlayer_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public class XPlayer : NetworkBehaviour</code></pre>
+  </div>
+  <h3 id="fields">Fields
+</h3>
+
+
+  <h4 id="Global_XPlayer_carNetId" data-uid="Global.XPlayer.carNetId">carNetId</h4>
+  <div class="markdown level1 summary"><p>The network ID of the player's spawned car, synchronized across the network.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public uint carNetId</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">uint</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <h4 id="Global_XPlayer_playerName" data-uid="Global.XPlayer.playerName">playerName</h4>
+  <div class="markdown level1 summary"><p>The player's name, synchronized across the network.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string playerName</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">string</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <h4 id="Global_XPlayer_playerNumber" data-uid="Global.XPlayer.playerNumber">playerNumber</h4>
+  <div class="markdown level1 summary"><p>The player's unique number, synchronized across the network.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public byte playerNumber</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">byte</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <h4 id="Global_XPlayer_selectedCarIndex" data-uid="Global.XPlayer.selectedCarIndex">selectedCarIndex</h4>
+  <div class="markdown level1 summary"><p>The index of the selected car prefab, synchronized across the network.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int selectedCarIndex</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">int</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="methods">Methods
+</h3>
+
+
+  <a id="Global_XPlayer_CmdSetPlayerName_" data-uid="Global.XPlayer.CmdSetPlayerName*"></a>
+  <h4 id="Global_XPlayer_CmdSetPlayerName_System_String_" data-uid="Global.XPlayer.CmdSetPlayerName(System.String)">CmdSetPlayerName(string)</h4>
+  <div class="markdown level1 summary"><p>Sets the player's name on the server.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void CmdSetPlayerName(string name)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">string</span></td>
+        <td><span class="parametername">name</span></td>
+        <td><p>The player's name to set.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <a id="Global_XPlayer_EnableControl_" data-uid="Global.XPlayer.EnableControl*"></a>
+  <h4 id="Global_XPlayer_EnableControl" data-uid="Global.XPlayer.EnableControl">EnableControl()</h4>
+  <div class="markdown level1 summary"><p>Enables control for the local player's car.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void EnableControl()</code></pre>
+  </div>
+
+
+  <a id="Global_XPlayer_OnStartAuthority_" data-uid="Global.XPlayer.OnStartAuthority*"></a>
+  <h4 id="Global_XPlayer_OnStartAuthority" data-uid="Global.XPlayer.OnStartAuthority">OnStartAuthority()</h4>
+  <div class="markdown level1 summary"><p>Initializes the player when authority is assigned and selects the car.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override void OnStartAuthority()</code></pre>
+  </div>
+
+
+  <a id="Global_XPlayer_OnStartClient_" data-uid="Global.XPlayer.OnStartClient*"></a>
+  <h4 id="Global_XPlayer_OnStartClient" data-uid="Global.XPlayer.OnStartClient">OnStartClient()</h4>
+  <div class="markdown level1 summary"><p>Initializes the player on the client and notifies readiness for the local player.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override void OnStartClient()</code></pre>
+  </div>
+
+
+  <a id="Global_XPlayer_OnStartLocalPlayer_" data-uid="Global.XPlayer.OnStartLocalPlayer*"></a>
+  <h4 id="Global_XPlayer_OnStartLocalPlayer" data-uid="Global.XPlayer.OnStartLocalPlayer">OnStartLocalPlayer()</h4>
+  <div class="markdown level1 summary"><p>Initializes the local player and sets its name.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override void OnStartLocalPlayer()</code></pre>
+  </div>
+
+
+  <a id="Global_XPlayer_OnStartServer_" data-uid="Global.XPlayer.OnStartServer*"></a>
+  <h4 id="Global_XPlayer_OnStartServer" data-uid="Global.XPlayer.OnStartServer">OnStartServer()</h4>
+  <div class="markdown level1 summary"><p>Initializes the player on the server and adds it to the player list.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override void OnStartServer()</code></pre>
+  </div>
+
+
+  <a id="Global_XPlayer_OnStopAuthority_" data-uid="Global.XPlayer.OnStopAuthority*"></a>
+  <h4 id="Global_XPlayer_OnStopAuthority" data-uid="Global.XPlayer.OnStopAuthority">OnStopAuthority()</h4>
+  <div class="markdown level1 summary"><p>Cleans up the player when authority is removed.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override void OnStopAuthority()</code></pre>
+  </div>
+
+
+  <a id="Global_XPlayer_OnStopClient_" data-uid="Global.XPlayer.OnStopClient*"></a>
+  <h4 id="Global_XPlayer_OnStopClient" data-uid="Global.XPlayer.OnStopClient">OnStopClient()</h4>
+  <div class="markdown level1 summary"><p>Cleans up the player on the client when destroyed.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override void OnStopClient()</code></pre>
+  </div>
+
+
+  <a id="Global_XPlayer_OnStopLocalPlayer_" data-uid="Global.XPlayer.OnStopLocalPlayer*"></a>
+  <h4 id="Global_XPlayer_OnStopLocalPlayer" data-uid="Global.XPlayer.OnStopLocalPlayer">OnStopLocalPlayer()</h4>
+  <div class="markdown level1 summary"><p>Cleans up the local player when stopped.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override void OnStopLocalPlayer()</code></pre>
+  </div>
+
+
+  <a id="Global_XPlayer_OnStopServer_" data-uid="Global.XPlayer.OnStopServer*"></a>
+  <h4 id="Global_XPlayer_OnStopServer" data-uid="Global.XPlayer.OnStopServer">OnStopServer()</h4>
+  <div class="markdown level1 summary"><p>Cleans up the player on the server and removes it from the player list.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override void OnStopServer()</code></pre>
+  </div>
+
+
+  <a id="Global_XPlayer_OnValidate_" data-uid="Global.XPlayer.OnValidate*"></a>
+  <h4 id="Global_XPlayer_OnValidate" data-uid="Global.XPlayer.OnValidate">OnValidate()</h4>
+  <div class="markdown level1 summary"><p>Validates the component configuration in the Unity Editor.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected override void OnValidate()</code></pre>
+  </div>
+
+
+  <a id="Global_XPlayer_SpawnCar_" data-uid="Global.XPlayer.SpawnCar*"></a>
+  <h4 id="Global_XPlayer_SpawnCar_GameObject___Transform_" data-uid="Global.XPlayer.SpawnCar(GameObject[],Transform)">SpawnCar(GameObject[], Transform)</h4>
+  <div class="markdown level1 summary"><p>Spawns the player's car on the server.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SpawnCar(GameObject[] carPrefabs, Transform spawnPoint)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">GameObject</span>[]</td>
+        <td><span class="parametername">carPrefabs</span></td>
+        <td><p>An array of car prefabs to choose from.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">Transform</span></td>
+        <td><span class="parametername">spawnPoint</span></td>
+        <td><p>The spawn point Transform for the car.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="events">Events
+</h3>
+
+
+  <h4 id="Global_XPlayer_OnPlayerNumberChanged" data-uid="Global.XPlayer.OnPlayerNumberChanged">OnPlayerNumberChanged</h4>
+  <div class="markdown level1 summary"><p>Event invoked when the player's number changes.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public event Action&lt;byte&gt; OnPlayerNumberChanged</code></pre>
+  </div>
+  <h5 class="eventType">Event Type</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Action&lt;T&gt;</span>&lt;<span class="xref">byte</span>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+</article>
+          </div>
+
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+      Generated by DocFX
+      
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script type="text/javascript" src="styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="styles/docfx.js"></script>
+    <script type="text/javascript" src="styles/main.js"></script>
+  </body>
+</html>

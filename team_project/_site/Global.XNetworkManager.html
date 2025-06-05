@@ -1,0 +1,776 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+
+  <head>
+    <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+      <title>Class XNetworkManager
+ | SUSTech Racing Car Documentation </title>
+      <meta name="viewport" content="width=device-width">
+      <meta name="title" content="Class XNetworkManager
+ | SUSTech Racing Car Documentation ">
+    
+      <link rel="shortcut icon" href="favicon.ico">
+      <link rel="stylesheet" href="styles/docfx.vendor.css">
+      <link rel="stylesheet" href="styles/docfx.css">
+      <link rel="stylesheet" href="styles/main.css">
+      <meta property="docfx:navrel" content="toc.html">
+      <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+
+              <a class="navbar-brand" href="index.html">
+                <img id="logo" class="svg" src="logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        <div class="article row grid">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="Global.XNetworkManager">
+
+
+  <h1 id="Global_XNetworkManager" data-uid="Global.XNetworkManager" class="text-break">Class XNetworkManager
+</h1>
+  <div class="markdown level0 summary"><p>A Unity script that extends Mirror's NetworkManager for a multiplayer racing game.</p>
+<p>
+This script manages network connections, scene changes, and player spawning, providing custom events
+for client connection and disconnection handling. It assigns host names and resets player numbers.
+</p>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><span class="xref">object</span></div>
+    <div class="level1"><span class="xref">XNetworkManager</span></div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="Global.html">Global</a></h6>
+  <h6><strong>Assembly</strong>: cs.temp.dll.dll</h6>
+  <h5 id="Global_XNetworkManager_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public class XNetworkManager : NetworkManager</code></pre>
+  </div>
+  <h3 id="properties">Properties
+</h3>
+
+
+  <a id="Global_XNetworkManager_singleton_" data-uid="Global.XNetworkManager.singleton*"></a>
+  <h4 id="Global_XNetworkManager_singleton" data-uid="Global.XNetworkManager.singleton">singleton</h4>
+  <div class="markdown level1 summary"><p>Gets the singleton instance of XNetworkManager.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static XNetworkManager singleton { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Global.XNetworkManager.html">XNetworkManager</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="methods">Methods
+</h3>
+
+
+  <a id="Global_XNetworkManager_Awake_" data-uid="Global.XNetworkManager.Awake*"></a>
+  <h4 id="Global_XNetworkManager_Awake" data-uid="Global.XNetworkManager.Awake">Awake()</h4>
+  <div class="markdown level1 summary"><p>Initializes the network manager before networking is active.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override void Awake()</code></pre>
+  </div>
+
+
+  <a id="Global_XNetworkManager_ConfigureHeadlessFrameRate_" data-uid="Global.XNetworkManager.ConfigureHeadlessFrameRate*"></a>
+  <h4 id="Global_XNetworkManager_ConfigureHeadlessFrameRate" data-uid="Global.XNetworkManager.ConfigureHeadlessFrameRate">ConfigureHeadlessFrameRate()</h4>
+  <div class="markdown level1 summary"><p>Configures the frame rate for a headless server.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override void ConfigureHeadlessFrameRate()</code></pre>
+  </div>
+
+
+  <a id="Global_XNetworkManager_LateUpdate_" data-uid="Global.XNetworkManager.LateUpdate*"></a>
+  <h4 id="Global_XNetworkManager_LateUpdate" data-uid="Global.XNetworkManager.LateUpdate">LateUpdate()</h4>
+  <div class="markdown level1 summary"><p>Updates the network manager after all Update calls.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override void LateUpdate()</code></pre>
+  </div>
+
+
+  <a id="Global_XNetworkManager_OnClientChangeScene_" data-uid="Global.XNetworkManager.OnClientChangeScene*"></a>
+  <h4 id="Global_XNetworkManager_OnClientChangeScene_System_String_SceneOperation_System_Boolean_" data-uid="Global.XNetworkManager.OnClientChangeScene(System.String,SceneOperation,System.Boolean)">OnClientChangeScene(string, SceneOperation, bool)</h4>
+  <div class="markdown level1 summary"><p>Prepares the client before a scene change.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override void OnClientChangeScene(string newSceneName, SceneOperation sceneOperation, bool customHandling)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">string</span></td>
+        <td><span class="parametername">newSceneName</span></td>
+        <td><p>The name of the scene to be loaded.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">SceneOperation</span></td>
+        <td><span class="parametername">sceneOperation</span></td>
+        <td><p>The scene operation type.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">bool</span></td>
+        <td><span class="parametername">customHandling</span></td>
+        <td><p>Whether custom handling is used.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <a id="Global_XNetworkManager_OnClientConnect_" data-uid="Global.XNetworkManager.OnClientConnect*"></a>
+  <h4 id="Global_XNetworkManager_OnClientConnect" data-uid="Global.XNetworkManager.OnClientConnect">OnClientConnect()</h4>
+  <div class="markdown level1 summary"><p>Handles client connection to the server.</p>
+<p>
+Invokes the OnClientConnectedExternally event.
+</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override void OnClientConnect()</code></pre>
+  </div>
+
+
+  <a id="Global_XNetworkManager_OnClientDisconnect_" data-uid="Global.XNetworkManager.OnClientDisconnect*"></a>
+  <h4 id="Global_XNetworkManager_OnClientDisconnect" data-uid="Global.XNetworkManager.OnClientDisconnect">OnClientDisconnect()</h4>
+  <div class="markdown level1 summary"><p>Handles client disconnection from the server.</p>
+<p>
+Invokes the OnClientDisconnectedExternally event.
+</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override void OnClientDisconnect()</code></pre>
+  </div>
+
+
+  <a id="Global_XNetworkManager_OnClientError_" data-uid="Global.XNetworkManager.OnClientError*"></a>
+  <h4 id="Global_XNetworkManager_OnClientError_TransportError_System_String_" data-uid="Global.XNetworkManager.OnClientError(TransportError,System.String)">OnClientError(TransportError, string)</h4>
+  <div class="markdown level1 summary"><p>Handles transport errors on the client.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override void OnClientError(TransportError transportError, string message)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">TransportError</span></td>
+        <td><span class="parametername">transportError</span></td>
+        <td><p>The transport error type.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">string</span></td>
+        <td><span class="parametername">message</span></td>
+        <td><p>The error message.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <a id="Global_XNetworkManager_OnClientNotReady_" data-uid="Global.XNetworkManager.OnClientNotReady*"></a>
+  <h4 id="Global_XNetworkManager_OnClientNotReady" data-uid="Global.XNetworkManager.OnClientNotReady">OnClientNotReady()</h4>
+  <div class="markdown level1 summary"><p>Handles when the client is no longer ready.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override void OnClientNotReady()</code></pre>
+  </div>
+
+
+  <a id="Global_XNetworkManager_OnClientSceneChanged_" data-uid="Global.XNetworkManager.OnClientSceneChanged*"></a>
+  <h4 id="Global_XNetworkManager_OnClientSceneChanged" data-uid="Global.XNetworkManager.OnClientSceneChanged">OnClientSceneChanged()</h4>
+  <div class="markdown level1 summary"><p>Handles client-side logic after a scene is loaded.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override void OnClientSceneChanged()</code></pre>
+  </div>
+
+
+  <a id="Global_XNetworkManager_OnClientTransportException_" data-uid="Global.XNetworkManager.OnClientTransportException*"></a>
+  <h4 id="Global_XNetworkManager_OnClientTransportException_Exception_" data-uid="Global.XNetworkManager.OnClientTransportException(Exception)">OnClientTransportException(Exception)</h4>
+  <div class="markdown level1 summary"><p>Handles transport exceptions on the client.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override void OnClientTransportException(Exception exception)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Exception</span></td>
+        <td><span class="parametername">exception</span></td>
+        <td><p>The exception thrown.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <a id="Global_XNetworkManager_OnDestroy_" data-uid="Global.XNetworkManager.OnDestroy*"></a>
+  <h4 id="Global_XNetworkManager_OnDestroy" data-uid="Global.XNetworkManager.OnDestroy">OnDestroy()</h4>
+  <div class="markdown level1 summary"><p>Cleans up resources when the GameObject is destroyed.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override void OnDestroy()</code></pre>
+  </div>
+
+
+  <a id="Global_XNetworkManager_OnServerAddPlayer_" data-uid="Global.XNetworkManager.OnServerAddPlayer*"></a>
+  <h4 id="Global_XNetworkManager_OnServerAddPlayer_NetworkConnectionToClient_" data-uid="Global.XNetworkManager.OnServerAddPlayer(NetworkConnectionToClient)">OnServerAddPlayer(NetworkConnectionToClient)</h4>
+  <div class="markdown level1 summary"><p>Adds a new player for a client connection on the server.</p>
+<p>
+Sets the host&apos;s player name to &quot;Host&quot; and resets player numbers.
+</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override void OnServerAddPlayer(NetworkConnectionToClient conn)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">NetworkConnectionToClient</span></td>
+        <td><span class="parametername">conn</span></td>
+        <td><p>The client connection.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <a id="Global_XNetworkManager_OnServerChangeScene_" data-uid="Global.XNetworkManager.OnServerChangeScene*"></a>
+  <h4 id="Global_XNetworkManager_OnServerChangeScene_System_String_" data-uid="Global.XNetworkManager.OnServerChangeScene(System.String)">OnServerChangeScene(string)</h4>
+  <div class="markdown level1 summary"><p>Prepares the server before a scene change.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override void OnServerChangeScene(string newSceneName)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">string</span></td>
+        <td><span class="parametername">newSceneName</span></td>
+        <td><p>The name of the scene to be loaded.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <a id="Global_XNetworkManager_OnServerConnect_" data-uid="Global.XNetworkManager.OnServerConnect*"></a>
+  <h4 id="Global_XNetworkManager_OnServerConnect_NetworkConnectionToClient_" data-uid="Global.XNetworkManager.OnServerConnect(NetworkConnectionToClient)">OnServerConnect(NetworkConnectionToClient)</h4>
+  <div class="markdown level1 summary"><p>Handles a new client connection on the server.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override void OnServerConnect(NetworkConnectionToClient conn)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">NetworkConnectionToClient</span></td>
+        <td><span class="parametername">conn</span></td>
+        <td><p>The client connection.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <a id="Global_XNetworkManager_OnServerDisconnect_" data-uid="Global.XNetworkManager.OnServerDisconnect*"></a>
+  <h4 id="Global_XNetworkManager_OnServerDisconnect_NetworkConnectionToClient_" data-uid="Global.XNetworkManager.OnServerDisconnect(NetworkConnectionToClient)">OnServerDisconnect(NetworkConnectionToClient)</h4>
+  <div class="markdown level1 summary"><p>Handles a client disconnection on the server.</p>
+<p>
+Resets player numbers after disconnection.
+</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override void OnServerDisconnect(NetworkConnectionToClient conn)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">NetworkConnectionToClient</span></td>
+        <td><span class="parametername">conn</span></td>
+        <td><p>The client connection.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <a id="Global_XNetworkManager_OnServerError_" data-uid="Global.XNetworkManager.OnServerError*"></a>
+  <h4 id="Global_XNetworkManager_OnServerError_NetworkConnectionToClient_TransportError_System_String_" data-uid="Global.XNetworkManager.OnServerError(NetworkConnectionToClient,TransportError,System.String)">OnServerError(NetworkConnectionToClient, TransportError, string)</h4>
+  <div class="markdown level1 summary"><p>Handles transport errors on the server.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override void OnServerError(NetworkConnectionToClient conn, TransportError transportError, string message)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">NetworkConnectionToClient</span></td>
+        <td><span class="parametername">conn</span></td>
+        <td><p>The client connection, may be null.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">TransportError</span></td>
+        <td><span class="parametername">transportError</span></td>
+        <td><p>The transport error type.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">string</span></td>
+        <td><span class="parametername">message</span></td>
+        <td><p>The error message.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <a id="Global_XNetworkManager_OnServerReady_" data-uid="Global.XNetworkManager.OnServerReady*"></a>
+  <h4 id="Global_XNetworkManager_OnServerReady_NetworkConnectionToClient_" data-uid="Global.XNetworkManager.OnServerReady(NetworkConnectionToClient)">OnServerReady(NetworkConnectionToClient)</h4>
+  <div class="markdown level1 summary"><p>Marks a client as ready on the server.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override void OnServerReady(NetworkConnectionToClient conn)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">NetworkConnectionToClient</span></td>
+        <td><span class="parametername">conn</span></td>
+        <td><p>The client connection.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <a id="Global_XNetworkManager_OnServerSceneChanged_" data-uid="Global.XNetworkManager.OnServerSceneChanged*"></a>
+  <h4 id="Global_XNetworkManager_OnServerSceneChanged_System_String_" data-uid="Global.XNetworkManager.OnServerSceneChanged(System.String)">OnServerSceneChanged(string)</h4>
+  <div class="markdown level1 summary"><p>Handles server-side logic after a scene is loaded.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override void OnServerSceneChanged(string sceneName)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">string</span></td>
+        <td><span class="parametername">sceneName</span></td>
+        <td><p>The name of the loaded scene.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <a id="Global_XNetworkManager_OnServerTransportException_" data-uid="Global.XNetworkManager.OnServerTransportException*"></a>
+  <h4 id="Global_XNetworkManager_OnServerTransportException_NetworkConnectionToClient_Exception_" data-uid="Global.XNetworkManager.OnServerTransportException(NetworkConnectionToClient,Exception)">OnServerTransportException(NetworkConnectionToClient, Exception)</h4>
+  <div class="markdown level1 summary"><p>Handles transport exceptions on the server.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override void OnServerTransportException(NetworkConnectionToClient conn, Exception exception)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">NetworkConnectionToClient</span></td>
+        <td><span class="parametername">conn</span></td>
+        <td><p>The client connection, may be null.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">Exception</span></td>
+        <td><span class="parametername">exception</span></td>
+        <td><p>The exception thrown.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <a id="Global_XNetworkManager_OnStartClient_" data-uid="Global.XNetworkManager.OnStartClient*"></a>
+  <h4 id="Global_XNetworkManager_OnStartClient" data-uid="Global.XNetworkManager.OnStartClient">OnStartClient()</h4>
+  <div class="markdown level1 summary"><p>Handles the start of a client session.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override void OnStartClient()</code></pre>
+  </div>
+
+
+  <a id="Global_XNetworkManager_OnStartHost_" data-uid="Global.XNetworkManager.OnStartHost*"></a>
+  <h4 id="Global_XNetworkManager_OnStartHost" data-uid="Global.XNetworkManager.OnStartHost">OnStartHost()</h4>
+  <div class="markdown level1 summary"><p>Handles the start of a host session.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override void OnStartHost()</code></pre>
+  </div>
+
+
+  <a id="Global_XNetworkManager_OnStartServer_" data-uid="Global.XNetworkManager.OnStartServer*"></a>
+  <h4 id="Global_XNetworkManager_OnStartServer" data-uid="Global.XNetworkManager.OnStartServer">OnStartServer()</h4>
+  <div class="markdown level1 summary"><p>Handles the start of a server session.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override void OnStartServer()</code></pre>
+  </div>
+
+
+  <a id="Global_XNetworkManager_OnStopClient_" data-uid="Global.XNetworkManager.OnStopClient*"></a>
+  <h4 id="Global_XNetworkManager_OnStopClient" data-uid="Global.XNetworkManager.OnStopClient">OnStopClient()</h4>
+  <div class="markdown level1 summary"><p>Handles the stop of a client session.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override void OnStopClient()</code></pre>
+  </div>
+
+
+  <a id="Global_XNetworkManager_OnStopHost_" data-uid="Global.XNetworkManager.OnStopHost*"></a>
+  <h4 id="Global_XNetworkManager_OnStopHost" data-uid="Global.XNetworkManager.OnStopHost">OnStopHost()</h4>
+  <div class="markdown level1 summary"><p>Handles the stop of a host session.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override void OnStopHost()</code></pre>
+  </div>
+
+
+  <a id="Global_XNetworkManager_OnStopServer_" data-uid="Global.XNetworkManager.OnStopServer*"></a>
+  <h4 id="Global_XNetworkManager_OnStopServer" data-uid="Global.XNetworkManager.OnStopServer">OnStopServer()</h4>
+  <div class="markdown level1 summary"><p>Handles the stop of a server session.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override void OnStopServer()</code></pre>
+  </div>
+
+
+  <a id="Global_XNetworkManager_OnValidate_" data-uid="Global.XNetworkManager.OnValidate*"></a>
+  <h4 id="Global_XNetworkManager_OnValidate" data-uid="Global.XNetworkManager.OnValidate">OnValidate()</h4>
+  <div class="markdown level1 summary"><p>Validates the component configuration in the Unity Editor.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override void OnValidate()</code></pre>
+  </div>
+
+
+  <a id="Global_XNetworkManager_ServerChangeScene_" data-uid="Global.XNetworkManager.ServerChangeScene*"></a>
+  <h4 id="Global_XNetworkManager_ServerChangeScene_System_String_" data-uid="Global.XNetworkManager.ServerChangeScene(System.String)">ServerChangeScene(string)</h4>
+  <div class="markdown level1 summary"><p>Switches the server to a new scene and updates clients.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override void ServerChangeScene(string newSceneName)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">string</span></td>
+        <td><span class="parametername">newSceneName</span></td>
+        <td><p>The name of the new scene.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <a id="Global_XNetworkManager_Start_" data-uid="Global.XNetworkManager.Start*"></a>
+  <h4 id="Global_XNetworkManager_Start" data-uid="Global.XNetworkManager.Start">Start()</h4>
+  <div class="markdown level1 summary"><p>Initializes the network manager when the GameObject starts.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override void Start()</code></pre>
+  </div>
+  <h3 id="events">Events
+</h3>
+
+
+  <h4 id="Global_XNetworkManager_OnClientConnectedExternally" data-uid="Global.XNetworkManager.OnClientConnectedExternally">OnClientConnectedExternally</h4>
+  <div class="markdown level1 summary"><p>Event invoked when a client connects to the server.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static event Action OnClientConnectedExternally</code></pre>
+  </div>
+  <h5 class="eventType">Event Type</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Action</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <h4 id="Global_XNetworkManager_OnClientDisconnectedExternally" data-uid="Global.XNetworkManager.OnClientDisconnectedExternally">OnClientDisconnectedExternally</h4>
+  <div class="markdown level1 summary"><p>Event invoked when a client disconnects from the server.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static event Action OnClientDisconnectedExternally</code></pre>
+  </div>
+  <h5 class="eventType">Event Type</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Action</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+</article>
+          </div>
+
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+      Generated by DocFX
+      
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script type="text/javascript" src="styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="styles/docfx.js"></script>
+    <script type="text/javascript" src="styles/main.js"></script>
+  </body>
+</html>
