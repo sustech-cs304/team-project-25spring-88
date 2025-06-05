@@ -37,7 +37,36 @@ The project contains a total of **1,400** source files. The majority of these ar
 ### 3. Average Cyclomatic Complexity Number (CCN)
 The project maintains a healthy average cyclomatic complexity of **3.4**, which is well within the recommended threshold (typically < 10). This metric measures the number of linearly independent paths through the code, essentially counting the number of different routes the program execution can take.
 
-### 4. Other Metrics
+### 4. Dependency Analysis
+
+Our project's dependency structure reveals a well-organized architecture with clear separation between core systems. Our main functionality relies on the following **12** core dependencies.
+
+- **Core Unity Dependencies**
+The project properly leverages Unity's foundation frameworks:
+    - **UnityEngine**: Core engine functionality used throughout the project
+    - **MonoBehaviour**: Base class for Unity scripting, appropriately extended in our components
+    - **UnityEngine.UI**: Used for interface elements and HUD components
+    - **UnityEngine.SceneManagement**: Handles scene transitions and level loading operations
+
+- **System Dependencies**
+Standard .NET libraries utilized for fundamental operations:
+    - **System.Collections**: Used for core collection data structures
+    - **System.Collections.Generic**: Provides type-safe collections throughout the codebase
+    - **System.Text**: Utilized for string manipulation and text processing
+
+- **Custom Component Dependencies**
+Our project's custom architecture shows sensible organization around key game systems:
+    - **VehicleBehaviour**: Core vehicle physics and handling components
+    - **GameEffectUIManager**: Centralized management of UI effects and transitions
+    - **AICarPathFollower**: AI movement and navigation system for computer-controlled vehicles
+
+-  **Testing Dependencies**
+The project maintains a solid testing infrastructure using:
+    - **NUnit.Framework**: Primary testing framework for unit tests
+    - **UnityEngine.TestTools**: Unity-specific testing utilities for play mode tests
+
+
+### 5. Other Metrics
 Additional code quality metrics show positive indicators for the project:
 - **Project Scale**: 4,777 total functions with an average of 87.3 tokens per function
 - **Function Size**: Average of 13.9 lines per function, indicating well-modularized code
